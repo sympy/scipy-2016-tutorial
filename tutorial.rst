@@ -105,6 +105,8 @@ Out[22]: True
 Deriving trigonometric identities
 =================================
 
+http://www.mathpages.com/home/kmath205.htm
+
 In [1]: var('a,b')
 Out[1]: (a, b)
 
@@ -163,6 +165,8 @@ limit(f, x, 0)
 
 Issues with floating point numbers
 ----------------------------------
+
+http://www.cybertester.com/data/gruntz.pdf
 
 In [18]: 10**-10**1
 Out[18]: 1e-10
