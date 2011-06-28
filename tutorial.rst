@@ -1,3 +1,69 @@
+
+Python/IPython sessions
+-----------------------
+
+    $ ipython
+
+    In [1]: import sympy
+
+    In [2]: x = sympy.Symbol('x')
+
+    In [3]: sympy.integrate(3*x**2)
+    Out[3]: x**3
+
+    In [5]: sympy.init_printing()
+
+    In [6]: sympy.integrate(3*x**2)
+    Out[6]:
+     3
+    x
+
+isympy sessions
+---------------
+
+    $ bin/isympy
+
+    mateusz@raven:~/repo/git/sympy$ bin/isympy
+    IPython console for SymPy 0.6.7-git (Python 2.6.6) (ground types: gmpy)
+
+    These commands were executed:
+    >>> from __future__ import division
+    >>> from sympy import *
+    >>> x, y, z, t = symbols('x y z t')
+    >>> k, m, n = symbols('k m n', integer=True)
+    >>> f, g, h = symbols('f g h', cls=Function)
+
+    Documentation can be found at http://www.sympy.org
+
+    In [1]:
+
+isympy options
+--------------
+
+    -h, --help            show this help message and exit
+    -c CONSOLE, --console=CONSOLE
+                          select type of interactive session: ipython | python
+    -p PRETTY, --pretty=PRETTY
+                          setup pretty printing: unicode | ascii | no
+    -t TYPES, --types=TYPES
+                          setup ground types: gmpy | python | sympy
+    -o ORDER, --order=ORDER
+                          setup ordering of terms: [rev-]lex | [rev-]grlex |
+                          [rev-]grevlex | old
+    -q, --quiet           print only version information at startup
+    -C, --no-cache        disable caching mechanism
+
+Global variables
+----------------
+
+SYMPY_USE_CACHE
+SYMPY_GROUND_TYPES
+
+Expression cache
+----------------
+
+
+
 Partial fraction decomposition
 ==============================
 
