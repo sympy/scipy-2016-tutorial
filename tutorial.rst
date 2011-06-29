@@ -1,4 +1,82 @@
 
+    $ ipython
+
+    In [1]: x**2 + 1
+    ---------------------------------------------------------------------------
+    NameError                                 Traceback (most recent call last)
+
+    /home/matt/repo/git/sympy/<ipython console> in <module>()
+
+    NameError: name 'x' is not defined
+
+    In [2]: x = 1
+
+    In [3]: x**2 + 1
+    Out[3]: 2
+
+    In [4]: type(_)
+    Out[4]: <type 'int'>
+
+    In [5]: lambda x: x**2 + 1
+    Out[5]: <function <lambda> at 0x84ae02c>
+
+    In [6]: f = _
+
+    In [7]: f(1)
+    Out[7]: 2
+
+    In [8]: type(_)
+    Out[8]: <type 'int'>
+
+    In [9]: import math
+
+    In [10]: math.sin(1)
+    Out[10]: 0.8414709848078965
+
+    In [11]: math.cos(1)
+    Out[11]: 0.54030230586813977
+
+    In [12]: _10**2 + _11**2
+    Out[12]: 1.0
+
+    In [13]: math.sin(70)
+    Out[13]: 0.77389068155788909
+
+    In [14]: math.cos(70)
+    Out[14]: 0.63331920308629985
+
+    In [15]: __**2 + _**2
+    Out[15]: 1.0
+
+    In [16]: from sympy import *
+
+    In [17]: x = Symbol('x')
+
+    In [18]: x**2 + 1
+    Out[18]: x**2 + 1
+
+    In [19]: f = _
+
+    In [20]: type(f)
+    Out[20]: <class 'sympy.core.add.Add'>
+
+    In [21]: f.subs(x, 1)
+    Out[21]: 2
+
+    In [22]: type(_)
+    Out[22]: <class 'sympy.core.numbers.Integer'>
+
+    In [23]: f(2)
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+
+    /home/matt/repo/git/sympy/<ipython console> in <module>()
+
+    TypeError: 'Add' object is not callable
+
+
+
+
 Python/IPython sessions
 -----------------------
 
