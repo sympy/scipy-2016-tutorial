@@ -347,8 +347,13 @@ fraction decomposition of `f`::
 Tasks
 -----
 
-1. Can you use :func:`Expr.coeff` in place of `Poly.nth`?
-2. Extend this procedure to allow non-rational coefficients.
+1. Compute partial fraction decomposition of:
+
+ * `\frac{3 x + 5}{{2 x + 1)^2}`
+ * `\frac{3 x + 5}{{u x + v)^2}`
+ * `\frac{(3 x + 5)^2}{{2 x + 1)^2}`
+
+2. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
 
 Deriving trigonometric identities
 =================================
