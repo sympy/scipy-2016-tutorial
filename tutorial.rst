@@ -404,100 +404,247 @@ Out[10]: sin(a)⋅cos(b) + sin(b)⋅cos(a)
 In [11]: cos(a + b).expand(trig=True)
 Out[11]: -sin(a)⋅sin(b) + cos(a)⋅cos(b)
 
-Numerical computing
-===================
+Not only symbolics: numerical computing
+=======================================
 
-f = x**(1 - log(log(log(log(1/x)))))
+Symbolic mathematics can't exist without numerical methods. Most "symbolic"
+modules in SymPy take at least some advantage of numerical computing. SymPy
+uses mpmath library for this purpose.
 
-limit(f, x, 0)
+Lets start from something simple and find numerical approximation to `\pi`.
+Normally SymPy represents `\pi` as a symbolic entity::
 
-Issues with floating point numbers
-----------------------------------
+    >>> pi
+    π
+    >>> type(_)
+    <class 'sympy.core.numbers.Pi'>
 
-http://www.cybertester.com/data/gruntz.pdf
+To obtain numerical approximation of `\pi` we can use either :func:`evalf`
+method or :func:`N`, which is a simple wrapper over the former method::
 
-In [18]: 10**-10**1
-Out[18]: 1e-10
+    >>> pi.evalf()
+    3.14159265358979
 
-In [19]: 10**-10**2
-Out[19]: 1e-100
+The default precision is 15 digits. We can change this using ``n`` parameter::
 
-In [20]: 10**-10**3
-Out[20]: 0.0
+    >>> pi.evalf(n=30)
+    3.14159265358979323846264338328
 
-In [51]: f = x**(1 - log(log(log(log(1/x)))))
+The mpmath library implements arbitrary precision floating point arithmetics
+(limited only by available memory), so we can set ``n`` to a very big value,
+e.g. one million::
 
-In [52]: f
-Out[52]:
-      ⎛   ⎛   ⎛   ⎛1⎞⎞⎞⎞
- - log⎜log⎜log⎜log⎜─⎟⎟⎟⎟ + 1
-      ⎝   ⎝   ⎝   ⎝x⎠⎠⎠⎠
-x
+    >>> million_digits = pi.evalf(n=1000000)
+    >>> str(million_digist)[-1]
+    5
 
-In [29]: f.subs(x, S(10)**-10**1)
-Out[29]:
-           -1 + log(log(log(10⋅log(10))))
-10000000000
+:func:`evalf` can handle much more complex expressions than `\pi`, for
+example::
 
-In [30]: f.subs(x, S(10)**-10**1).evalf()
-Out[30]: 2.17686941815359e-9
+    >>> exp(sin(1) + E**pi - I)
+               π
+     sin(1) + ℯ  - ⅈ
+    ℯ
 
-In [31]: f.subs(x, S(10)**-10**2).evalf()
-Out[31]: 4.87036575966820e-48
+    >>> _.evalf()
+    14059120207.1707 - 21895782412.4995⋅ⅈ
 
-In [32]: f.subs(x, S(10)**-10**3).evalf()
-Out[32]: 1.56972853078733e-284
+or::
 
-In [33]: f.subs(x, S(10)**-10**4).evalf()
-Out[33]: 3.42160969045651e-1641
+    >>> zeta(S(14)/17)
+     ⎛14⎞
+    ζ⎜──⎟
+     ⎝17⎠
 
-In [34]: f.subs(x, S(10)**-10**5).evalf()
-Out[34]: 1.06692865268558e-7836
+    >>> zeta(S(14)/17).evalf()
+    -5.10244976858838
 
-In [35]: f.subs(x, S(10)**-10**6).evalf()
-Out[35]: 4.40959214112950e-12540
+Symbolic entities are ignored::
 
-In [35]: f.subs(x, S(10)**-10**7).evalf()
-<timeout>
+    >>> pi*x
+    π⋅x
+    >>> _.evalf()
+    3.14159265358979⋅x
 
-In [38]: f.subs(x, Float(10.0)**-10**6)
-Out[38]: 4.40959214078817e-12540
+Built-in functions :func:`float` and :func:`complex` take advantage of
+:func:`evalf`::
 
-In [39]: f.subs(x, Float(10.0)**-10**7)
-Out[39]: 1.11148303902275e+404157
+    >>> float(pi)
+    3.14159265359
+    >>> type(_)
+    <type 'float'>
 
-In [40]: F = lambdify(x, f, modules='mpmath')
+    >>> float(pi*I)
+    ...
+    ValueError: Symbolic value, can't compute
 
-In [41]: from sympy.mpmath import mpf
+    >>> complex(pi*I)
+    3.14159265359j
+    >>> type(_20)
+    <type 'complex'>
 
-In [42]: F(mpf("1e-10"))
-Out[43]: 2.17686941815358e-9
+The base type for computing with floating point numbers in SymPy is
+:class:`Float`. It allows for several flavors of initialization and
+keeps track of precision::
 
-In [44]: F(mpf("1e-100"))
-Out[44]: 4.87036575966825e-48
+    >>> 2.0
+    2.0
+    >>> type(_)
+    <type 'float'>
 
-In [45]: F(mpf("1e-1000"))
-Out[45]: 1.56972853078736e-284
+    >>> Float(2.0)
+    2.00000000000000
+    >>> type(_)
+    <class 'sympy.core.numbers.Float'>
 
-In [46]: F(mpf("1e-10000"))
-Out[46]: 3.42160969046405e-1641
+    >>> sympify(2.0)
+    2.00000000000000
+    >>> type(_)
+    <class 'sympy.core.numbers.Float'>
 
-In [47]: F(mpf("1e-100000"))
-Out[47]: 1.0669286527192e-7836
+    >>> Float("3.14")
+    3.14000000000000
+    >>> Float("3.14e-400")
+    3.14000000000000e-400
 
-In [48]: F(mpf("1e-1000000"))
-Out[48]: 4.40959214078817e-12540
+Notice that the last value is out of range for ``float``::
 
-In [49]: F(mpf("1e-10000000"))
-Out[49]: 1.11148303902275e+404157
+    >>> 3.14e-400
+    0.0
 
-In [54]: from sympy.mpmath import limit as mplimit
+We expected a very small value but not zero. This raises an important issue,
+because if we try to construct a :class:`Float` this way, we will still get
+zero::
 
-In [57]: mplimit(F, 0)
-Out[57]: (2.23372778188847e-5 + 2.28936592344331e-8j)
+    >>> Float(3.14e-400)
+    0
 
-In [58]: mplimit(F, 0, exp=True)
-Out[58]: (3.43571317799366e-20 + 4.71360839667667e-23j)
+The only way to fix this is to pass a string argument to :class:`Float`.
 
-In [62]: limit(f, x, 0)
-Out[62]: ∞
+When symbolic mathematics matter?
+---------------------------------
+
+Consider a univariate function:
+
+.. math::
+
+    f(x) = x^(1 - \log(\log(\log(\log(\frac{1}{x})))))
+
+We would like to compute:
+
+.. math::
+
+    \limit_{x \to 0^{+}} f(x)
+
+Lets define function `f` in SymPy::
+
+    >>> f = x**(1 - log(log(log(log(1/x)))))
+    >>> f
+          ⎛   ⎛   ⎛   ⎛1⎞⎞⎞⎞
+     - log⎜log⎜log⎜log⎜─⎟⎟⎟⎟ + 1
+          ⎝   ⎝   ⎝   ⎝x⎠⎠⎠⎠
+    x
+
+A very straight forward approach is to "see" how `f` behaves on the right
+hand side of zero, is to evaluate `f` at a few sufficiently small points.
+
+Lets start with points of the form `x = 10^{-k}`::
+
+    >>> f.subs(x, 10**-1).evalf()
+    0.00114216521536353 + 0.00159920801047526⋅ⅈ
+    >>> f.subs(x, 10**-2).evalf()
+    0.000191087007486009
+    >>> f.subs(x, 10**-3).evalf()
+    5.60274947776528e-5
+    >>> f.subs(x, 10**-4).evalf()
+    1.24646630615307e-5
+    >>> f.subs(x, 10**-5).evalf()
+    2.73214471781554e-6
+    >>> f.subs(x, 10**-6).evalf()
+    6.14631623897124e-7
+    >>> f.subs(x, 10**-7).evalf()
+    1.42980539541700e-7
+    >>> f.subs(x, 10**-8).evalf()
+    3.43858142726788e-8
+
+We obtained a decreasing sequence values which suggests that the limit
+is zero. Lets now try points of the form `x = 10^{-10^k}`::
+
+    >>> f.subs(x, 10**-10**1).evalf()
+    2.17686941815359e-9
+    >>> f.subs(x, 10**-10**2).evalf()
+    4.87036575966825e-48
+    >>> f.subs(x, 10**-10**3).evalf()
+    +inf
+
+For `x = 10^{-10^3}` we got a very peculiar value. This happened because::
+
+    >>> 10**-10**3
+    0.0
+
+we used Python's floating point values. Instead we can use either exact
+numbers or SymPy's floating point numbers::
+
+    >>> Integer(10)**-10**3 != 0
+    True
+    >>> Float(10.0)**-10**3 != 0
+    True
+
+Lets continue with SymPy's floating point numbers::
+
+    >>> f.subs(x, Float(10.0)**-10**1).evalf()
+    2.17686941815359e-9
+    >>> f.subs(x, Float(10.0)**-10**2).evalf()
+    4.87036575966825e-48
+    >>> f.subs(x, Float(10.0)**-10**3).evalf()
+    1.56972853078736e-284
+    >>> f.subs(x, Float(10.0)**-10**4).evalf()
+    3.42160969045530e-1641
+    >>> f.subs(x, Float(10.0)**-10**5).evalf()
+    1.06692865269193e-7836
+    >>> f.subs(x, Float(10.0)**-10**6).evalf()
+    4.40959214078817e-12540
+    >>> f.subs(x, Float(10.0)**-10**7).evalf()
+    1.11148303902275e+404157
+    >>> f.subs(x, Float(10.0)**-10**8).evalf()
+    8.63427256445142e+8443082
+
+This time the sequence of values is rapidly decreasing, but only until
+a sufficiently small numer where `f` has an inflexion point. After that,
+values of `f` increase very rapidly, which may suggest that the actual
+limit is ``+\inf``. It seems that our initial guess is wrong. However, for
+now we still can't draw any conclusions about behaviour of `f`, because
+if we take even smaller numbers we may reach other points of inflection.
+
+The mpmath library implements a function for computing numerical limits
+of function, we can try to take advantage of this::
+
+    >>> from sympy.mpmath import limit as nlimit
+    >>> F = lambdify(x, f, modules='mpmath')
+
+    >>> nlimit(F, 0)
+    (2.23372778188847e-5 + 2.28936592344331e-8j)
+
+This once again suggests that the limit is zero. Lets use exponential
+distribution of pints in :func:`nlimit`::
+
+    >>> nlimit(F, 0, exp=True)
+    (3.43571317799366e-20 + 4.71360839667667e-23j)
+
+This didn't help much. Still zero. The only solution to this problem
+is to use analytic methods. For this we will use :func:`limit`::
+
+    >>> limit(f, x, 0)
+    ∞
+
+which shows us that our initial guess was completely wrong. This nicely
+shows that solving ill conditioned problems may require assistance of
+symbolic mathematics system. More about this can be found in Dominic
+Gruntz's PhD tesis (http://www.cybertester.com/data/gruntz.pdf), where
+this problem is explained in detail and an algorithm shown, which can
+solve this problem and which is implemented in SymPy.
+
+Tasks
+-----
+
+.. TODO
