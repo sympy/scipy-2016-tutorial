@@ -1,4 +1,8 @@
 
+.. |groebner| replace:: Gröbner
+
+::
+
     $ ipython
 
     In [1]: x**2 + 1
@@ -1001,3 +1005,501 @@ Tasks
 
 2. Can this or a similar procedure be used with other classes of expressions
 than rational functions? If so, what kind of expressions can be used?
+
+Applications of |groebner| bases
+================================
+
+The |groebner| bases method is an attractive tool in computer algebra and
+symbolic mathematics because it is relatively simple to understand and it
+can be applied to a wide variety of problems in mathematics and engineering.
+
+Lets consider a set `F` of multivariate equations polynomial over a field:
+
+.. math::
+
+    F = \{ f \in \mathrm{K}[x_1, \ldots, x_n] \}
+
+A |groebner| basis `G` of `F` with respect to a fixed ordering of monomials,
+is another set of polynomial equations with certain *nice* properties that
+depend on the choice of the order of monomials and variables. `G` will be
+structurally different from `F`, but has exactly the same set of solutions.
+
+The |groebner| bases theory tells us that:
+
+#. problems which are difficult to solve using `F`, are *easier* to solve using `G`
+#. there exists an *algorithm* for computing `G` for arbitrary `F`
+
+We will take advantage of this and in the following subsections we will solve
+two interesting problems in graph theory and algebraic geometry, by formulating
+those problems as systems of polynomial equations, computing |groebner| bases
+and reading solutions from them.
+
+Vertex `k`--coloring of graphs
+------------------------------
+
+Given a graph `\mathcal{G}(V, E)`, where `V` is the set of vertices and `E`
+is the set of edges of `\mathcal{G}`, and a positive integer `k`, we ask if
+it is possible to assign a color to every vertex from `V`, such that adjacent
+vertices have different colors assigned. Moreover, if graph `\mathcal{G}` is
+`k`--colorable, we would like to enumerate all possible `k`--colorings this
+graph.
+
+We will solve this problem using the |groebner| bases method. First of all, we
+have to transform this graph--theoretical definition of `k`--coloring problem
+into a form that is understandable by |groebner| bases machinery. This means
+we have to construct a system of polynomial equations that embeds the structure
+of a graph and constraints related to `k`--coloring problem.
+
+We start by assigning a variable to each vertex. Given that `\mathcal{G}` has
+`n` vertices, i.e. `|V| = n`, then we will introduce variables `x_1, \ldots,
+x_n`. Next we will write a set of equations describing the fact that we allow
+assignment of one of `k` possible colors to each vertex. The best approach
+currently known is to map colors to `k`--th roots of unity, which are the
+solutions to equation `x^k - 1 = 0`.
+
+Let `\zeta = \exp(\frac{2\pi\I}{k})` be a `k`--th root of unity. We map colors
+`1, \ldots, k` to `1, \zeta, \ldots, \zeta^{k-1}`. Then the statement that every
+vertex has to be assigned one of `k` colors is equivalent to writing the following
+set of polynomial equations:
+
+.. math::
+
+    F_k = \{ x_i^k - 1 = 0 : i = 1, 2, \ldots, n \}
+
+We also require that two adjacent vertices `x_i` and `x_j` are assigned different
+colors. From the previous discussion we know that `x_i^k = 1` and `x_j^k = 1`, so
+`x_i^k = x_j^k` or, equivalently, `x_i^k - x_j^k = 0`. By factorization we obtain
+that:
+
+.. math::
+
+    x_i^k - x_j^k = (x_i - x_j) \cdot f(x_i, x_j) = 0
+
+where `f(x_i, x_j)` is a bivariate polynomial of degree `k-1` in both variables.
+Since we require that `x_i \not= x_j` then `x_i^k - x_j^k` can vanish only when
+`f(x_i, x_j) = 0`.  This allows us to write another set of polynomial equations:
+
+.. math::
+
+    F_{\mathcal{G}} = \{ f(x_i, x_j) = 0 : (i, j) \in E \}
+
+Next we combine `F_k` and `F_{\mathcal{G}}` into one system of equations `F`. The
+graph `\mathcal{G}(V, E)` is `k`-colorable, if the |groebner| basis `G` of `F` is
+non-trivial, i.e. `G \not= \{1\}`. If this is not the case, then the graph isn't
+`k`--colorable. Otherwise the |groebner| basis gives us information about all
+possible `k`--colorings of `\mathcal{G}`.
+
+Lets now focus on a particular `k`--coloring where `k = 3`. In this case:
+
+.. math::
+
+    F_3 = \{ x_i^3 - 1 : i = 1, \ldots, n \}
+
+Using SymPy's built--in multivariate polynomial factorization routine::
+
+    >>> var('xi, xj')
+    (xi, xj)
+
+    >>> factor(xi**3 - xj**3)
+              ⎛  2             2⎞
+    (xi - xj)⋅⎝xi  + xi⋅xj + xj ⎠
+
+we derive the set of equations `F_{\mathcal{G}}` describing an admissible
+`3`--coloring of a graph:
+
+.. math::
+
+    F_{\mathcal{G}} = \{ x_i^2 + x_i x_j + x_j^2 : (i, j) \in E \}
+
+At this point it is sufficient to compute the |groebner| basis `G` of
+`F = F_3 \cup F_{\mathcal{G}}` to find out if a graph `\mathcal{G}` is
+`3`--colorable, or not.
+
+Lets see how this procedure works for a particular graph:
+
+.. tikz:: img/tikz/graph-nocolor.tex
+
+.. _fig-graph-nocolor:
+.. figure:: ../img/tikz/graph-nocolor.*
+    :align: center
+
+    The graph $\mathcal{G}(V, E)$
+
+`\mathcal{G}(V, E)` has 12 vertices and 23 edges. We ask if the graph is
+`3`--colorable. Lets first encode `V` and `E` using Python's built--in
+data structures::
+
+    >>> V = range(1, 12+1)
+    >>> E = [(1,2),(2,3),(1,4),(1,6),(1,12),(2,5),(2,7),(3,8),
+    ... (3,10),(4,11),(4,9),(5,6),(6,7),(7,8),(8,9),(9,10),
+    ... (10,11),(11,12),(5,12),(5,9),(6,10),(7,11),(8,12)]
+
+We encoded the set of vertices as a list of consecutive integers and the
+set of edges as a list of tuples of adjacent vertex indices. Next we will
+transform the graph into an algebraic form by mapping vertices to variables
+and tuples of indices into tuples of variables::
+
+    >>> V = [ var('x%d' % i) for i in V ]
+    >>> E = [ (V[i-1], V[j-1]) for i, j in E ]
+
+As the last step of this construction we write equations for `F_3` and
+`F_{\mathcal{G}}`::
+
+    >>> F3 = [ xi**3 - 1 for xi in V ]
+    >>> Fg = [ xi**2 + xi*xj + xj**2 for xi, xj in E ]
+
+Everything is set following the theoretical introduction, so now we can
+compute the |groebner| basis of `F_3 \cup F_{\mathcal{G}}` with respect
+to *lexicographic* ordering of terms::
+
+    >>> G = groebner(F3 + Fg, *V)
+
+We know that if the constructed system of polynomial equations has a solution
+then `G` should be non--trivial, which can be easily verified::
+
+    >>> G != [1]
+    True
+
+The answer is that the graph `\mathcal{G}` is `3`--colorable. A sample coloring
+is shown on the following figure:
+
+.. tikz:: img/tikz/graph-color.tex
+
+.. _fig-graph-color:
+.. figure:: ../img/tikz/graph-color.*
+    :align: center
+
+    A sample $3$--coloring of the graph $\mathcal{G}(V, E)$
+
+Suppose we add an edge between vertices $i = 3$ and $j = 4$. Is the new graph
+still `3`--colorable? To check this it is sufficient to construct `F_{\mathcal{G'}}`
+by extending `F_{\mathcal{G}}` with `x_3^2 + x_3 x_4 + x_4^2` equation and
+recompute the |groebner| basis::
+
+    >>> groebner(F3 + Fg + [x3**2 + x3*x4 + x4**2], *V)
+    [1]
+
+We got trivial |groebner| basis as the result, so the graph `\mathcal{G'}`
+isn't `3`--colorable. We could continue this discussion and ask, for example,
+if the original graph `\mathcal{G}` can be colored with only two colors. To
+achieve this, we would have to construct `F_3` and `F_{\mathcal{G}}` again,
+and recompute the basis.
+
+Lets return to the original graph. We already know that it is `3`--colorable,
+but now we would like to enumerate all colorings. We will start from revising
+properties of roots of unity. Lets construct the `k`--th root of unity, where
+`k = 3`, in algebraic number form::
+
+    >>> zeta = exp(2*pi*I/3).expand(complex=True)
+
+    >>> zeta
+            ⎽⎽⎽
+      1   ╲╱ 3 ⋅ⅈ
+    - ─ + ───────
+      2      2
+
+Altogether we consider three roots of unity in this example::
+
+    >>> zeta**0
+    1
+    >>> zeta**1
+            ⎽⎽⎽
+      1   ╲╱ 3 ⋅ⅈ
+    - ─ + ───────
+      2      2
+    >>> expand(zeta**2)
+            ⎽⎽⎽
+      1   ╲╱ 3 ⋅ⅈ
+    - ─ - ───────
+      2      2
+
+Just to be extra cautious, lets check if `\zeta**3` gives `1`::
+
+    >>> expand(zeta**3)
+    1
+
+Alternatively, we could obtain all `k`--th roots of unity by factorization
+of `x^3 - 1` over an algebraic number field or by computing its roots via
+radicals::
+
+    >>> factor(x**3 - 1, extension=zeta)
+            ⎛          ⎽⎽⎽  ⎞ ⎛          ⎽⎽⎽  ⎞
+            ⎜    1   ╲╱ 3 ⋅ⅈ⎟ ⎜    1   ╲╱ 3 ⋅ⅈ⎟
+    (x - 1)⋅⎜x + ─ - ───────⎟⋅⎜x + ─ + ───────⎟
+            ⎝    2      2   ⎠ ⎝    2      2   ⎠
+
+    >>> roots(x**3 - 1, multiple=True)
+    ⎡           ⎽⎽⎽            ⎽⎽⎽  ⎤
+    ⎢     1   ╲╱ 3 ⋅ⅈ    1   ╲╱ 3 ⋅ⅈ⎥
+    ⎢1, - ─ - ───────, - ─ + ───────⎥
+    ⎣     2      2       2      2   ⎦
+
+Going one step ahead, lets declare three variables which will nicely represent
+colors in the `3`--coloring problem and lets put together, in an arbitrary but
+fixed order, those variables and the previously computed roots of unity::
+
+    >>> var('red,green,blue')
+    (red, green, blue)
+
+    >>> colors = zip(__, _)
+    >>> colors
+
+    ⎡          ⎛        ⎽⎽⎽         ⎞  ⎛        ⎽⎽⎽        ⎞⎤
+    ⎢          ⎜  1   ╲╱ 3 ⋅ⅈ       ⎟  ⎜  1   ╲╱ 3 ⋅ⅈ      ⎟⎥
+    ⎢(1, red), ⎜- ─ - ───────, green⎟, ⎜- ─ + ───────, blue⎟⎥
+    ⎣          ⎝  2      2          ⎠  ⎝  2      2         ⎠⎦
+
+This gives as a mapping between algebra of `3`--coloring problem and nice
+visual representation, which we will take advantage of later.
+
+Lets look at `G`::
+
+    >>> key = lambda f: (degree(f), len(f.args))
+    >>> groups = sorted(sift(G, key).items(), reverse=True)
+
+    >>> for _, group in groups:
+    ...     pprint(group)
+    ...
+    ⎡   3    ⎤
+    ⎣x₁₂  - 1⎦
+    ⎡   2                2⎤
+    ⎣x₁₁  + x₁₁⋅x₁₂ + x₁₂ ⎦
+    [x₁ + x₁₁ + x₁₂, x₁₁ + x₁₂ + x₅, x₁₁ + x₁₂ + x₈, x₁₀ + x₁₁ + x₁₂]
+    [-x₁₁ + x₂, -x₁₂ + x₃, -x₁₂ + x₄, -x₁₁ + x₆, -x₁₂ + x₇, -x₁₁ + x₉]
+
+Here we split the basis into four groups with respect to the total degree
+and length of polynomials. Treating all those polynomials as equations of
+the form `f = 0`, we can solve them one--by--one, to obtain all colorings
+of `\mathcal{G}`.
+
+From previous discussion we know that `x_{12}^3 - 1 = 0` has three solutions
+in terms of roots of unity::
+
+    >>> f = x12**3 - 1
+
+    >>> f.subs(x12, zeta**0).expand()
+    0
+    >>> f.subs(x12, zeta**1).expand()
+    0
+    >>> f.subs(x12, zeta**2).expand()
+    0
+
+This also tells us that `x_{12}` can have any of the three colors assigned.
+Next, the equation `x_{11}^2 + x_{11} x_{12} + x_{12}^2 = 0` relates colors
+of `x_{11}` and `x_{12}`, and vanishes only when `x_{11} \not= x_{12}`::
+
+    >>> f = x11**2 + x11*x12 + x12**2
+
+    >>> f.subs({x11: zeta**0, x12: zeta**1}).expand()
+    0
+    >>> f.subs({x11: zeta**0, x12: zeta**2}).expand()
+    0
+    >>> f.subs({x11: zeta**1, x12: zeta**2}).expand()
+    0
+
+but::
+
+    >>> f.subs({x11: zeta**0, x12: zeta**0}).expand() == 0
+    False
+    >>> f.subs({x11: zeta**1, x12: zeta**1}).expand() == 0
+    False
+    >>> f.subs({x11: zeta**2, x12: zeta**2}).expand() == 0
+    False
+
+This means that, when `x_{12}` is assigned a color, there are two possible
+color assignments to `x_{11}`. Equations in the third group vanish only when
+all three vertices of particular equation have different colors assigned. This
+follows from the fact that sum of roots of unity vanishes::
+
+    >>> expand(zeta**0 + zeta**1 + zeta**2)
+    0
+
+but (for example)::
+
+    >>> expand(zeta**1 + zeta**1 + zeta**2) == 0
+    False
+
+Finally, equations in the last group are trivial and vanish when vertices of
+a particular equation have the same color assigned. This gives us `3 \cdot 2
+\cdot 1 \cdot 1 = 6` combinations of color assignments, i.e. there are six
+solutions to `3`--coloring problem of graph `\mathcal{G}`.
+
+Based on this analysis it is straightforward to enumerate all six color
+assignments, however we can make this process fully automatic. Lets solve
+the |groebner| basis `G`::
+
+    >>> colorings = solve(G, *V)
+
+    >>> len(colorings)
+    6
+
+This confirms that there are six solutions. At this point we could simply
+print the computed solutions to see what are the admissible `3`--colorings.
+This is, however, not a good idea, because we use algebraic numbers (roots
+of unity) for representing colors and :func:`solve` returned solutions in
+terms of those algebraic numbers, possibly even in a non--simplified form.
+
+To overcome this difficulty we will use previously defined mapping between
+roots of unity and literal colors and substitute symbols for numbers::
+
+    >>> for coloring in colorings:
+    ...     print [ color.expand(complex=True).subs(colors) for color in coloring ]
+    ...
+    [blue, green, red, red, blue, green, red, blue, green, blue, green, red]
+    [green, blue, red, red, green, blue, red, green, blue, green, blue, red]
+    [green, red, blue, blue, green, red, blue, green, red, green, red, blue]
+    [blue, red, green, green, blue, red, green, blue, red, blue, red, green]
+    [red, blue, green, green, red, blue, green, red, blue, red, blue, green]
+    [red, green, blue, blue, red, green, blue, red, green, red, green, blue]
+
+This is the result we were looking for, but a few words of explanation are
+needed. :func:`solve` may return unsimplified results so we may need to
+simplify any algebraic numbers that don't match structurally the precomputed
+roots of unity. Taking advantage of the domain of computation, we use complex
+expansion algorithm for this purpose (``expand(complex=True)``). Having the
+solutions in the canonical form, to get this nice *visual* form with literal
+colors, it is sufficient to substitute color variables for roots of unity.
+
+Algebraic geometry
+------------------
+
+Lets consider a geometric entity (e.g. line, square) which properties can
+be described using a system of `m` polynomials:
+
+.. math::
+
+    \mathcal{H} = \{h_1, \ldots, h_m\}
+
+We will call `\mathcal{H}` a hypothesis. Given a theorem concerning this
+geometric entity, the algebraic formulation is as follows:
+
+.. math::
+
+    \forall_{x_1, \ldots, x_n, y_1, \ldots, y_n} (h_1 = 0 \vee \ldots \vee h_m = 0) \Rightarrow g = 0
+
+where `g` is the conclusion of the theorem and `h_1, \ldots h_m` and `g`
+are polynomials in `\mathrm{K}[x_1, \ldots, x_n, y_1, \ldots, y_n]`. It
+follows from the |groebner| bases theory that the above statement is true
+when `g` belongs to the ideal generated by `\mathcal{H}`. To check this,
+i.e. to prove the theorem, it is sufficient to compute |groebner| basis
+of `\mathcal{H}` with respect to any admissible monomial ordering and
+reduce `g` with respect to this basis. If the theorem is true then the
+remainder from the reduction will vanish. In this example, for the sake
+of simplicity, we assume that the geometric entity is non--degenerate,
+i.e. it does not collapse into a line or a point.
+
+Lets consider the following rhombus:
+
+.. tikz:: img/tikz/geometry-rhombus.tex
+
+.. _fig-geometry-rhombus:
+.. figure:: ../img/tikz/geometry-rhombus.*
+    :align: center
+
+    A rhombus in a fixed coordinate system.
+
+This geometric entity consists of four points `A`, `B`, `C` and `D`. To
+setup a fixed coordinate system, without loss of generality, we can assume
+that `A = (0, 0)`, `B = (x_B, 0)`, `C = (x_C, y_C)` and `D = (x_D, y_D)`.
+This is possible by taking rotational invariance of the geometric entity.
+We will prove that the diagonals of this rhombus, i.e. `AD` and `BC` are
+mutually perpendicular. We have the following conditions describing `ABCD`:
+
+#. Line `AD` is parallel to `BC`, i.e. `AD \parallel BC`.
+#. Sides of `ABCD` are of the equal length, i.e. `AB = BC`.
+#. The rhombus is non--degenerate, i.e. is not a line or a point.
+
+Our conclusion is that `AC \bot BD`. To prove this theorem, first we need to
+transform the above conditions and the conclusion into a set of polynomials.
+How we can achieve this? Lets focus on the first condition. In general, we
+are given two lines `A_1A_2` and `B_1B_2`. To express the relation between
+those two lines, i.e. that `A_1A_2` is parallel `B_1B_2`, we can relate
+slopes of those lines:
+
+.. math::
+
+    \frac{y_{A_2} - y_{A_1}}{x_{A_2} - x_{A_1}} = \frac{y_{B_2} - y_{B_1}}{x_{B_2} - x_{B_1}}
+
+Clearing denominators in the above expression and putting all terms on the
+left hand side of the equation, we derive a general polynomial describing the
+first condition. This can be literally translated into Python::
+
+    def parallel(A1, A2, B1, B2):
+        """Line [A1, A2] is parallel to line [B1, B2]. """
+        return (A2.y - A1.y)*(B2.x - B1.x) - (B2.y - B1.y)*(A2.x - A1.x)
+
+assuming that ``A1``, ``A2``, ``B1`` and ``B2`` are instances of :class:`Point`
+class. In the case of our rhombus, we will take advantage of the fixed coordinate
+system and simplify the resulting polynomials as much as possible. The same
+approach can be used to derive polynomial representation of the other conditions
+and the conclusion. To construct `\mathcal{H}` and `g` we will use the following
+functions::
+
+    def distance(A1, A2):
+        """The squared distance between points A1 and A2. """
+        return (A2.x - A1.x)**2 + (A2.y - A1.y)**2
+
+    def equal(A1, A2, B1, B2):
+        """Lines [A1, A2] and [B1, B2] are of the same width. """
+        return distance(A1, A2) - distance(B1, B2)
+
+    def perpendicular(A1, A2, B1, B2):
+        """Line [A1, A2] is perpendicular to line [B1, B2]. """
+        return (A2.x - A1.x)*(B2.x - B1.x) + (A2.y - A1.y)*(B2.y - B1.y)
+
+The non--degeneracy statement requires a few words of comment. Many theorems
+in geometry are true only in the non--degenerative case and false or undefined
+otherwise. In our approach to theorem proving in algebraic geometry, we must
+supply sufficient non--degeneracy conditions manually. In the case of our
+rhombus this is `x_B > 0` and `y_C > 0` (we don't need to take `x_C` into
+account because `AB = BC`). At first, this seems to be a show stopper, as
+|groebner| bases don't support inequalities. However, we can use Rabinovich's
+trick and transform those inequalities into a single polynomial condition by
+introducing an additional variable, e.g. `a`, about which we will assume that
+is positive. This gives us a non--degeneracy condition `x_B y_C - a`.
+
+With all this knowledge we are ready to prove the main theorem. First, lets
+declare variables::
+
+    >>> var('x_B, x_C, y_C, x_D, a')
+    (x_B, x_C, y_C, x_D, a)
+
+    >>> V = _[:-1]
+
+We declared the additional variable `a`, but we don't consider it a variable
+of our problem. Lets now define the four points `A`, `B`, `C` and `D`::
+
+    >>> A = Point(0, 0)
+    >>> B = Point(x_B, 0)
+    >>> C = Point(x_C, y_C)
+    >>> D = Point(x_D, y_C)
+
+Using the previously defined functions we can formulate the hypothesis::
+
+    >>> h1 = parallel(A, D, B, C)
+    >>> h2 = equal(A, B, B, C)
+    >>> h3 = x_B*y_C - a
+
+and compute its |groebner| basis::
+
+    >>> G = groebner([f1, h2, h3], *V, order='grlex')
+
+We had to specify the variables of the problem explicitly in :func:`groebner`,
+because otherwise it would treat `a` also as a variable, which we didn't want
+to. Now we can verify the theorem::
+
+    >>> reduced(perpendicular(A, C, B, D), G, vars, order='grlex')[1]
+    0
+
+The remainder vanished, which proves that `AC \bot BD`. Although, the theorem
+we described and proved here is a simple one, one can handle much more advanced
+problems as well using |groebner| bases techniques. One should refer to Franz
+Winkler's papers for more interesting examples.
+
+Tasks
+-----
+
+1. Check if the graph with 12 vertices and 23 edges is `2`--colorable.
+2. Recompute |groebner| bases from this section using different orderings
+of monomials (e.g. ``grlex`` instead of ``lex``) and check if the resulting
+bases are still useful in the context they were used.
