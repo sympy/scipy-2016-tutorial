@@ -1,90 +1,35 @@
 
 .. |groebner| replace:: Gröbner
 
-::
+=====================
+Introduction to SymPy
+=====================
 
-    $ ipython
+SymPy (http://www.sympy.org) is a pure Python library for symbolic mathematics.
+It aims to become a full-featured computer algebra system (CAS) while keeping the
+code as simple as possible in order to be comprehensible and easily extensible.
+SymPy is written entirely in Python and does not require any external libraries.
 
-    In [1]: x**2 + 1
-    ---------------------------------------------------------------------------
-    NameError                                 Traceback (most recent call last)
+In this tutorial we will introduce attendees to SymPy. We will start by showing
+how to install and configure this Python module. Then we will proceed to the
+basics of constructing and manipulating mathematical expressions in SymPy. We
+will also discuss the most common issues and differences from other computer
+algebra systems, and how to deal with them. In the last part of this tutorial
+we will show how to solve simple, yet illustrative, mathematical problems with
+SymPy.
 
-    /home/matt/repo/git/sympy/<ipython console> in <module>()
+This knowledge should be enough for attendees to start using SymPy for solving
+mathematical problems and hacking SymPy's internals (though hacking core modules
+may require additional expertise).
 
-    NameError: name 'x' is not defined
+Installing, configuring and running SymPy
+=========================================
 
-    In [2]: x = 1
-
-    In [3]: x**2 + 1
-    Out[3]: 2
-
-    In [4]: type(_)
-    Out[4]: <type 'int'>
-
-    In [5]: lambda x: x**2 + 1
-    Out[5]: <function <lambda> at 0x84ae02c>
-
-    In [6]: f = _
-
-    In [7]: f(1)
-    Out[7]: 2
-
-    In [8]: type(_)
-    Out[8]: <type 'int'>
-
-    In [9]: import math
-
-    In [10]: math.sin(1)
-    Out[10]: 0.8414709848078965
-
-    In [11]: math.cos(1)
-    Out[11]: 0.54030230586813977
-
-    In [12]: _10**2 + _11**2
-    Out[12]: 1.0
-
-    In [13]: math.sin(70)
-    Out[13]: 0.77389068155788909
-
-    In [14]: math.cos(70)
-    Out[14]: 0.63331920308629985
-
-    In [15]: __**2 + _**2
-    Out[15]: 1.0
-
-    In [16]: from sympy import *
-
-    In [17]: x = Symbol('x')
-
-    In [18]: x**2 + 1
-    Out[18]: x**2 + 1
-
-    In [19]: f = _
-
-    In [20]: type(f)
-    Out[20]: <class 'sympy.core.add.Add'>
-
-    In [21]: f.subs(x, 1)
-    Out[21]: 2
-
-    In [22]: type(_)
-    Out[22]: <class 'sympy.core.numbers.Integer'>
-
-    In [23]: f(2)
-    ---------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call last)
-
-    /home/matt/repo/git/sympy/<ipython console> in <module>()
-
-    TypeError: 'Add' object is not callable
-
-
-
-
-Python/IPython sessions
+SymPy in Python/IPython
 -----------------------
 
-::
+Sessions in standard Python's interpreter and IPython look very similar,
+for example::
 
     $ ipython
 
@@ -102,15 +47,19 @@ Python/IPython sessions
      3
     x
 
-isympy sessions
----------------
+Interactive SymPy (``isympy``)
+------------------------------
 
-::
+For users' convenience, SymPy's distribution includes a simple shell called
+isympy that uses either IPython (if available) or standard Python's interpreter
+with readline support (see ``bin/isympy``). On startup isympy enables new
+division, imports everything from :mod:`sympy`, sets up a few commonly used
+symbols and undefined functions, and initializes pretty printer.
 
-    $ bin/isympy
+Here is an example session with isympy::
 
-    mateusz@raven:~/repo/git/sympy$ bin/isympy
-    IPython console for SymPy 0.6.7-git (Python 2.6.6) (ground types: gmpy)
+    sympy$ bin/isympy
+    IPython console for SymPy 0.7.0 (Python 2.6.6-64-bit) (ground types: gmpy)
 
     These commands were executed:
     >>> from __future__ import division
@@ -121,32 +70,72 @@ isympy sessions
 
     Documentation can be found at http://www.sympy.org
 
-    In [1]:
+    In [1]: integrate(3*x**2, x)
+    Out[1]:
+     3
+    x
 
-isympy options
---------------
+    In [2]: %quit
+    Do you really want to exit ([y]/n)? y
+    Exiting ...
+    sympy $
 
--h, --help            show this help message and exit
--c CONSOLE, --console=CONSOLE
-                      select type of interactive session: ipython | python
--p PRETTY, --pretty=PRETTY
-                      setup pretty printing: unicode | ascii | no
--t TYPES, --types=TYPES
-                      setup ground types: gmpy | python | sympy
--o ORDER, --order=ORDER
-                      setup ordering of terms: [rev-]lex | [rev-]grlex |
-                      [rev-]grevlex | old
--q, --quiet           print only version information at startup
--C, --no-cache        disable caching mechanism
+Command-line arguments
+~~~~~~~~~~~~~~~~~~~~~~
 
-Global variables
-----------------
+There is a variety of command-line options supported by isympy:
 
-SYMPY_USE_CACHE
-SYMPY_GROUND_TYPES
+``-h``, ``--help``
+    show help
+``-c CONSOLE``, ``--console=CONSOLE``
+    select type of interactive session: ``ipython``, ``python``
+``-p PRETTY``, ``--pretty=PRETTY``
+    setup pretty printing: ``unicode``, ``ascii`` or ``no``
+``-t TYPES``, ``--types=TYPES``
+    setup ground types: ``gmpy``, ``python`` or ``sympy``
+``-o ORDER``, ``--order=ORDER``
+    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or ``old``
+``-q``, ``--quiet``
+    print only version information at startup
+``-C``, ``--no-cache``
+    disable caching
 
-Expression cache
-----------------
+Environmental variables
+-----------------------
+
+``SYMPY_USE_CACHE``
+    By default SymPy caches all computations. If this is undesirable, for
+    example due to limited amount of memory, set this variable to ``no``
+    to disable caching.
+``SYMPY_GROUND_TYPES``
+    SymPy is a pure Python library, however to improve speed of computations
+    it can take advantage of third-party compiled libraries (for now only gmpy).
+    Ground types are set automatically, so if gmpy is not available, it simply
+    won't be used. However, if gmpy is available but for some reason it is
+    undesirable to use it, set this variable to ``python``, to disable usage
+    of gmpy.
+
+SymPy in web browsers
+---------------------
+
+SymPy is available in the following web applications:
+
+* SymPy Live (http://live.sympy.org)
+* Sage Notebook (http://www.sagenb.org)
+* FEMhub Online Lab (http://lab.femhub.org)
+
+=======================================
+Mathematical problem solving with SymPy
+=======================================
+
+Knowing the basics of SymPy lets now solve several mathematical problems
+with it. The level of difficulty of examples in this section varies from
+simple symbolic manipulation to theorem proving in algebraic geometry.
+
+Each section includes a short theoretical background, that explains all
+mathematical knowledge needed to understand a particular example. Code
+examples and size of problems were adjusted to make them unobtrusive to
+tutorial readers and make it possible to run them even on mobile devices.
 
 Partial fraction decomposition
 ==============================
