@@ -1515,7 +1515,13 @@ Winkler's papers for more interesting examples.
 Tasks
 -----
 
+#. The |groebner| bases method is a generalization of Gaussian elimination
+   and Euclid's algorithms. Try to solve a linear system and compute GCD
+   of polynomials using :func:`groebner`. Compare the results and speed of
+   computations with :func:`solve` and :func:`gcd`.
 #. Check if the graph with 12 vertices and 23 edges is `2`--colorable.
+#. In the graph coloring example solve `F` instead of computing its |groebner|
+   basis. Can you enumerate color assignments this way? If so, why?
 #. Recompute |groebner| bases from this section using different orderings
-   of monomials (e.g. ``grlex`` instead of ``lex``) and check if the resulting
-   bases are still useful in the context they were used.
+   of monomials (e.g. ``grlex`` instead of ``lex``) and check if the
+   resulting bases are still useful in the context they were used.
