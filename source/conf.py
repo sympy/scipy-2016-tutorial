@@ -31,14 +31,18 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    # 'sphinx.ext.jsmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
+    'only_directives',
+    'plot_directive',
     'tikz_directive',
     'mathjax',
 ]
 
 mathjax_path = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full'
+
+plot_html_show_formats = True
+plot_include_source = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -858,7 +858,7 @@ and add those expressions together::
     ── + ── + ── + ── + ──
     r₄   r₃   r₂   r₁   r₀
 
-We go a sum of simple rational functions. The next step is to put those
+We got a sum of simple rational functions. The next step is to put those
 rational functions over a common denominator::
 
     >>> G = together(_)
@@ -906,16 +906,16 @@ algorithm in :class:`RootSum`::
     >>> RootSum(f, Lambda(z, g))
     -1/3
 
-The choice of `g` allowed us to recognize Viete formulas very easily in `G`,
-but is this case case also for more complicated rational functions? Lets
-modify `g` a little::
+The choice of `g` allowed us to recognize Viete formulas very easily in
+`G`, but is this the case also for more complicated rational functions?
+Lets modify `g` a little::
 
     >>> g = 1/(z + 2)
       1
     ─────
     z + 2
 
-Lets repeat the procedure::
+Now lets repeat the procedure for the new `g`::
 
     >>> G = together(sum([ g.subs(z, r) for r in R ]))
 
@@ -1015,7 +1015,7 @@ The |groebner| bases method is an attractive tool in computer algebra and
 symbolic mathematics because it is relatively simple to understand and it
 can be applied to a wide variety of problems in mathematics and engineering.
 
-Lets consider a set `F` of multivariate equations polynomial over a field:
+Lets consider a set `F` of multivariate polynomial equations over a field:
 
 .. math::
 
@@ -1139,7 +1139,7 @@ data structures::
 We encoded the set of vertices as a list of consecutive integers and the
 set of edges as a list of tuples of adjacent vertex indices. Next we will
 transform the graph into an algebraic form by mapping vertices to variables
-and tuples of indices into tuples of variables::
+and tuples of indices in tuples of variables::
 
     >>> V = [ var('x%d' % i) for i in V ]
     >>> E = [ (V[i-1], V[j-1]) for i, j in E ]
@@ -1175,8 +1175,8 @@ is shown on the following figure:
 
 Suppose we add an edge between vertices `i = 3` and `j = 4`. Is the new graph
 still `3`--colorable? To check this it is sufficient to construct `F_{\mathcal{G'}}`
-by extending `F_{\mathcal{G}}` with `x_3^2 + x_3 x_4 + x_4^2` equation and
-recompute the |groebner| basis::
+by extending `F_{\mathcal{G}}` with `x_3^2 + x_3 x_4 + x_4^2` and recomputinge the
+|groebner| basis::
 
     >>> groebner(F3 + Fg + [x3**2 + x3*x4 + x4**2], *V)
     [1]
@@ -1235,6 +1235,20 @@ radicals::
     ⎢     1   ╲╱ 3 ⋅ⅈ    1   ╲╱ 3 ⋅ⅈ⎥
     ⎢1, - ─ - ───────, - ─ + ───────⎥
     ⎣     2      2       2      2   ⎦
+
+We can visualize roots of `x^3 - 1` with a little help from mpmath and matplotlib:
+
+.. plot::
+    :align: center
+
+    import matplotlib.pyplot as plt
+    from sympy.mpmath import cplot
+
+    fig = plt.figure()
+    axes = fig.add_subplot(111)
+    axes.set_title("Density plot of $x^3 - 1$ in the complex plane.")
+
+    cplot(lambda x: x**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
 
 Going one step ahead, lets declare three variables which will nicely represent
 colors in the `3`--coloring problem and lets put together, in an arbitrary but
