@@ -1,2 +1,10 @@
 *.sw[po]
 *~
+
+build/
+
+extensions/*.py[co]
+
+source/img/tikz/*.png
+source/img/tikz/*.pdf
+source/img/tikz/.*.tex

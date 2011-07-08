@@ -351,13 +351,13 @@ fraction decomposition of `f`::
 Tasks
 -----
 
-1. Compute partial fraction decomposition of:
+#. Compute partial fraction decomposition of:
 
  * `\frac{3 x + 5}{{2 x + 1)^2}`
  * `\frac{3 x + 5}{{u x + v)^2}`
  * `\frac{(3 x + 5)^2}{{2 x + 1)^2}`
 
-2. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
+#. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
 
 Deriving trigonometric identities
 =================================
@@ -457,8 +457,8 @@ There is, however, a much simpler way to get the same result::
 Tasks
 -----
 
-1. Repeat this procedure but expand wrt `a` in the first step.
-2. Use this procedure to derive a formula for `\cos(a + b)`.
+#. Repeat this procedure but expand wrt `a` in the first step.
+#. Use this procedure to derive a formula for `\cos(a + b)`.
 
 Not only symbolics: numerical computing
 =======================================
@@ -998,13 +998,13 @@ Numerical approach also works in this case::
 Tasks
 -----
 
-1. Repeat this procedure for:
+#. Repeat this procedure for:
 
  * `f = z^5 + z + a` and `g = \frac{1}{z + 1}`
  * `f = z^5 + z + a` and `g = \frac{1}{z + b}`
 
-2. Can this or a similar procedure be used with other classes of expressions
-than rational functions? If so, what kind of expressions can be used?
+#. Can this or a similar procedure be used with other classes of expressions
+   than rational functions? If so, what kind of expressions can be used?
 
 Applications of |groebner| bases
 ================================
@@ -1117,10 +1117,10 @@ At this point it is sufficient to compute the |groebner| basis `G` of
 
 Lets see how this procedure works for a particular graph:
 
-.. tikz:: img/tikz/graph-nocolor.tex
+.. tikz:: source/img/tikz/graph-nocolor.tex
 
 .. _fig-graph-nocolor:
-.. figure:: ../img/tikz/graph-nocolor.*
+.. figure:: img/tikz/graph-nocolor.*
     :align: center
 
     The graph $\mathcal{G}(V, E)$
@@ -1163,10 +1163,10 @@ then `G` should be non--trivial, which can be easily verified::
 The answer is that the graph `\mathcal{G}` is `3`--colorable. A sample coloring
 is shown on the following figure:
 
-.. tikz:: img/tikz/graph-color.tex
+.. tikz:: source/img/tikz/graph-color.tex
 
 .. _fig-graph-color:
-.. figure:: ../img/tikz/graph-color.*
+.. figure:: img/tikz/graph-color.*
     :align: center
 
     A sample $3$--coloring of the graph $\mathcal{G}(V, E)$
@@ -1213,7 +1213,7 @@ Altogether we consider three roots of unity in this example::
     - ─ - ───────
       2      2
 
-Just to be extra cautious, lets check if `\zeta**3` gives `1`::
+Just to be extra cautious, lets check if `\zeta^3` gives `1`::
 
     >>> expand(zeta**3)
     1
@@ -1390,10 +1390,10 @@ i.e. it does not collapse into a line or a point.
 
 Lets consider the following rhombus:
 
-.. tikz:: img/tikz/geometry-rhombus.tex
+.. tikz:: source/img/tikz/geometry-rhombus.tex
 
 .. _fig-geometry-rhombus:
-.. figure:: ../img/tikz/geometry-rhombus.*
+.. figure:: img/tikz/geometry-rhombus.*
     :align: center
 
     A rhombus in a fixed coordinate system.
@@ -1499,7 +1499,7 @@ Winkler's papers for more interesting examples.
 Tasks
 -----
 
-1. Check if the graph with 12 vertices and 23 edges is `2`--colorable.
-2. Recompute |groebner| bases from this section using different orderings
-of monomials (e.g. ``grlex`` instead of ``lex``) and check if the resulting
-bases are still useful in the context they were used.
+#. Check if the graph with 12 vertices and 23 edges is `2`--colorable.
+#. Recompute |groebner| bases from this section using different orderings
+   of monomials (e.g. ``grlex`` instead of ``lex``) and check if the resulting
+   bases are still useful in the context they were used.
