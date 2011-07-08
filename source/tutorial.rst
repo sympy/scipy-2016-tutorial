@@ -84,6 +84,8 @@
 Python/IPython sessions
 -----------------------
 
+::
+
     $ ipython
 
     In [1]: import sympy
@@ -102,6 +104,8 @@ Python/IPython sessions
 
 isympy sessions
 ---------------
+
+::
 
     $ bin/isympy
 
@@ -122,18 +126,18 @@ isympy sessions
 isympy options
 --------------
 
-    -h, --help            show this help message and exit
-    -c CONSOLE, --console=CONSOLE
-                          select type of interactive session: ipython | python
-    -p PRETTY, --pretty=PRETTY
-                          setup pretty printing: unicode | ascii | no
-    -t TYPES, --types=TYPES
-                          setup ground types: gmpy | python | sympy
-    -o ORDER, --order=ORDER
-                          setup ordering of terms: [rev-]lex | [rev-]grlex |
-                          [rev-]grevlex | old
-    -q, --quiet           print only version information at startup
-    -C, --no-cache        disable caching mechanism
+-h, --help            show this help message and exit
+-c CONSOLE, --console=CONSOLE
+                      select type of interactive session: ipython | python
+-p PRETTY, --pretty=PRETTY
+                      setup pretty printing: unicode | ascii | no
+-t TYPES, --types=TYPES
+                      setup ground types: gmpy | python | sympy
+-o ORDER, --order=ORDER
+                      setup ordering of terms: [rev-]lex | [rev-]grlex |
+                      [rev-]grevlex | old
+-q, --quiet           print only version information at startup
+-C, --no-cache        disable caching mechanism
 
 Global variables
 ----------------
@@ -144,8 +148,6 @@ SYMPY_GROUND_TYPES
 Expression cache
 ----------------
 
-
-
 Partial fraction decomposition
 ==============================
 
@@ -155,7 +157,7 @@ Partial fraction decomposition of a univariate rational function:
 
     f(x) = \frac{p(x)}{q(x)}
 
-where `p` and `q` are co-prime and `\deg(p) < `\deg(q)`, is an expression
+where `p` and `q` are co-prime and `\deg(p) < \deg(q)`, is an expression
 of the form:
 
 .. math::
@@ -167,10 +169,10 @@ rationals) of `q`:
 
 .. math::
 
-    q(x) = \product_{i=1}^k q_i^{n_i}
+    q(x) = \prod_{i=1}^k q_i^{n_i}
 
 If `p` and `q` aren't co-prime, we can use :func:`cancel` to remove common
-factors and if `\deg(p) >= `\deg(q)`, then :func:`div` can be used to extract
+factors and if `\deg(p) >= \deg(q)`, then :func:`div` can be used to extract
 the polynomial part of partial fraction expansion of `f` and reduce the degree
 of `p`.
 
@@ -222,7 +224,7 @@ following form:
 
 .. math::
 
-    \frac{A}{x} + \frac{B}{x^2} + \frac{C x + D}{x**2 + 1}
+    \frac{A}{x} + \frac{B}{x^2} + \frac{C x + D}{x^2 + 1}
 
 Lets do this with SymPy. We will use undetermined coefficients method to
 solve this problem. Lets start define symbols first::
@@ -353,9 +355,9 @@ Tasks
 
 #. Compute partial fraction decomposition of:
 
- * `\frac{3 x + 5}{{2 x + 1)^2}`
- * `\frac{3 x + 5}{{u x + v)^2}`
- * `\frac{(3 x + 5)^2}{{2 x + 1)^2}`
+ * `\frac{3 x + 5}{(2 x + 1)^2}`
+ * `\frac{3 x + 5}{(u x + v)^2}`
+ * `\frac{(3 x + 5)^2}{(2 x + 1)^2}`
 
 #. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
 
@@ -584,13 +586,13 @@ Consider a univariate function:
 
 .. math::
 
-    f(x) = x^(1 - \log(\log(\log(\log(\frac{1}{x})))))
+    f(x) = x^{(1 - \log(\log(\log(\log(\frac{1}{x})))))}
 
 We would like to compute:
 
 .. math::
 
-    \limit_{x \to 0^{+}} f(x)
+    \lim_{x \to 0^{+}} f(x)
 
 Lets define function `f` in SymPy::
 
@@ -1057,7 +1059,7 @@ assignment of one of `k` possible colors to each vertex. The best approach
 currently known is to map colors to `k`--th roots of unity, which are the
 solutions to equation `x^k - 1 = 0`.
 
-Let `\zeta = \exp(\frac{2\pi\I}{k})` be a `k`--th root of unity. We map colors
+Let `\zeta = \exp(\frac{2\pi\mathrm{i}}{k})` be a `k`--th root of unity. We map colors
 `1, \ldots, k` to `1, \zeta, \ldots, \zeta^{k-1}`. Then the statement that every
 vertex has to be assigned one of `k` colors is equivalent to writing the following
 set of polynomial equations:
@@ -1123,7 +1125,7 @@ Lets see how this procedure works for a particular graph:
 .. figure:: img/tikz/graph-nocolor.*
     :align: center
 
-    The graph $\mathcal{G}(V, E)$
+    The graph `\mathcal{G}(V, E)`.
 
 `\mathcal{G}(V, E)` has 12 vertices and 23 edges. We ask if the graph is
 `3`--colorable. Lets first encode `V` and `E` using Python's built--in
@@ -1169,9 +1171,9 @@ is shown on the following figure:
 .. figure:: img/tikz/graph-color.*
     :align: center
 
-    A sample $3$--coloring of the graph $\mathcal{G}(V, E)$
+    A sample `3`--coloring of the graph `\mathcal{G}(V, E)`.
 
-Suppose we add an edge between vertices $i = 3$ and $j = 4$. Is the new graph
+Suppose we add an edge between vertices `i = 3` and `j = 4`. Is the new graph
 still `3`--colorable? To check this it is sufficient to construct `F_{\mathcal{G'}}`
 by extending `F_{\mathcal{G}}` with `x_3^2 + x_3 x_4 + x_4^2` equation and
 recompute the |groebner| basis::
