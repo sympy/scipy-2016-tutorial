@@ -525,6 +525,242 @@ most symbolic mathematics systems, especially those which invent their own
 mathematical programming language, use `1`--based indexing, sometimes reserving
 the `0`--th index for special purpose (e.g. head of expressions in Mathematica).
 
+Setting up and using printers
+=============================
+
+Computations are at the heart of symbolic mathematics systems, but very
+often presentation and visualization of results or intermediate steps
+is also very important, for example for sharing results. SymPy implements
+a very generic and flexible framework for implementing printers of
+mathematical expressions, Python's data types and date structures, and
+foreign types.
+
+Built-in printers
+-----------------
+
+There are many ways how expressions can be printed in Sympy.
+
+Standard
+~~~~~~~~
+
+This is what ``str(expression)`` returns and it looks like this::
+
+    >>> print x**2
+    x**2
+    >>> print 1/x
+    1/x
+    >>> print Integral(x**2, x)
+    Integral(x**2, x)
+
+Note that :func:`str` is by design not aware of global configuration,
+so if you for example run ``bin/isympy -o grlex``, :func:`str` will
+ignore this. There is another function :func:`sstr` that take global
+configuration into account.
+
+Low-level
+~~~~~~~~~
+
+Due to internal implementation of Python, SymPy can't use :func:`repr`
+for generating low-level textual representation of expressions. To get
+this kind of representation, :func:`srepr` was invented::
+
+    >>> srepr(x**2)
+    Pow(Symbol('x'), Integer(2))
+
+    >>> srepr(1/x)
+    Pow(Symbol('x'), Integer(-1))
+
+    >>> srepr(Integral(x**2, x))
+    Integral(Pow(Symbol('x'), Integer(2)), Tuple(Symbol('x')))
+
+:func:`repr` gives the same result as :func:`str`::
+
+    >>> repr(x**2)
+    x**2
+
+Note that :func:`repr` is also not aware of global configuration.
+
+Pretty printing
+~~~~~~~~~~~~~~~
+
+This is a nice 2D ASCII-art printing produced by :func:`pprint`::
+
+    >>> pprint(x**2, use_unicode=False)
+     2
+    x
+    >>> pprint(1/x, use_unicode=False)
+    1
+    -
+    x
+    >>> pprint(Integral(x**2, x), use_unicde=False)
+      /
+     |
+     |  2
+     | x  dx
+     |
+    /
+
+It also has support for Unicode character set, which makes shapes look
+much more natural than in ASCII case::
+
+    >>> pprint(Integral(x**2, x), use_unicode=True)
+    ⌠
+    ⎮  2
+    ⎮ x  dx
+    ⌡
+
+By default :func:`pprint` tries to figure out the best of Unicode and
+ASCII art for generating output. If Unicode is supported, then this will
+be the default. Otherwise it falls back to ASCII art. User can select
+desired character set by setting ``use_unicode`` option in :func:`pprint`.
+
+Python printing
+~~~~~~~~~~~~~~~
+
+::
+
+    >>> print python(x**2)
+    x = Symbol('x')
+    e = x**2
+    >>> print python(1/x)
+    x = Symbol('x')
+    e = 1/x
+    >>> print python(Integral(x**2, x))
+    x = Symbol('x')
+    e = Integral(x**2, x)
+
+
+LaTeX printing
+~~~~~~~~~~~~~~
+
+::
+
+    >>> latex(x**2)
+    x^{2}
+    >>> latex(x**2, mode='inline')
+    $x^{2}$
+    >>> latex(x**2, mode='equation')
+    \begin{equation}x^{2}\end{equation}
+    >>> latex(x**2, mode='equation*')
+    \begin{equation*}x^{2}\end{equation*}
+    >>> latex(1/x)
+    \frac{1}{x}
+    >>> latex(Integral(x**2, x))
+    \int x^{2}\,dx
+    >>>
+
+MathML printing
+~~~~~~~~~~~~~~~
+
+::
+
+    >>> from sympy.printing.mathml import mathml
+    >>> from sympy import Integral, latex
+    >>> from sympy.abc import x
+    >>> print mathml(x**2)
+    <apply><power/><ci>x</ci><cn>2</cn></apply>
+    >>> print mathml(1/x)
+    <apply><power/><ci>x</ci><cn>-1</cn></apply>
+
+Printing with Pyglet
+~~~~~~~~~~~~~~~~~~~~
+
+Issue::
+
+    >>> preview(x**2 + Integral(x**2, x) + 1/x)
+
+and a Pyglet window with the LaTeX rendered expression will popup:
+
+.. image:: _static/preview-pyglet.png
+
+Setting up printers
+-------------------
+
+By default SymPy uses :func:`str`/:func:`sstr` printer. Other printers can
+be used explicitly as in examples in subsections above. This is efficient
+only when printing at most a few times with a non-standard printer. To make
+Python use a different printer than the default one, the typical approach
+is to modify ``sys.displayhook``::
+
+    >>> 1/x
+    1/x
+
+    >>> import sys
+    >>> oldhook = sys.displayhook
+    >>> sys.displayhook = pprint
+
+    >>> 1/x
+    1
+    ─
+    x
+
+    >>> sys.displayhook = oldhook
+
+Alternatively one can use SymPy's function :func:`init_printing`. This works
+only for pretty printer, but is the fastest way to setup this kind of printer.
+
+Printing foreign objects
+------------------------
+
+Customizing built-in printers
+-----------------------------
+
+Implementing printers from scratch
+----------------------------------
+
+SymPy implements a variety of printers and often extending those existent
+may be sufficient. However, we can also add completely new ones. Suppose
+we would like to translate SymPy's expressions to Mathematica syntax.
+This can be done by creating a new printer, which boils down to adding
+a new class, let's say :class:`MathematicaPrinter`, which derives from
+:class:`Printer` and implements ``_print_*`` methods for all kinds of
+expressions we want to support. In this particular example we would like
+to be able to translate numbers, symbols and functions to Mathematica
+syntax.
+
+A prototype implementation is a follows::
+
+    from sympy.printing.printer import Printer
+
+    class MathematicaPrinter(Printer):
+        """Print SymPy's expressions using Mathematica syntax. """
+        printmethod = "_mathematica"
+
+        _default_settings = {
+            "order": None,
+        }
+
+        _translation_table = {
+            'asin': 'ArcSin',
+        }
+
+        def emptyPrinter(self, expr):
+            return str(expr)
+
+        def _print_Function(self, expr):
+            name = expr.func.__name__
+            args = ", ".join([ self._print(arg) for arg in expr.args ])
+
+            if expr.func.nargs is not None:
+                try:
+                    name = self._translation_table[name]
+                except KeyError:
+                    name = name.capitalize()
+
+            return "%s[%s]" % (name, args)
+
+    def mathematica(expr, **settings):
+        """Transform an expression as a string with Mathematica syntax. """
+        p = MathematicaPrinter(settings)
+        s = p.doprint(expr)
+
+        return s
+
+Tasks
+-----
+
+1. Add support for :class:`Add` and :class:`Mul` to Mathematica printer.
+
 =======================================
 Mathematical problem solving with SymPy
 =======================================
