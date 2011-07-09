@@ -29,7 +29,9 @@ SymPy in Python/IPython
 -----------------------
 
 Sessions in standard Python's interpreter and IPython look very similar,
-for example::
+for example:
+
+.. sourcecode:: ipython
 
     $ ipython
 
@@ -56,7 +58,9 @@ with readline support (see ``bin/isympy``). On startup isympy enables new
 division, imports everything from :mod:`sympy`, sets up a few commonly used
 symbols and undefined functions, and initializes the pretty printer.
 
-Here is an example session with isympy::
+Here is an example session with isympy:
+
+.. sourcecode:: ipython
 
     sympy$ bin/isympy
     IPython console for SymPy 0.7.0 (Python 2.6.6-64-bit) (ground types: gmpy)
@@ -90,11 +94,11 @@ There are a variety of command-line options supported by isympy:
 ``-c CONSOLE``, ``--console=CONSOLE``
     select type of interactive session: ``ipython``, ``python``. Default is ``ipython`` if IPython is installed, otherwise, ``python``.
 ``-p PRETTY``, ``--pretty=PRETTY``
-    setup pretty printing: ``unicode``, ``ascii`` or ``no``.  Default is ``unicode`` if the terminal supports it, otherwise, ``ascii``.
+    setup pretty printing: ``unicode``, ``ascii`` or ``no``. Default is ``unicode`` if the terminal supports it, otherwise, ``ascii``.
 ``-t TYPES``, ``--types=TYPES``
-    setup ground types: ``gmpy``, ``python`` or ``sympy``.  Default is ``gmpy`` if it's installed, otherwise ``python``.
+    setup ground types: ``gmpy``, ``python`` or ``sympy``. Default is ``gmpy`` if it's installed, otherwise ``python``.
 ``-o ORDER``, ``--order=ORDER``
-    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or ``old``.  Default is ``lex``.
+    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or ``old``. Default is ``lex``.
 ``-q``, ``--quiet``
     print only version information at startup
 ``-C``, ``--no-cache``
@@ -106,7 +110,7 @@ Environment variables
 ``SYMPY_USE_CACHE``
     By default SymPy caches all computations. If this is undesirable, for
     example due to limited amount of memory, set this variable to ``no``
-    to disable caching.  Note that some operations will run much slower with
+    to disable caching. Note that some operations will run much slower with
     the cache off.
 ``SYMPY_GROUND_TYPES``
     SymPy is a pure Python library, however to improve the speed of computations
@@ -189,7 +193,7 @@ Python's numeric types in envelopes consisting of SymPy's numeric class
 constructors.
 
 You can also avoid this problem by not typing ``int/int`` when other
-terms are involved.  For example, write ``2*x/3`` instead of ``2/3*x``. 
+terms are involved. For example, write ``2*x/3`` instead of ``2/3*x``.
 And you can type ``sqrt(x)`` instead of ``x**Rational(1, 2)``, as the
 two are equivalent.
 
@@ -286,7 +290,8 @@ Of course we could issue::
 
 but this it is neither readable, nor efficient.
 
-You can also pass the entire number as a string to Float.  If you do this, you must use the scientific notation syntax::
+You can also pass the entire number as a string to :class:`Float`. If you
+do this, you must use the scientific notation syntax::
 
     >>> Float("1e-1000")
     1.00000000000000e-1000
@@ -294,30 +299,32 @@ You can also pass the entire number as a string to Float.  If you do this, you m
 Finally, we note that it is preferable to use exact (i.e., rational)
 numbers when the values of the numbers are exactly known. Many parts of
 SymPy work better when rational numbers are used instead of floating
-point numbers.  This is because rational numbers do not suffer from some
+point numbers. This is because rational numbers do not suffer from some
 of the problems of floating point numbers, like rounding errors.
 
-This is especially the case for exponents:
+This is especially the case for exponents::
 
     >>> factor(x**2.0 - 1)
     x**2.0 - 1
+
     >>> factor(x**2 - 1)
     (x - 1)*(x + 1)
 
 The first expression is not factored because the factorization only
-holds for the exponent of `2` *exactly*.  This problem can also come up
-when using floating point coefficients:
+holds for the exponent of `2` *exactly*. This problem can also come
+up when using floating point coefficients::
 
-    >>> solve([2*x + y**2, y - x], [x, y]) 
+    >>> solve([2*x + y**2, y - x], [x, y])
     [(-2, -2), (0, 0)]
-    >>> solve([2.0*x + y**2, y - x], [x, y]) 
+
+    >>> solve([2.0*x + y**2, y - x], [x, y])
     Traceback (most recent call last):
     ...
     DomainError: can't compute a Groebner basis over RR
 
 Here, the algorithm for solving systems of polynomial equations relies
 on computing a |groebner| basis (see the :ref:`groebner-bases` section
-below for more information on these).  But the algorithm for computing
+below for more information on these). But the algorithm for computing
 this currently does not support floating point coefficients, so
 :func:`solve` fails in that case.
 
@@ -420,7 +427,10 @@ subexpressions. The difference is easily visible when running tests::
 
     ======= tests finished: 16 passed, 4 expected to fail, in 64.82 seconds ========
 
-(note the time needed to run the tests at the end of the test run) and in interactive sessions::
+(note the time needed to run the tests at the end of the each test run)
+and in interactive sessions:
+
+.. sourcecode:: ipython
 
     $ bin/isympy -q
     IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy)
@@ -435,7 +445,7 @@ subexpressions. The difference is easily visible when running tests::
     CPU times: user 0.24 s, sys: 0.00 s, total: 0.24 s
     Wall time: 0.25 s
 
-    $ bin/isympy -q -C # -C disables the cache
+    $ bin/isympy -q -C
     IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy, cache: off)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
@@ -448,9 +458,13 @@ subexpressions. The difference is easily visible when running tests::
     CPU times: user 1.82 s, sys: 0.00 s, total: 1.82 s
     Wall time: 1.83 s
 
+(``-C`` is equivalent to setting ``SYMPY_USE_CACHE="no"``).
+
 The main consequence of caching is that SymPy can use a lot of resources
 in certain situations. One can use :func:`clear_cache` to reduce memory
-consumption::
+consumption:
+
+.. sourcecode:: ipython
 
     In [6]: from sympy.core.cache import clear_cache
 
@@ -463,7 +477,9 @@ consumption::
 As caching influences computation times, any benchmarking must be performed
 with cache off. Otherwise those measurements will be either inaccurate or
 completely wrong (measuring how fast SymPy can retrieve data from cache,
-rather than actual computing times)::
+rather than actual computing times):
+
+.. sourcecode:: ipython
 
     $ bin/isympy -q
     IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy)
@@ -715,7 +731,7 @@ method. For example we could use :func:`collect` for this::
     {A: 0, B: 1, C: 0, D: -1}
 
 Notice that even though the expressions were not :func:`Eq`'s, this still
-worked.  This is because SymPy assumes by default that expressions are
+worked. This is because SymPy assumes by default that expressions are
 identically equal to 0, so ``solve(Eq(expr, 0))`` is the same as
 ``solve(expr)``.
 
@@ -1480,7 +1496,7 @@ that:
 
 where `f(x_i, x_j)` is a bivariate polynomial of degree `k-1` in both variables.
 Since we require that `x_i \not= x_j` then `x_i^k - x_j^k` can vanish only when
-`f(x_i, x_j) = 0`.  This allows us to write another set of polynomial equations:
+`f(x_i, x_j) = 0`. This allows us to write another set of polynomial equations:
 
 .. math::
 
@@ -1941,5 +1957,5 @@ Tasks
 #. Recompute |groebner| bases from this section using different
    orderings of monomials (e.g. ``grlex`` instead of ``lex``) and check
    if the resulting bases are still useful in the context they were
-   used.  If they are, compare the time to compute the bases in the
+   used. If they are, compare the time to compute the bases in the
    different orderings.

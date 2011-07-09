@@ -33,6 +33,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
+    'matplotlib.sphinxext.ipython_console_highlighting',
     'only_directives',
     'plot_directive',
     'tikz_directive',
