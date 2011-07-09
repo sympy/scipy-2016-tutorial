@@ -141,7 +141,7 @@ tutorial readers and make it possible to run them even on mobile devices.
 Partial fraction decomposition
 ==============================
 
-Partial fraction decomposition of a univariate rational function:
+The partial fraction decomposition of a univariate rational function:
 
 .. math::
 
