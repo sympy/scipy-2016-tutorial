@@ -1597,7 +1597,7 @@ then `G` should be non--trivial, which can be easily verified::
     >>> G != [1]
     True
 
-The answer is that the graph `\i{G}` is `3`--colorable. A sample coloring
+The answer is that the graph `\mathcal{G}` is `3`--colorable. A sample coloring
 is shown on the following figure:
 
 .. tikz:: source/img/tikz/graph-color.tex
@@ -1655,20 +1655,6 @@ Just to be extra cautious, let's check if `\zeta^3` gives `1`::
     >>> expand(zeta**3)
     1
 
-We can visualize roots of `x^3 - 1` with a little help from mpmath and matplotlib:
-
-.. plot::
-    :align: center
-
-    import matplotlib.pyplot as plt
-    from sympy.mpmath import cplot
-
-    fig = plt.figure()
-    axes = fig.add_subplot(111)
-    axes.set_title("Density plot of $x^3 - 1$ in the complex plane.")
-
-    cplot(lambda x: x**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
-
 Alternatively, we could obtain all `k`--th roots of unity by factorization
 of `x^3 - 1` over an algebraic number field or by computing its roots via
 radicals::
@@ -1695,9 +1681,9 @@ We can visualize roots of `x^3 - 1` with a little help from mpmath and matplotli
 
     fig = plt.figure()
     axes = fig.add_subplot(111)
-    axes.set_title(r"Density plot of $x^3 - 1$ in the complex plane.")
+    axes.set_title(r"Density plot of $z^3 - 1$ in the complex plane.")
 
-    cplot(lambda x: x**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
+    cplot(lambda z: z**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
 
 Going one step ahead, let's declare three variables which will nicely represent
 colors in the `3`--coloring problem and let's put together, in an arbitrary but
