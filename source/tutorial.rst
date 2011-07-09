@@ -1119,6 +1119,23 @@ solve this problem and which is implemented in SymPy.
 Tasks
 -----
 
+1. Read this `webcomic <http://www.qwantz.com/index.php?comic=1013>`_.
+What is the first digit of `e` to contain `999999`? What is the first
+digit of `\pi` to contain `789`?
+
+2. In addition to the above example, Gruntz gives another example in his
+thesis  to show why symbolic computation of limits can be preferred to
+numerical computation:
+
+.. math::
+
+    \lim_{x \to \infty}{\left(\operatorname{erf}\left(x - {e^{-e^{x}}}\right)- \operatorname{erf}\left(x\right)\right) e^{e^{x}}} e^{x^{2}}
+
+(in SymPy, ``(erf(x - exp(-exp(x))) - erf(x))*exp(exp(x))*exp(x**2)``).
+Compute the above limit in SymPy using methods similar to the ones
+above.  What are the drawbacks of computing this limit numerically? What
+is the limit, exactly?
+
 .. TODO
 
 Summing roots of polynomials
