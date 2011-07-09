@@ -700,6 +700,10 @@ solve this problem and which is implemented in SymPy.
 Tasks
 -----
 
+#. Read this `webcomic <http://www.qwantz.com/index.php?comic=1013>`_.
+What is the first digit of `e` to contain `999999` and what is the first
+digit of `\pi` to contain `789`?
+
 .. TODO
 
 Summing roots of polynomials
