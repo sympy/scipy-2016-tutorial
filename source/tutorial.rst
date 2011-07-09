@@ -138,15 +138,15 @@ gotchas and pitfalls that you may encounter when using SymPy.
 --------------------------------
 
 Users of classical symbolic mathematics systems like Maple or Mathematica,
-are accustomed to type ``1/3`` and get rational number one over three. In
-SymPy this gives either ``0`` or a floating point number, depending whether
+are accustomed to typing ``1/3`` and get the rational number one over three. In
+SymPy this gives either ``0`` or a floating point number, depending on whether
 we use old or new division. This is considered most disturbing difference
 between SymPy and other mathematical systems.
 
-This, at first, strange behaviour comes from the fact that Python is a
-general purpose programming language  and for very long time it didn't
+First, this strange behavior comes from the fact that Python is a
+general purpose programming language  and for a very long time it didn't
 have support for rational numbers in the standard library. This changed
-in Python 2.6, where :class:`Fraction` class was introduced, but it would
+in Python 2.6, where the :class:`Fraction` class was introduced, but it would
 be anyway unusual for Python to make ``/`` return a rational number.
 
 To construct a rational number in SymPy, one can use :class:`Rational`
@@ -174,7 +174,7 @@ There are also other ways::
     >>> S(1)/3
     1/3
 
-``S`` is SymPy's registry of singletons. It implements ``__call__`` method,
+``S`` is SymPy's registry of singletons. It implements the ``__call__`` method,
 which is a shorthand for :func:`sympify`. Using ``S`` is the most concise
 way to construct rational numbers. The last way is to pass a string with
 ``1/3`` to :func:`sympify`::
@@ -188,6 +188,11 @@ way to construct rational numbers. The last way is to pass a string with
 Python's numeric types in envelopes consisting of SymPy's numeric class
 constructors.
 
+You can also avoid this problem by not typing ``int/int`` when other
+terms are involved.  For example, write ``2*x/3`` instead of ``2/3*x``. 
+And you can type ``sqrt(x)`` instead of ``x**Rational(1, 2)``, as the
+two are equivalent.
+
 ``^`` is not exponentiation operator
 ------------------------------------
 
@@ -195,7 +200,7 @@ SymPy uses the same default arithmetic operators as Python. Most of these,
 like ``+``, ``-``, ``*`` and ``/``, are standard. There are, however, some
 differences when comparing SymPy to standalone mathematical systems. One
 of the differences is lack of implied multiplication, to which Mathematica
-users may be accustomed to::
+users may be accustomed::
 
     >>> var('x')
 
@@ -212,11 +217,12 @@ users may be accustomed to::
     ...
     SyntaxError: invalid syntax
 
-More importantly, Python uses ``**`` to denote exponentiation, whereas other
-mathematical systems use ``^`` operator. A notable exception to this rule is
-Axiom, which allows both. For example in Mathematica, ``**`` operator is used
-for non-commutative multiplication. So in Sympy the following expression is
-perfectly valid::
+More importantly, Python uses ``**`` to denote exponentiation, whereas
+other mathematical systems use ``^`` operator. Notable exceptions to
+this rule are Axiom and Maple, which allow both, though most users may
+not be aware of this. For example in Mathematica, ``**`` operator is
+used for non-commutative multiplication. So in Sympy the following
+expression is perfectly valid::
 
     >>> (x + 1)**2
            2
@@ -233,7 +239,7 @@ but using ``^``::
     TypeError: unsupported operand type(s) for ^: 'Add' and 'int'
 
 gives use :exc:`TypeError`. For users' convenience, :func:`sympify` converts
-``^`` to ``**`` by default::
+``^`` to ``**`` by default in a string::
 
     >>> sympify("(x + 1)^2")
            2
@@ -280,13 +286,49 @@ Of course we could issue::
 
 but this it is neither readable, nor efficient.
 
+You can also pass the entire number as a string to Float.  If you do this, you must use the scientific notation syntax::
+
+    >>> Float("1e-1000")
+    1.00000000000000e-1000
+
+Finally, we note that it is preferable to use exact (i.e., rational)
+numbers when the values of the numbers are exactly known. Many parts of
+SymPy work better when rational numbers are used instead of floating
+point numbers.  This is because rational numbers do not suffer from some
+of the problems of floating point numbers, like rounding errors.
+
+This is especially the case for exponents:
+
+    >>> factor(x**2.0 - 1)
+    x**2.0 - 1
+    >>> factor(x**2 - 1)
+    (x - 1)*(x + 1)
+
+The first expression is not factored because the factorization only
+holds for the exponent of `2` *exactly*.  This problem can also come up
+when using floating point coefficients:
+
+    >>> solve([2*x + y**2, y - x], [x, y]) 
+    [(-2, -2), (0, 0)]
+    >>> solve([2.0*x + y**2, y - x], [x, y]) 
+    Traceback (most recent call last):
+    ...
+    DomainError: can't compute a Groebner basis over RR
+
+Here, the algorithm for solving systems of polynomial equations relies
+on computing a |groebner| basis (see the :ref:`groebner-bases` section
+below for more information on these).  But the algorithm for computing
+this currently does not support floating point coefficients, so
+:func:`solve` fails in that case.
+
 How to deal with limited recursion depth
 ----------------------------------------
 
-Wery often algorithm in symbolic mathematics and computer algebra are highly
-recursive. This can be a problem even for relatively small inputs in SymPy,
-because Python interpreters set a limit on the depth of recursion. Suppose
-we want to compute, manipulate and print the following function composition:
+Very often algorithms in symbolic mathematics and computer algebra are
+highly recursive in nature. This can be a problem even for relatively
+small inputs in SymPy, because Python interpreters set a limit on the
+depth of recursion. Suppose we want to compute, manipulate and print the
+following function composition:
 
 .. math::
 
@@ -321,8 +363,8 @@ The same happens when we try to print ``u``::
     ...
     RuntimeError: maximum recursion depth exceeded while calling a Python object
 
-Python provides, at least partial, solution to this problem and allows to
-relax the limit on recursion depth::
+Python provides, at least partially, a solution to this problem by
+allowing the user to relax the limit on recursion depth::
 
     >>> import sys
     >>> sys.setrecursionlimit(1050)
@@ -344,9 +386,13 @@ To print ``u`` we have to relax the limit even more::
 
 This should be a warning about the fact that often it is possible to
 perform computations with highly nested expressions, but it is not
-possible to print those expressions without relaxing recursion depth
+possible to print those expressions without relaxing the recursion depth
 limit. SymPy never uses ``sys.setrecursionlimit`` automatically, so
 it's users responsibility to relax the limit whenever needed.
+
+Unless you are using a highly nested expression like the one above, you
+generally won't encounter this problem, as the default limit of 1000 is
+generally high enough for the most common expressions.
 
 Expression caching and its consequences
 ---------------------------------------
@@ -374,7 +420,7 @@ subexpressions. The difference is easily visible when running tests::
 
     ======= tests finished: 16 passed, 4 expected to fail, in 64.82 seconds ========
 
-and in interactive sessions::
+(note the time needed to run the tests at the end of the test run) and in interactive sessions::
 
     $ bin/isympy -q
     IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy)
@@ -389,7 +435,7 @@ and in interactive sessions::
     CPU times: user 0.24 s, sys: 0.00 s, total: 0.24 s
     Wall time: 0.25 s
 
-    $ bin/isympy -q -C
+    $ bin/isympy -q -C # -C disables the cache
     IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy, cache: off)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
@@ -439,8 +485,8 @@ Naming convention of trigonometric inverses
 SymPy uses different names than most computer algebra systems for some
 of the commonly used elementary functions. In particular, the inverse
 trigonometric and hyperbolic functions use Python's naming convention,
-so we have :func:`asin`, :func:`asinh`, :func:`acos` and so one, instead
-of :func:`arcsin`, :func:`arcsinh`, :func:`acos`, etc.
+so we have :func:`asin`, :func:`asinh`, :func:`acos` and so on, instead
+of :func:`arcsin`, :func:`arcsinh`, :func:`arccos`, etc.
 
 Container indices start at zero
 -------------------------------
@@ -461,7 +507,7 @@ one::
 This is a common thing in general purpose programming languages. However,
 most symbolic mathematics systems, especially those which invent their own
 mathematical programming language, use `1`--based indexing, sometimes reserving
-the `0`--th index for special purpose (e.g. head of expression in Mathematica).
+the `0`--th index for special purpose (e.g. head of expressions in Mathematica).
 
 =======================================
 Mathematical problem solving with SymPy
@@ -1359,6 +1405,8 @@ Tasks
 
 2. Can this or a similar procedure be used with other classes of expressions
    than rational functions? If so, what kind of expressions can be used?
+
+.. _groebner-bases:
 
 Applications of |groebner| bases
 ================================
