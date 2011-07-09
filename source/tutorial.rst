@@ -593,9 +593,27 @@ Lets define function `f` in SymPy::
     x
 
 A very straight forward approach is to "see" how `f` behaves on the right
-hand side of zero, is to evaluate `f` at a few sufficiently small points.
+hand side of zero. We can try to read the solution from the graph of `f`:
 
-Lets start with points of the form `x = 10^{-k}`::
+.. plot::
+    :align: center
+
+    import matplotlib.pyplot as plt
+    from sympy.mpmath import plot, log
+
+    fig = plt.figure()
+    axes = fig.add_subplot(111)
+    axes.set_title(r"Plot of $f(x)$ in $[0, 0.01]$.")
+
+    f = lambda x: x**(1 - log(log(log(log(1/x)))))
+    plot(f, xlim=[0, 0.01], axes=axes)
+
+This gives us first hint that the limit might be zero. Of course reading
+a graph of a function isn't a very precise method for computing limits.
+Instead of analyzing the graph of `f`, we can improve this approach a
+little by evaluating `f(x)` for sufficiently small arguments.
+
+Lets start with arguments of the form `x = 10^{-k}`::
 
     >>> f.subs(x, 10**-1).evalf()
     0.00114216521536353 + 0.00159920801047526⋅ⅈ
@@ -629,8 +647,8 @@ For `x = 10^{-10^3}` we got a very peculiar value. This happened because::
     >>> 10**-10**3
     0.0
 
-we used Python's floating point values. Instead we can use either exact
-numbers or SymPy's floating point numbers::
+and the reason for this is that we used Python's floating point values.
+Instead we can use either exact numbers or SymPy's floating point numbers::
 
     >>> Integer(10)**-10**3 != 0
     True
@@ -1235,7 +1253,7 @@ We can visualize roots of `x^3 - 1` with a little help from mpmath and matplotli
 
     fig = plt.figure()
     axes = fig.add_subplot(111)
-    axes.set_title("Density plot of $x^3 - 1$ in the complex plane.")
+    axes.set_title(r"Density plot of $x^3 - 1$ in the complex plane.")
 
     cplot(lambda x: x**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
 
