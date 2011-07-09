@@ -1,3 +1,4 @@
+
 Guide to Symbolic Mathematics with SymPy
 ========================================
 
