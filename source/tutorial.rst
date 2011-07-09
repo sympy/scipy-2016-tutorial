@@ -40,21 +40,21 @@ for example::
     In [3]: sympy.integrate(3*x**2)
     Out[3]: x**3
 
-    In [5]: sympy.init_printing()
+    In [4]: sympy.init_printing()
 
-    In [6]: sympy.integrate(3*x**2)
-    Out[6]:
+    In [5]: sympy.integrate(3*x**2)
+    Out[5]:
      3
     x
 
 Interactive SymPy (``isympy``)
 ------------------------------
 
-For users' convenience, SymPy's distribution includes a simple shell called
+For users' convenience, SymPy's distribution includes a simple shell script called
 isympy that uses either IPython (if available) or standard Python's interpreter
 with readline support (see ``bin/isympy``). On startup isympy enables new
 division, imports everything from :mod:`sympy`, sets up a few commonly used
-symbols and undefined functions, and initializes pretty printer.
+symbols and undefined functions, and initializes the pretty printer.
 
 Here is an example session with isympy::
 
@@ -83,32 +83,33 @@ Here is an example session with isympy::
 Command-line arguments
 ~~~~~~~~~~~~~~~~~~~~~~
 
-There is a variety of command-line options supported by isympy:
+There are a variety of command-line options supported by isympy:
 
 ``-h``, ``--help``
     show help
 ``-c CONSOLE``, ``--console=CONSOLE``
-    select type of interactive session: ``ipython``, ``python``
+    select type of interactive session: ``ipython``, ``python``. Default is ``ipython`` if IPython is installed, otherwise, ``python``.
 ``-p PRETTY``, ``--pretty=PRETTY``
-    setup pretty printing: ``unicode``, ``ascii`` or ``no``
+    setup pretty printing: ``unicode``, ``ascii`` or ``no``.  Default is ``unicode`` if the terminal supports it, otherwise, ``ascii``.
 ``-t TYPES``, ``--types=TYPES``
-    setup ground types: ``gmpy``, ``python`` or ``sympy``
+    setup ground types: ``gmpy``, ``python`` or ``sympy``.  Default is ``gmpy`` if it's installed, otherwise ``python``.
 ``-o ORDER``, ``--order=ORDER``
-    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or ``old``
+    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or ``old``.  Default is ``lex``.
 ``-q``, ``--quiet``
     print only version information at startup
 ``-C``, ``--no-cache``
     disable caching
 
-Environmental variables
+Environment variables
 -----------------------
 
 ``SYMPY_USE_CACHE``
     By default SymPy caches all computations. If this is undesirable, for
     example due to limited amount of memory, set this variable to ``no``
-    to disable caching.
+    to disable caching.  Note that some operations will run much slower with
+    the cache off.
 ``SYMPY_GROUND_TYPES``
-    SymPy is a pure Python library, however to improve speed of computations
+    SymPy is a pure Python library, however to improve the speed of computations
     it can take advantage of third-party compiled libraries (for now only gmpy).
     Ground types are set automatically, so if gmpy is not available, it simply
     won't be used. However, if gmpy is available but for some reason it is
@@ -128,7 +129,7 @@ SymPy is available in the following web applications:
 Mathematical problem solving with SymPy
 =======================================
 
-Knowing the basics of SymPy lets now solve several mathematical problems
+Knowing the basics of SymPy, let's now solve several mathematical problems
 with it. The level of difficulty of examples in this section varies from
 simple symbolic manipulation to theorem proving in algebraic geometry.
 
@@ -194,7 +195,7 @@ We can use :func:`together` to verify this result::
 Now we would like to compute this decomposition step-by-step. The rational
 function `f` is already in factored form and has two factors `x^2` and
 `x^2 + 1`. If `f` was in expanded from, we could use :func:`factor` to
-obtain desired factorization::
+obtain the desired factorization::
 
     >>> numer(f)/expand(denom(f))
        1
@@ -208,20 +209,20 @@ obtain desired factorization::
      2 ⎛ 2    ⎞
     x ⋅⎝x  + 1⎠
 
-Based on the definition, partial fraction expansion of `f` will be of the
+Based on the definition, the partial fraction expansion of `f` will be of the
 following form:
 
 .. math::
 
     \frac{A}{x} + \frac{B}{x^2} + \frac{C x + D}{x^2 + 1}
 
-Lets do this with SymPy. We will use undetermined coefficients method to
-solve this problem. Lets start define symbols first::
+Let's do this with SymPy. We will use undetermined coefficients method to
+solve this problem. Let's start by defining some symbols::
 
     >>> var('A:D')
     (A, B, C, D)
 
-We use here lexicographic syntax of :func:`var`. Next we can define three
+We use here the lexicographic syntax of :func:`var`. Next we can define three
 rational functions::
 
     >>> p1 = A/x
@@ -234,7 +235,7 @@ rational functions::
     ⎜x   2    2    ⎟
     ⎝   x    x  + 1⎠
 
-Lets add them together to get the desired form::
+Let's add them together to get the desired form::
 
     >>> h = sum(_)
     >>> h
@@ -243,7 +244,7 @@ Lets add them together to get the desired form::
     x    2     2
         x     x  + 1
 
-Next step is to rewrite this expression as rational function in `x`::
+The next step is to rewrite this expression as rational function in `x`::
 
     >>> together(h)
         ⎛ 2    ⎞     ⎛ 2    ⎞    2
@@ -259,7 +260,7 @@ Next step is to rewrite this expression as rational function in `x`::
                 2 ⎛ 2    ⎞
                x ⋅⎝x  + 1⎠
 
-Lets now visually compare the last expression with `f`::
+Let's now visually compare the last expression with `f`::
 
     >>> Eq(_, f)
                3            2
@@ -303,7 +304,7 @@ First we have to extract coefficients of `x` of both sides of the equation::
 
 Now we can use :func:`Poly.nth` to obtain coefficients of `x`::
 
-    >>> [ Eq(lhs.nth(i), rhs.nth(i)) for i in xrange(0, 4) ]
+    >>> [ Eq(lhs.nth(i), rhs.nth(i)) for i in xrange(4) ]
     [b = 1, a = 0, b + d = 0, a + c = 0]
 
 Solving this system of linear equations gives the same solution set as
@@ -329,6 +330,11 @@ method. For example we could use :func:`collect` for this::
     >>> solve(_.values())
     {A: 0, B: 1, C: 0, D: -1}
 
+Notice that even though the expressions were not :func:`Eq`'s, this still
+worked.  This is because SymPy assumes by default that expressions are
+identically equal to 0, so ``solve(Eq(expr, 0))`` is the same as
+``solve(expr)``.
+
 This approach is even simpler than using :func:`Poly.nth`. Finally we use a
 little trick with :class:`Symbol` and visually present solution to partial
 fraction decomposition of `f`::
@@ -342,23 +348,23 @@ fraction decomposition of `f`::
 Tasks
 -----
 
-#. Compute partial fraction decomposition of:
+1. Compute partial fraction decomposition of:
 
- * `\frac{3 x + 5}{(2 x + 1)^2}`
- * `\frac{3 x + 5}{(u x + v)^2}`
- * `\frac{(3 x + 5)^2}{(2 x + 1)^2}`
+  * `\frac{3 x + 5}{(2 x + 1)^2}`
+  * `\frac{3 x + 5}{(u x + v)^2}`
+  * `\frac{(3 x + 5)^2}{(2 x + 1)^2}`
 
-#. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
+2. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
 
 Deriving trigonometric identities
 =================================
 
-Lets assume that we need a formula for `\sin(a + b)` in terms of `\sin(a)`,
-`\sin(b)`, `\cos(a)` and `\cos(b)`, be we don't remember it, nor we don't
+Let's assume that we need a formula for `\sin(a + b)` in terms of `\sin(a)`,
+`\sin(b)`, `\cos(a)` and `\cos(b)`, but we don't remember it, nor do we
 know how to get it easily with SymPy. We will derive this formula from
 scratch using Taylor series expansions and a little symbolic manipulation.
 
-Lets start with definition of symbols and the expression in consideration::
+Let's start with definition of symbols and the expression in consideration::
 
     >>> var('a,b')
     (a, b)
@@ -367,7 +373,7 @@ Lets start with definition of symbols and the expression in consideration::
     >>> f
     sin(a + b)
 
-Now lets expand `f` with respect to `b` around 0::
+Now let's expand `f` as a power series with respect to `b` around 0::
 
     >>> f.series(b, 0, 10)
                          2           3           4           5           6           7           8           9
@@ -376,7 +382,7 @@ Now lets expand `f` with respect to `b` around 0::
                             2           6           24         120         720         5040       40320       362880
 
 This isn't very readable but we can clearly see a pattern around `\sin(a)`
-and `\cos(a)`. Lets collect terms with respect to those two expressions::
+and `\cos(a)`. Let's collect terms with respect to those two expressions::
 
     >>> collect(_, [sin(a), cos(a)])
     ⎛   9       7      5    3    ⎞          ⎛   8      6    4    2    ⎞
@@ -392,7 +398,7 @@ and `\cos(a)`. Lets collect terms with respect to those two expressions::
 
     >>> g = _
 
-We got two subexpression that look very familiar. Lets expand `\sin(b)`
+We got two subexpression that look very familiar. Let's expand `\sin(b)`
 in `b` around 0 and remove the order term::
 
     >>> sin(b).series(b, 0, 10)
@@ -407,7 +413,7 @@ in `b` around 0 and remove the order term::
     ────── - ──── + ─── - ── + b
     362880   5040   120   6
 
-This is clearly the second subexpression, so lets substitute it for
+This is clearly the second subexpression, so let's substitute it for
 `\sin(b)`::
 
     >>> g.subs(_, sin(b))
@@ -418,7 +424,7 @@ This is clearly the second subexpression, so lets substitute it for
 
     >>> h = _
 
-Now lets repeat this procedure for `\cos(b)`::
+Now let's repeat this procedure for `\cos(b)`::
 
     >>> cos(b).series(b, 0, 10)
          2    4     6      8
@@ -456,9 +462,9 @@ Not only symbolics: numerical computing
 
 Symbolic mathematics can't exist without numerical methods. Most "symbolic"
 modules in SymPy take at least some advantage of numerical computing. SymPy
-uses mpmath library for this purpose.
+uses the mpmath library for this purpose.
 
-Lets start from something simple and find numerical approximation to `\pi`.
+Let's start from something simple and find numerical approximation to `\pi`.
 Normally SymPy represents `\pi` as a symbolic entity::
 
     >>> pi
@@ -466,13 +472,13 @@ Normally SymPy represents `\pi` as a symbolic entity::
     >>> type(_)
     <class 'sympy.core.numbers.Pi'>
 
-To obtain numerical approximation of `\pi` we can use either :func:`evalf`
+To obtain numerical approximation of `\pi` we can use either the :func:`evalf`
 method or :func:`N`, which is a simple wrapper over the former method::
 
     >>> pi.evalf()
     3.14159265358979
 
-The default precision is 15 digits. We can change this using ``n`` parameter::
+The default precision is 15 digits. We can change this using the ``n`` parameter::
 
     >>> pi.evalf(n=30)
     3.14159265358979323846264338328
@@ -482,7 +488,7 @@ The mpmath library implements arbitrary precision floating point arithmetics
 e.g. one million::
 
     >>> million_digits = pi.evalf(n=1000000)
-    >>> str(million_digist)[-1]
+    >>> str(million_digits)[-1]
     5
 
 :func:`evalf` can handle much more complex expressions than `\pi`, for
@@ -527,7 +533,7 @@ Built-in functions :func:`float` and :func:`complex` take advantage of
 
     >>> complex(pi*I)
     3.14159265359j
-    >>> type(_20)
+    >>> type(_)
     <type 'complex'>
 
 The base type for computing with floating point numbers in SymPy is
@@ -583,7 +589,7 @@ We would like to compute:
 
     \lim_{x \to 0^{+}} f(x)
 
-Lets define function `f` in SymPy::
+Let's define the function `f` in SymPy::
 
     >>> f = x**(1 - log(log(log(log(1/x)))))
     >>> f
@@ -593,9 +599,9 @@ Lets define function `f` in SymPy::
     x
 
 A very straight forward approach is to "see" how `f` behaves on the right
-hand side of zero, is to evaluate `f` at a few sufficiently small points.
+hand side of zero, i.e., to evaluate `f` at a few sufficiently small points.
 
-Lets start with points of the form `x = 10^{-k}`::
+Let's start with points of the form `x = 10^{-k}`::
 
     >>> f.subs(x, 10**-1).evalf()
     0.00114216521536353 + 0.00159920801047526⋅ⅈ
@@ -615,7 +621,7 @@ Lets start with points of the form `x = 10^{-k}`::
     3.43858142726788e-8
 
 We obtained a decreasing sequence values which suggests that the limit
-is zero. Lets now try points of the form `x = 10^{-10^k}`::
+is zero. Let's now try points of the form `x = 10^{-10^k}`::
 
     >>> f.subs(x, 10**-10**1).evalf()
     2.17686941815359e-9
@@ -637,7 +643,7 @@ numbers or SymPy's floating point numbers::
     >>> Float(10.0)**-10**3 != 0
     True
 
-Lets continue with SymPy's floating point numbers::
+Let's continue with SymPy's floating point numbers::
 
     >>> f.subs(x, Float(10.0)**-10**1).evalf()
     2.17686941815359e-9
@@ -660,7 +666,7 @@ This time the sequence of values is rapidly decreasing, but only until
 a sufficiently small numer where `f` has an inflexion point. After that,
 values of `f` increase very rapidly, which may suggest that the actual
 limit is ``+\inf``. It seems that our initial guess is wrong. However, for
-now we still can't draw any conclusions about behaviour of `f`, because
+now we still can't draw any conclusions about behavior of `f`, because
 if we take even smaller numbers we may reach other points of inflection.
 
 The mpmath library implements a function for computing numerical limits
@@ -672,8 +678,8 @@ of function, we can try to take advantage of this::
     >>> nlimit(F, 0)
     (2.23372778188847e-5 + 2.28936592344331e-8j)
 
-This once again suggests that the limit is zero. Lets use exponential
-distribution of pints in :func:`nlimit`::
+This once again suggests that the limit is zero. Let's use an exponential
+distribution of points in :func:`nlimit`::
 
     >>> nlimit(F, 0, exp=True)
     (3.43571317799366e-20 + 4.71360839667667e-23j)
@@ -699,8 +705,8 @@ Tasks
 Summing roots of polynomials
 ============================
 
-Lets suppose we are given a univariate polynomial `f(z)` and a univariate
-rational function `g(z)`, and we have to compute:
+Let's suppose we are given a univariate polynomial `f(z)` and a univariate
+rational function `g(z)`, and we wish to compute:
 
 .. math::
 
@@ -709,10 +715,10 @@ rational function `g(z)`, and we have to compute:
 where `r_i` for `i = 1 \ldots n` are the roots of `f` (i.e. `f(r_i) = 0`).
 
 In theory this is a very simple task. We just have to compute roots of `f`,
-using :func:`roots` function, substitute those roots for `z` in `g` and add
+using the :func:`roots` function, substitute those roots for `z` in `g` and add
 resulting values together.
 
-Lets consider the following polynomial and rational function::
+Let's consider the following polynomial and rational function::
 
     >>> f = z**5 + z + 3
     >>> f
@@ -725,18 +731,18 @@ Lets consider the following polynomial and rational function::
     ─
     z
 
-Following the trivial approach, lets compute roots of `f`::
+Following the trivial approach, let's compute the roots of `f`::
 
     >>> roots(f)
     {}
 
-We got a very unfortunate result: no roots! By the fundamental theorem of
-algebra we should get five, possibly complex, roots. Unfortunately, there
-is no algorithmic method for computing roots in terms of radicals of
-polynomials of degree five and higher. For certain instances of polynomials
-of this kind it may be possible to compute their roots (e.g. :func:`roots`
-recognizes cyclotomic polynomials of high degree), but in general we will
-most likely be unlucky.
+We got a very unfortunate result: no roots! By the fundamental theorem
+of algebra we should get five, possibly complex, roots, including
+multiplicities. Unfortunately, there is no way to express roots in terms
+of radicals of some polynomials of degree five and higher. For certain
+instances of polynomials of this kind it may be possible to compute
+their roots (e.g. :func:`roots` recognizes cyclotomic polynomials of
+high degree), but in general we will most likely be unlucky.
 
 Instead, we could switch to numerical root finding algorithms and compute
 approximations of roots of `f` and proceed with summation of roots. This
@@ -759,8 +765,8 @@ We can substitute those roots for `z` in `g` and add together::
     -0.333333333333332
 
 It was necessary to evaluate this sum with :func:`evalf`, because otherwise
-we would get unsimplified result. The additional parameter ``chop=True`` was
-necessary to remove tiny and insignificant imaginary part. Next we can use
+we would get an unsimplified result. The additional parameter ``chop=True`` was
+necessary to remove a tiny and insignificant imaginary part. Next we can use
 :func:`nsimplify` to get an exact result from numerical approximation::
 
     >>> nsimplify(_)
@@ -780,7 +786,7 @@ using :class:`RootOf`::
 
 We can obtain all roots using list comprehensions::
 
-    >>> R = [ RootOf(f, i) for i in xrange(0, degree(f)) ]
+    >>> R = [ RootOf(f, i) for i in xrange(degree(f)) ]
 
     >>> for r in R:
     ...     pprint(r)
@@ -798,7 +804,7 @@ We can obtain all roots using list comprehensions::
 
 Alternatively we can use ``Poly(f).all_roots()`` which gives the same
 result, but is much faster when `f` is a composite polynomial, because
-preprocessing step in :class:`RootOf` is executed only once.
+the preprocessing step in :class:`RootOf` is executed only once.
 
 Unfortunately we can't get anywhere from here, because SymPy is not yet
 capable of simplifying expressions with :class:`RootOf`::
@@ -811,7 +817,7 @@ capable of simplifying expressions with :class:`RootOf`::
     >>> isinstance(_, Add)
     True
 
-We can, however, evaluate sum of :class:`RootOf` using :func:`evalf`::
+We can, however, evaluate sums of :class:`RootOf`'s using :func:`evalf`::
 
     >>> G.evalf()
     -0.333333333333333
@@ -820,20 +826,20 @@ We can, however, evaluate sum of :class:`RootOf` using :func:`evalf`::
     -1/3
 
 which gave us the same result as before. The difference is that now numerical
-approximations of roots of `f` were computed using hybrid symbolic--numeric
+approximations of roots of `f` were computed using a hybrid symbolic--numeric
 method, where first disjoint isolating intervals (rectangles) where computed
-for all roots of `f` and then numerical root finding algorithm was used in
+for all roots of `f` and then a numerical root finding algorithm was used in
 each interval.
 
-Lets approach this problem differently, using purely symbolic approach. We
-know that a polynomial of degree `n` has exactly `n` complex roots. In our
-case `f` has five roots::
+Let's approach this problem differently, using a purely symbolic
+approach. We know that a polynomial of degree `n` has exactly `n`
+complex roots, counting multiplicities. In our case `f` has five roots::
 
     >>> R = var('r:5')
     >>> R
     (r₀, r₁, r₂, r₃, r₄)
 
-Lets now substitute those "roots" for `z` in `g`::
+Let's now substitute those "roots" for `z` in `g`::
 
     >>> [ g.subs(z, r) for r in R ]
     ⎡1   1   1   1   1 ⎤
@@ -878,18 +884,18 @@ its coefficients:
 
     V_{i-1} = (-1)^i \frac{a_{n-i}}{a_n}
 
-where `n` is the degree of `f` and `i = 1 \ldots n`. To obtain the final
+where `f(z)=a_nz^n + a_{n-1}z^{n-1} + \ldots + a_1z + a_0` and `i = 1 \ldots n`. To obtain the final
 result it sufficient to take `V_3` and `V_4` and substitute in `G`::
 
     >>> numer(G).subs(*V[3])/denom(G).subs(*V[4])
     -1/3
 
-Or we could simply use `G.subs(V)`, but due to a bug in SymPy (#2552) this
-doesn't work as expected, leaving denominator unchanged.
+Or we could simply use ``G.subs(V)``, but due to a bug in SymPy (`#2552 <http://code.google.com/p/sympy/issues/detail?id=2552>`_) this
+doesn't work as expected, leaving the denominator unchanged.
 
 We obtained the same result as before, just this time using purely symbolic
 techniques. This simple procedure can be extended to form an algorithm for
-solving root summation problem in the general setup. SymPy implements this
+solving the root summation problem in the general setup. SymPy implements this
 algorithm in :class:`RootSum`::
 
     >>> RootSum(f, Lambda(z, g))
@@ -897,14 +903,14 @@ algorithm in :class:`RootSum`::
 
 The choice of `g` allowed us to recognize Viete formulas very easily in
 `G`, but is this the case also for more complicated rational functions?
-Lets modify `g` a little::
+Let's modify `g` a little::
 
     >>> g = 1/(z + 2)
       1
     ─────
     z + 2
 
-Now lets repeat the procedure for the new `g`::
+Now let's repeat the procedure for the new `g`::
 
     >>> G = together(sum([ g.subs(z, r) for r in R ]))
 
@@ -923,7 +929,7 @@ Now lets repeat the procedure for the new `g`::
     2⋅r₁⋅r₂⋅r₃⋅r₄ + 4⋅r₁⋅r₂⋅r₃ + 4⋅r₁⋅r₂⋅r₄ + 8⋅r₁⋅r₂ + 4⋅r₁⋅r₃⋅r₄ + 8⋅r₁⋅r₃ + 8⋅r₁⋅r₄ + 16⋅r₁ + 4⋅r₂⋅r₃⋅r₄ + \
     8⋅r₂⋅r₃ + 8⋅r₂⋅r₄ + 16⋅r₂ + 8⋅r₃⋅r₄ + 16⋅r₃ + 16⋅r₄ + 32
 
-This doesn't look that familiar anymore. Lets try to apply Viete formulas
+This doesn't look that familiar anymore. Let's try to apply Viete formulas
 to the numerator and denominator::
 
     >>> p.subs(V).has(*R)
@@ -931,9 +937,9 @@ to the numerator and denominator::
     >>> q.subs(V).has(*R)
     True
 
-We weren't able to get rid of symbolic roots of `f`. We can, however, try
+We weren't able to get rid of the symbolic roots of `f`. We can, however, try
 to rewrite `p` and `q` as polynomials in elementary symmetric polynomials.
-This procedure is called symmetric reduction and an algorithm for this is
+This procedure is called symmetric reduction, and an algorithm for this is
 implemented in :func:`symmetrize`::
 
     >>> (P, Q), mapping = symmetrize((p, q), R, formal=True)
@@ -952,9 +958,9 @@ implemented in :func:`symmetrize`::
     s₄ = r₀⋅r₁⋅r₂⋅r₃ + r₀⋅r₁⋅r₂⋅r₄ + r₀⋅r₁⋅r₃⋅r₄ + r₀⋅r₂⋅r₃⋅r₄ + r₁⋅r₂⋅r₃⋅r₄
     s₅ = r₀⋅r₁⋅r₂⋅r₃⋅r₄
 
-Here we performed formal simultaneous symmetric reduction of polynomials `p`
-and `q`, obtaining theirs representation in terms of elementary symmetric
-polynomials, non-symmetric remainders and elementary symmetric polynomials.
+Here we performed the formal simultaneous symmetric reduction of the polynomials `p`
+and `q`, obtaining their representation in terms of elementary symmetric
+polynomials, non-symmetric remainders, and elementary symmetric polynomials.
 Remainders are always zero for symmetric inputs.
 
 We can zip this mapping and Viete formulas together, obtaining::
@@ -969,14 +975,14 @@ Now we can take head of ``P`` and ``Q`` and perform substitution::
     ──
     31
 
-Lets verify this result using :class:`RootSum`::
+Let's verify this result using :class:`RootSum`::
 
     >>> RootSum(f, Lambda(z, g))
     81
     ──
     31
 
-Numerical approach also works in this case::
+The numerical approach also works in this case::
 
     >>> sum([ g.subs(z, r) for r in Poly(f).all_roots() ]).evalf()
     2.61290322580645
@@ -989,12 +995,12 @@ Numerical approach also works in this case::
 Tasks
 -----
 
-#. Repeat this procedure for:
+1. Repeat this procedure for:
 
  * `f = z^5 + z + a` and `g = \frac{1}{z + 1}`
  * `f = z^5 + z + a` and `g = \frac{1}{z + b}`
 
-#. Can this or a similar procedure be used with other classes of expressions
+2. Can this or a similar procedure be used with other classes of expressions
    than rational functions? If so, what kind of expressions can be used?
 
 Applications of |groebner| bases
@@ -1004,25 +1010,25 @@ The |groebner| bases method is an attractive tool in computer algebra and
 symbolic mathematics because it is relatively simple to understand and it
 can be applied to a wide variety of problems in mathematics and engineering.
 
-Lets consider a set `F` of multivariate polynomial equations over a field:
+Let's consider a set `F` of multivariate polynomial equations over a field:
 
 .. math::
 
     F = \{ f \in \mathrm{K}[x_1, \ldots, x_n] \}
 
-A |groebner| basis `G` of `F` with respect to a fixed ordering of monomials,
+A |groebner| basis `G` of `F` with respect to a fixed ordering of monomials
 is another set of polynomial equations with certain *nice* properties that
 depend on the choice of the order of monomials and variables. `G` will be
 structurally different from `F`, but has exactly the same set of solutions.
 
 The |groebner| bases theory tells us that:
 
-#. problems which are difficult to solve using `F`, are *easier* to solve using `G`
+#. problems that are difficult to solve using `F` are *easier* to solve using `G`
 #. there exists an *algorithm* for computing `G` for arbitrary `F`
 
 We will take advantage of this and in the following subsections we will solve
-two interesting problems in graph theory and algebraic geometry, by formulating
-those problems as systems of polynomial equations, computing |groebner| bases
+two interesting problems in graph theory and algebraic geometry by formulating
+those problems as systems of polynomial equations, computing |groebner| bases,
 and reading solutions from them.
 
 Vertex `k`--coloring of graphs
@@ -1037,21 +1043,22 @@ graph.
 
 We will solve this problem using the |groebner| bases method. First of all, we
 have to transform this graph--theoretical definition of `k`--coloring problem
-into a form that is understandable by |groebner| bases machinery. This means
+into a form that is understandable by the |groebner| bases machinery. This means
 we have to construct a system of polynomial equations that embeds the structure
-of a graph and constraints related to `k`--coloring problem.
+of a graph and constraints related to the `k`--coloring problem.
 
 We start by assigning a variable to each vertex. Given that `\mathcal{G}` has
 `n` vertices, i.e. `|V| = n`, then we will introduce variables `x_1, \ldots,
 x_n`. Next we will write a set of equations describing the fact that we allow
 assignment of one of `k` possible colors to each vertex. The best approach
-currently known is to map colors to `k`--th roots of unity, which are the
-solutions to equation `x^k - 1 = 0`.
+currently known is to map colors to the `k`--th roots of unity, which are the
+solutions to the equation `x^k - 1 = 0`.
 
-Let `\zeta = \exp(\frac{2\pi\mathrm{i}}{k})` be a `k`--th root of unity. We map colors
-`1, \ldots, k` to `1, \zeta, \ldots, \zeta^{k-1}`. Then the statement that every
-vertex has to be assigned one of `k` colors is equivalent to writing the following
-set of polynomial equations:
+Let `\zeta = \exp(\frac{2\pi\mathrm{i}}{k})` be a `k`--th root of unity.
+We map the colors `1, \ldots, k` to `1, \zeta, \ldots, \zeta^{k-1}`.
+Then the statement that every vertex has to be assigned one of `k`
+colors is equivalent to writing the following set of polynomial
+equations:
 
 .. math::
 
@@ -1075,12 +1082,12 @@ Since we require that `x_i \not= x_j` then `x_i^k - x_j^k` can vanish only when
     F_{\mathcal{G}} = \{ f(x_i, x_j) = 0 : (i, j) \in E \}
 
 Next we combine `F_k` and `F_{\mathcal{G}}` into one system of equations `F`. The
-graph `\mathcal{G}(V, E)` is `k`-colorable, if the |groebner| basis `G` of `F` is
-non-trivial, i.e. `G \not= \{1\}`. If this is not the case, then the graph isn't
+graph `\mathcal{G}(V, E)` is `k`-colorable if the |groebner| basis `G` of `F` is
+non-trivial, i.e., `G \not= \{1\}`. If this is not the case, then the graph isn't
 `k`--colorable. Otherwise the |groebner| basis gives us information about all
 possible `k`--colorings of `\mathcal{G}`.
 
-Lets now focus on a particular `k`--coloring where `k = 3`. In this case:
+Let's now focus on a particular `k`--coloring where `k = 3`. In this case:
 
 .. math::
 
@@ -1106,7 +1113,7 @@ At this point it is sufficient to compute the |groebner| basis `G` of
 `F = F_3 \cup F_{\mathcal{G}}` to find out if a graph `\mathcal{G}` is
 `3`--colorable, or not.
 
-Lets see how this procedure works for a particular graph:
+Let's see how this procedure works for a particular graph:
 
 .. tikz:: source/img/tikz/graph-nocolor.tex
 
@@ -1117,7 +1124,7 @@ Lets see how this procedure works for a particular graph:
     The graph `\mathcal{G}(V, E)`.
 
 `\mathcal{G}(V, E)` has 12 vertices and 23 edges. We ask if the graph is
-`3`--colorable. Lets first encode `V` and `E` using Python's built--in
+`3`--colorable. Let's first encode `V` and `E` using Python's built--in
 data structures::
 
     >>> V = range(1, 12+1)
@@ -1143,7 +1150,7 @@ Everything is set following the theoretical introduction, so now we can
 compute the |groebner| basis of `F_3 \cup F_{\mathcal{G}}` with respect
 to *lexicographic* ordering of terms::
 
-    >>> G = groebner(F3 + Fg, *V)
+    >>> G = groebner(F3 + Fg, *V, order='lex')
 
 We know that if the constructed system of polynomial equations has a solution
 then `G` should be non--trivial, which can be easily verified::
@@ -1151,7 +1158,7 @@ then `G` should be non--trivial, which can be easily verified::
     >>> G != [1]
     True
 
-The answer is that the graph `\mathcal{G}` is `3`--colorable. A sample coloring
+The answer is that the graph `\i{G}` is `3`--colorable. A sample coloring
 is shown on the following figure:
 
 .. tikz:: source/img/tikz/graph-color.tex
@@ -1164,21 +1171,21 @@ is shown on the following figure:
 
 Suppose we add an edge between vertices `i = 3` and `j = 4`. Is the new graph
 still `3`--colorable? To check this it is sufficient to construct `F_{\mathcal{G'}}`
-by extending `F_{\mathcal{G}}` with `x_3^2 + x_3 x_4 + x_4^2` and recomputinge the
+by extending `F_{\mathcal{G}}` with `x_3^2 + x_3 x_4 + x_4^2` and recomputing the
 |groebner| basis::
 
-    >>> groebner(F3 + Fg + [x3**2 + x3*x4 + x4**2], *V)
+    >>> groebner(F3 + Fg + [x3**2 + x3*x4 + x4**2], *V, order='lex')
     [1]
 
-We got trivial |groebner| basis as the result, so the graph `\mathcal{G'}`
+We got the trivial |groebner| basis as the result, so the graph `\mathcal{G'}`
 isn't `3`--colorable. We could continue this discussion and ask, for example,
 if the original graph `\mathcal{G}` can be colored with only two colors. To
-achieve this, we would have to construct `F_3` and `F_{\mathcal{G}}` again,
+achieve this, we would have to construct `F_2` and `F_{\mathcal{G}}`
 and recompute the basis.
 
-Lets return to the original graph. We already know that it is `3`--colorable,
+Let's return to the original graph. We already know that it is `3`--colorable,
 but now we would like to enumerate all colorings. We will start from revising
-properties of roots of unity. Lets construct the `k`--th root of unity, where
+properties of roots of unity. Let's construct the `k`--th root of unity, where
 `k = 3`, in algebraic number form::
 
     >>> zeta = exp(2*pi*I/3).expand(complex=True)
@@ -1204,10 +1211,24 @@ Altogether we consider three roots of unity in this example::
     - ─ - ───────
       2      2
 
-Just to be extra cautious, lets check if `\zeta^3` gives `1`::
+Just to be extra cautious, let's check if `\zeta^3` gives `1`::
 
     >>> expand(zeta**3)
     1
+
+We can visualize roots of `x^3 - 1` with a little help from mpmath and matplotlib:
+
+.. plot::
+    :align: center
+
+    import matplotlib.pyplot as plt
+    from sympy.mpmath import cplot
+
+    fig = plt.figure()
+    axes = fig.add_subplot(111)
+    axes.set_title("Density plot of $x^3 - 1$ in the complex plane.")
+
+    cplot(lambda x: x**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
 
 Alternatively, we could obtain all `k`--th roots of unity by factorization
 of `x^3 - 1` over an algebraic number field or by computing its roots via
@@ -1225,22 +1246,8 @@ radicals::
     ⎢1, - ─ - ───────, - ─ + ───────⎥
     ⎣     2      2       2      2   ⎦
 
-We can visualize roots of `x^3 - 1` with a little help from mpmath and matplotlib:
-
-.. plot::
-    :align: center
-
-    import matplotlib.pyplot as plt
-    from sympy.mpmath import cplot
-
-    fig = plt.figure()
-    axes = fig.add_subplot(111)
-    axes.set_title("Density plot of $x^3 - 1$ in the complex plane.")
-
-    cplot(lambda x: x**3 - 1, re=[-2, 2], im=[-2, 2], axes=axes)
-
-Going one step ahead, lets declare three variables which will nicely represent
-colors in the `3`--coloring problem and lets put together, in an arbitrary but
+Going one step ahead, let's declare three variables which will nicely represent
+colors in the `3`--coloring problem and let's put together, in an arbitrary but
 fixed order, those variables and the previously computed roots of unity::
 
     >>> var('red,green,blue')
@@ -1254,10 +1261,10 @@ fixed order, those variables and the previously computed roots of unity::
     ⎢(1, red), ⎜- ─ - ───────, green⎟, ⎜- ─ + ───────, blue⎟⎥
     ⎣          ⎝  2      2          ⎠  ⎝  2      2         ⎠⎦
 
-This gives as a mapping between algebra of `3`--coloring problem and nice
+This gives as a mapping between algebra of `3`--coloring problem and a nice
 visual representation, which we will take advantage of later.
 
-Lets look at `G`::
+Let's look at `G`::
 
     >>> key = lambda f: (degree(f), len(f.args))
     >>> groups = sorted(sift(G, key).items(), reverse=True)
@@ -1277,7 +1284,7 @@ and length of polynomials. Treating all those polynomials as equations of
 the form `f = 0`, we can solve them one--by--one, to obtain all colorings
 of `\mathcal{G}`.
 
-From previous discussion we know that `x_{12}^3 - 1 = 0` has three solutions
+From the previous discussion we know that `x_{12}^3 - 1 = 0` has three solutions
 in terms of roots of unity::
 
     >>> f = x12**3 - 1
@@ -1313,8 +1320,8 @@ but::
 
 This means that, when `x_{12}` is assigned a color, there are two possible
 color assignments to `x_{11}`. Equations in the third group vanish only when
-all three vertices of particular equation have different colors assigned. This
-follows from the fact that sum of roots of unity vanishes::
+all three vertices of that particular equation have different colors assigned. This
+follows from the fact that the sum of roots of unity vanishes::
 
     >>> expand(zeta**0 + zeta**1 + zeta**2)
     0
@@ -1325,12 +1332,12 @@ but (for example)::
     False
 
 Finally, equations in the last group are trivial and vanish when vertices of
-a particular equation have the same color assigned. This gives us `3 \cdot 2
+each particular equation have the same color assigned. This gives us `3 \cdot 2
 \cdot 1 \cdot 1 = 6` combinations of color assignments, i.e. there are six
 solutions to `3`--coloring problem of graph `\mathcal{G}`.
 
 Based on this analysis it is straightforward to enumerate all six color
-assignments, however we can make this process fully automatic. Lets solve
+assignments, however we can make this process fully automatic. Let's solve
 the |groebner| basis `G`::
 
     >>> colorings = solve(G, *V)
@@ -1357,18 +1364,19 @@ roots of unity and literal colors and substitute symbols for numbers::
     [red, blue, green, green, red, blue, green, red, blue, red, blue, green]
     [red, green, blue, blue, red, green, blue, red, green, red, green, blue]
 
-This is the result we were looking for, but a few words of explanation are
-needed. :func:`solve` may return unsimplified results so we may need to
-simplify any algebraic numbers that don't match structurally the precomputed
-roots of unity. Taking advantage of the domain of computation, we use complex
-expansion algorithm for this purpose (``expand(complex=True)``). Having the
-solutions in the canonical form, to get this nice *visual* form with literal
-colors, it is sufficient to substitute color variables for roots of unity.
+This is the result we were looking for, but a few words of explanation
+are needed. :func:`solve` may return unsimplified results so we may need
+to simplify any algebraic numbers that don't match structurally the
+precomputed roots of unity. Taking advantage of the domain of
+computation, we use the complex expansion algorithm for this purpose
+(``expand(complex=True)``). Once we have the solutions in this canonical
+form, to get this nice *visual* form with literal colors it is
+sufficient to substitute color variables for roots of unity.
 
 Algebraic geometry
 ------------------
 
-Lets consider a geometric entity (e.g. line, square) which properties can
+Let's consider a geometric entity (e.g. line, square), whose properties can
 be described using a system of `m` polynomials:
 
 .. math::
@@ -1386,14 +1394,14 @@ where `g` is the conclusion of the theorem and `h_1, \ldots h_m` and `g`
 are polynomials in `\mathrm{K}[x_1, \ldots, x_n, y_1, \ldots, y_n]`. It
 follows from the |groebner| bases theory that the above statement is true
 when `g` belongs to the ideal generated by `\mathcal{H}`. To check this,
-i.e. to prove the theorem, it is sufficient to compute |groebner| basis
+i.e. to prove the theorem, it is sufficient to compute a |groebner| basis
 of `\mathcal{H}` with respect to any admissible monomial ordering and
 reduce `g` with respect to this basis. If the theorem is true then the
 remainder from the reduction will vanish. In this example, for the sake
 of simplicity, we assume that the geometric entity is non--degenerate,
 i.e. it does not collapse into a line or a point.
 
-Lets consider the following rhombus:
+Let's consider the following rhombus:
 
 .. tikz:: source/img/tikz/geometry-rhombus.tex
 
@@ -1416,7 +1424,7 @@ mutually perpendicular. We have the following conditions describing `ABCD`:
 
 Our conclusion is that `AC \bot BD`. To prove this theorem, first we need to
 transform the above conditions and the conclusion into a set of polynomials.
-How we can achieve this? Lets focus on the first condition. In general, we
+How we can achieve this? Let's focus on the first condition. In general, we
 are given two lines `A_1A_2` and `B_1B_2`. To express the relation between
 those two lines, i.e. that `A_1A_2` is parallel `B_1B_2`, we can relate
 slopes of those lines:
@@ -1463,7 +1471,7 @@ trick and transform those inequalities into a single polynomial condition by
 introducing an additional variable, e.g. `a`, about which we will assume that
 is positive. This gives us a non--degeneracy condition `x_B y_C - a`.
 
-With all this knowledge we are ready to prove the main theorem. First, lets
+With all this knowledge we are ready to prove the main theorem. First, let's
 declare variables::
 
     >>> var('x_B, x_C, y_C, x_D, a')
@@ -1472,7 +1480,7 @@ declare variables::
     >>> V = _[:-1]
 
 We declared the additional variable `a`, but we don't consider it a variable
-of our problem. Lets now define the four points `A`, `B`, `C` and `D`::
+of our problem. Let's now define the four points `A`, `B`, `C` and `D`::
 
     >>> A = Point(0, 0)
     >>> B = Point(x_B, 0)
@@ -1489,9 +1497,9 @@ and compute its |groebner| basis::
 
     >>> G = groebner([f1, h2, h3], *V, order='grlex')
 
-We had to specify the variables of the problem explicitly in :func:`groebner`,
-because otherwise it would treat `a` also as a variable, which we didn't want
-to. Now we can verify the theorem::
+We had to specify the variables of the problem explicitly in
+:func:`groebner`, because otherwise it would treat `a` also as a
+variable, which we don't want. Now we can verify the theorem::
 
     >>> reduced(perpendicular(A, C, B, D), G, vars, order='grlex')[1]
     0
@@ -1511,6 +1519,8 @@ Tasks
 #. Check if the graph with 12 vertices and 23 edges is `2`--colorable.
 #. In the graph coloring example solve `F` instead of computing its |groebner|
    basis. Can you enumerate color assignments this way? If so, why?
-#. Recompute |groebner| bases from this section using different orderings
-   of monomials (e.g. ``grlex`` instead of ``lex``) and check if the
-   resulting bases are still useful in the context they were used.
+#. Recompute |groebner| bases from this section using different
+   orderings of monomials (e.g. ``grlex`` instead of ``lex``) and check
+   if the resulting bases are still useful in the context they were
+   used.  If they are, compare the time to compute the bases in the
+   different orderings.
