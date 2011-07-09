@@ -85,7 +85,17 @@ Introduction to SymPy
 Mathematical problem solving with SymPy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Computing certain sums of roots of polynomials.
+1. Step--by--step partial fraction decomposition.
+
+   Given a univariate rational function ``f(z) = p(z)/q(z)`` compute its
+   partial fraction decomposition using undetermined coefficients method.
+
+   We will approach this problem by showing how to construct generic partial
+   fractions for a given rational function, use simplification functions to
+   transform those partial fractions to certain form that we will use to
+   construct a system of linear equations from and solve it in SymPy.
+
+2. Computing certain sums of roots of polynomials.
 
    Given a univariate polynomial ``f(z)`` and a univariate rational function
    ``g(r)`` compute ``g(r_1) + ... + g(r_n)``, where ``r_i``'s are roots of
@@ -95,7 +105,7 @@ Mathematical problem solving with SymPy
    the sum in a certain form and then use symmetric reduction of multivariate
    polynomials and Viete formulas to obtain the final result.
 
-2. Vertex coloring of graphs.
+3. Vertex k--coloring of graphs.
 
    Suppose we are given graph ``G(V, E)``, such that ``V`` is a set of vertices
    and ``E`` a set of edges, and a positive integer ``k``. We ask whether ``G``
@@ -104,6 +114,16 @@ Mathematical problem solving with SymPy
    To handle this task we will transform a graph theoretic formulation of graph
    ``k``--coloring problem to a system of multivariate polynomial equations and
    solve it using Groebner bases.
+
+4. Theorem proving in algebraic geometry.
+
+   Consider a rhombus in a fixed coordinate system. We will prove that its
+   diagonals are mutually perpendicular.
+
+   First we will state the theorem regarding diagonals of a rhombus in the
+   language of geometry. Next we will transform this formulation to an
+   algebraic form and finally we will use the Groebner bases method to
+   obtain the proof of this theorem.
 
 Required software
 -----------------
@@ -130,4 +150,3 @@ and PyCon.PL).
 *Aaron Meurer* is SymPy's core developer since 2009 and the current leader of
 the project. He was twice Google Summer of Code student for SymPy and currently
 is pursuing a masters in mathematics at New Mexico Tech.
-
