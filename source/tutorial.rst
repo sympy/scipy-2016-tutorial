@@ -34,7 +34,7 @@ or use the following direct link::
 You will also find an installer for Windows there. An alternative way is to
 clone SymPy's `git <http://www.git-scm.org>`_ repository from `GitHub <http://github.com/sympy/sympy>`_::
 
-    $ git clone git://github.com/mattpap/sympy.git
+    $ git clone git://github.com/sympy/sympy.git
 
 To use it, issue::
 
