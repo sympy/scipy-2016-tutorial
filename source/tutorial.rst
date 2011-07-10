@@ -102,7 +102,7 @@ Here is an example session with isympy:
 .. sourcecode:: ipython
 
     sympy$ bin/isympy
-    IPython console for SymPy 0.7.0 (Python 2.6.6-64-bit) (ground types: gmpy)
+    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy)
 
     These commands were executed:
     >>> from __future__ import division
@@ -164,6 +164,74 @@ Environment variables
     available but for some reason it is undesirable to use it, set this variable
     to ``python``, to disable usage of gmpy. Use ``-t`` or ``--type`` option to
     achieve the same in isympy.
+
+Running the test suite
+----------------------
+
+To verify that SymPy works properly on your computer, you can run SymPy's
+test suite. This is done either with ``bin/test`` command or :func:`test`
+in an interactive session. For example, to test :mod:`sympy.core` issue::
+
+    $ bin/test sympy/core
+    ============================= test process starts ==============================
+    executable:   /usr/bin/python2.6  (2.6.6-final-0)
+    ground types: gmpy
+
+    sympy/core/tests/test_arit.py[48] ...f..........................................
+    ..                                                                          [OK]
+    sympy/core/tests/test_assumptions.py[28] ............................       [OK]
+    sympy/core/tests/test_basic.py[10] ..........                               [OK]
+    sympy/core/tests/test_cache.py[1] .                                         [OK]
+    sympy/core/tests/test_complex.py[13] .............                          [OK]
+    sympy/core/tests/test_containers.py[5] .....                                [OK]
+    sympy/core/tests/test_count_ops.py[2] ..                                    [OK]
+    sympy/core/tests/test_diff.py[6] ......                                     [OK]
+    sympy/core/tests/test_equal.py[6] ......                                    [OK]
+    sympy/core/tests/test_eval.py[8] .....f..                                   [OK]
+    sympy/core/tests/test_eval_power.py[13] .............                       [OK]
+    sympy/core/tests/test_evalf.py[24] ........................                 [OK]
+    sympy/core/tests/test_expand.py[6] ......                                   [OK]
+    sympy/core/tests/test_expr.py[59] ..............................................
+    .............                                                               [OK]
+    sympy/core/tests/test_exprtools.py[4] ....                                  [OK]
+    sympy/core/tests/test_facts.py[11] ...........                              [OK]
+    sympy/core/tests/test_functions.py[27] .....fff...................          [OK]
+    sympy/core/tests/test_logic.py[11] ...........                              [OK]
+    sympy/core/tests/test_match.py[26] ...f......................               [OK]
+    sympy/core/tests/test_numbers.py[46] ...........................................
+    ...                                                                         [OK]
+    sympy/core/tests/test_operations.py[4] ....                                 [OK]
+    sympy/core/tests/test_priority.py[5] .....                                  [OK]
+    sympy/core/tests/test_relational.py[7] .......                              [OK]
+    sympy/core/tests/test_sets.py[18] ..................                        [OK]
+    sympy/core/tests/test_subs.py[30] ..............................            [OK]
+    sympy/core/tests/test_symbol.py[9] ....X....                                [OK]
+    sympy/core/tests/test_sympify.py[26] ...f......................             [OK]
+    sympy/core/tests/test_truediv.py[3] ...                                     [OK]
+    sympy/core/tests/test_var.py[5] .....                                       [OK]
+
+    ________________________________ xpassed tests _________________________________
+    sympy/core/tests/test_symbol.py:
+
+    tests finished: 453 passed, 7 expected to fail, 1 expected to fail but passed,
+    in 6.30 seconds
+
+This tells us that all standard tests in :mod:`sympy.core`'s  pass (dots).
+In case of failure, ``.`` would change to ``F`` and ``OK`` to ``FAIL``
+(additionally all failures would be colored in red and listed at the end of
+output from SymPy's test utility). Non-standard tests are those marked with
+``f`` and ``X`` characters. The former means that the test was supposed to
+fail and failed (XFAIL), whereas the later means that the test was supposed
+to fail but passed (XPASS).
+
+To run the whole test suite issue ``bin/test`` or :func:`test` without any
+arguments. Running the whole test suite takes more than ten minutes on
+Pentium-M 1.6 GHz and less than 5 minutes on Xeon 3.0 GHz (one core).
+
+There is another test utility in SymPy, ``bin/doctest``, which verifies
+examples in docstrings and documentation. If you are going to contribute
+to SymPy, make sure you run both ``bin/test`` and ``bin/doctest`` before
+submitting a `pull request <http://help.github.com/send-pull-requests>`_.
 
 SymPy in web browsers
 ---------------------
@@ -482,7 +550,7 @@ and in interactive sessions:
 .. sourcecode:: ipython
 
     $ bin/isympy -q
-    IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy)
+    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
 
@@ -495,7 +563,7 @@ and in interactive sessions:
     Wall time: 0.25 s
 
     $ bin/isympy -q -C
-    IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy, cache: off)
+    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy, cache: off)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
 
@@ -531,13 +599,13 @@ rather than actual computing times):
 .. sourcecode:: ipython
 
     $ bin/isympy -q
-    IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy)
+    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy)
 
     In [1]: %timeit sin(2*pi);
     10000 loops, best of 3: 28.7 us per loop
 
     $ bin/isympy -q -C
-    IPython console for SymPy 0.7.0-git (Python 2.6.6-64-bit) (ground types: gmpy, cache: off)
+    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy, cache: off)
 
     In [1]: %timeit sin(2*pi);
     100 loops, best of 3: 2.75 ms per loop
