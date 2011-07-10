@@ -10,53 +10,92 @@ It aims to become a full-featured computer algebra system (CAS) while keeping th
 code as simple as possible in order to be comprehensible and easily extensible.
 SymPy is written entirely in Python and does not require any external libraries.
 
-In this tutorial we will introduce attendees to SymPy. We will start by showing
-how to install and configure this Python module. Then we will proceed to the
-basics of constructing and manipulating mathematical expressions in SymPy. We
-will also discuss the most common issues and differences from other computer
-algebra systems, and how to deal with them. In the last part of this tutorial
-we will show how to solve simple, yet illustrative, mathematical problems with
-SymPy.
+This tutorial gives an overview and introduction to SymPy. We will start by
+showing how to install and configure SymPy. Then we will proceed to the basics
+of constructing and manipulating mathematical expressions in SymPy. We will
+also discuss the most common problems with SymPy and differences between it
+and mathematical systems, and how to deal with them. In the last part of this
+tutorial we will show how to solve simple, yet illustrative, mathematical
+problems with SymPy.
 
-This knowledge should be enough for attendees to start using SymPy for solving
-mathematical problems and hacking SymPy's internals (though hacking core modules
-may require additional expertise).
+This knowledge should be enough to start using SymPy in daily work and hacking
+SymPy's internals (though hacking core modules may require additional expertise).
 
 Installing, configuring and running SymPy
 =========================================
+
+The easiest way to get SymPy is to visit `this <http://code.google.com/p/sympy>`_
+page and download the latest tarball from *Featured Downloads* section,
+or use the following direct link::
+
+    $ wget http://sympy.googlecode.com/files/sympy-0.7.0.tar.gz
+    $ tar -xz -C sympy --strip-components 1 -f sympy-0.7.0.tar.gz
+
+You will also find an installer for Windows there. An alternative way is to
+clone SymPy's `git <http://www.git-scm.org>`_ repository from `GitHub <http://github.com/sympy/sympy>`_::
+
+    $ git clone git://github.com/mattpap/sympy.git
+
+To use it, issue::
+
+    $ cd sympy
+    $ python
+    Python 2.6.6 (r266:84292, Dec 28 2010, 00:22:44)
+    [GCC 4.5.1] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> from sympy import *
+    >>> var('x')
+    x
+    >>> diff(sin(x), x)
+    cos(x)
+
+If you want SymPy to be available globally, you can install it using
+``./setup.py install``. SymPy is available in major Linux distributions,
+so you can install it also using package manager of your distribution
+(for example in Ubuntu install ``python-sympy`` and in Gentoo install
+``dev-python/sympy``).
+
+By default, SymPy doesn't have any dependencies besides Python. The following
+version of Python are supported: 2.4, 2.5, 2.6, 2.7. Python 3.x is not supported
+yet, although there is undergoing work to make SymPy compatible with it. Also
+release 0.7.0 of SymPy is the last one that supports Python 2.4. SymPy should
+also work smoothly under Jython (IronPython and PyPy have problems with running
+SymPy).
+
+Certain features of SymPy may require additional dependencies. For example
+:mod:`sympy.polys` module can take advantage of gmpy library for coefficient
+arithmetics. However, if gmpy is not available, this module falls back to
+pure Python implementation, so ``import sympy`` will work correctly without
+gmpy being installed. Other dependencies include IPython, Matplotlib, NumPy,
+SciPy, Pyglet, LaTeX distribution and more.
 
 SymPy in Python/IPython
 -----------------------
 
 Sessions in standard Python's interpreter and IPython look very similar,
-for example:
+just the banner and prompt look differently, for example::
 
-.. sourcecode:: ipython
-
-    $ ipython
-
-    In [1]: import sympy
-
-    In [2]: x = sympy.Symbol('x')
-
-    In [3]: sympy.integrate(3*x**2)
-    Out[3]: x**3
-
-    In [4]: sympy.init_printing()
-
-    In [5]: sympy.integrate(3*x**2)
-    Out[5]:
+    $ python
+    Python 2.6.6 (r266:84292, Dec 28 2010, 00:22:44)
+    [GCC 4.5.1] on linux2
+    >>> import sympy
+    >>> x = sympy.Symbol('x')
+    >>> sympy.integrate(3*x**2)
+    x**3
+    >>> sympy.init_printing()
+    >>> sympy.integrate(3*x**2)
      3
     x
 
 Interactive SymPy (``isympy``)
 ------------------------------
 
-For users' convenience, SymPy's distribution includes a simple shell script called
-isympy that uses either IPython (if available) or standard Python's interpreter
-with readline support (see ``bin/isympy``). On startup isympy enables new
-division, imports everything from :mod:`sympy`, sets up a few commonly used
-symbols and undefined functions, and initializes the pretty printer.
+For users' convenience, SymPy's distribution includes a simple script called
+isympy (see ``bin/isympy``). isympy uses either IPython (if available) or
+standard Python's interpreter with readline support. On startup isympy sets
+up the environment to make interaction with SymPy more pleasant. It enables
+new division, imports everything from :mod:`sympy`, injects a few commonly
+used symbols into the global namespace, and initializes the pretty printer.
 
 Here is an example session with isympy:
 
@@ -92,33 +131,39 @@ There are a variety of command-line options supported by isympy:
 ``-h``, ``--help``
     show help
 ``-c CONSOLE``, ``--console=CONSOLE``
-    select type of interactive session: ``ipython``, ``python``. Default is ``ipython`` if IPython is installed, otherwise, ``python``.
+    select type of interactive session: ``ipython``, ``python``. Default is
+    ``ipython`` if IPython is installed, otherwise, ``python``.
 ``-p PRETTY``, ``--pretty=PRETTY``
-    setup pretty printing: ``unicode``, ``ascii`` or ``no``. Default is ``unicode`` if the terminal supports it, otherwise, ``ascii``.
+    setup pretty printing: ``unicode``, ``ascii`` or ``no``. Default is ``unicode``
+    if the terminal supports it, otherwise, ``ascii``.
 ``-t TYPES``, ``--types=TYPES``
-    setup ground types: ``gmpy``, ``python`` or ``sympy``. Default is ``gmpy`` if it's installed, otherwise ``python``.
+    setup ground types: ``gmpy``, ``python`` or ``sympy``. Default is ``gmpy`` if
+    it's installed, otherwise ``python``.
 ``-o ORDER``, ``--order=ORDER``
-    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or ``old``. Default is ``lex``.
+    setup ordering of terms: ``[rev-]lex``, ``[rev-]grlex``, ``[rev-]grevlex`` or
+    ``old``. Default is ``lex``.
 ``-q``, ``--quiet``
     print only version information at startup
 ``-C``, ``--no-cache``
     disable caching
 
 Environment variables
------------------------
+---------------------
 
 ``SYMPY_USE_CACHE``
     By default SymPy caches all computations. If this is undesirable, for
     example due to limited amount of memory, set this variable to ``no``
     to disable caching. Note that some operations will run much slower with
-    the cache off.
+    the cache off. Setting this variable to ``no`` is equivalent to running
+    isympy with ``-C`` option.
 ``SYMPY_GROUND_TYPES``
     SymPy is a pure Python library, however to improve the speed of computations
-    it can take advantage of third-party compiled libraries (for now only gmpy).
-    Ground types are set automatically, so if gmpy is not available, it simply
-    won't be used. However, if gmpy is available but for some reason it is
-    undesirable to use it, set this variable to ``python``, to disable usage
-    of gmpy.
+    it can take advantage of gmpy library to speedup coefficient arithmetics
+    (also known as ground domain arithmetics). Ground types are set automatically,
+    so if gmpy is not available, it simply won't be used. However, if gmpy is
+    available but for some reason it is undesirable to use it, set this variable
+    to ``python``, to disable usage of gmpy. Use ``-t`` or ``--type`` option to
+    achieve the same in isympy.
 
 SymPy in web browsers
 ---------------------
@@ -128,6 +173,10 @@ SymPy is available in the following web applications:
 * SymPy Live (http://live.sympy.org)
 * Sage Notebook (http://www.sagenb.org)
 * FEMhub Online Lab (http://lab.femhub.org)
+
+SymPy Live was developed specifically for SymPy. It is a simple web shell that
+looks similar to isympy under standard Python's interpreter. SymPy Live uses
+Google App Engine as computational backend.
 
 Gotchas and pitfalls
 ====================
