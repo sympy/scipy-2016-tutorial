@@ -67,7 +67,7 @@ Certain features of SymPy may require additional dependencies. For example
 arithmetics. However, if gmpy is not available, this module falls back to
 pure Python implementation, so ``import sympy`` will work correctly without
 gmpy being installed. Other dependencies include IPython, Matplotlib, NumPy,
-SciPy, Pyglet, LaTeX distribution and more.
+SciPy, Cython, Pyglet, LaTeX distribution and more.
 
 SymPy in Python/IPython
 -----------------------
