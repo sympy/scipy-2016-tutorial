@@ -665,7 +665,7 @@ MathML printing
 Printing with Pyglet
 ~~~~~~~~~~~~~~~~~~~~
 
-Issue::
+This allows for printing expressions in a separate GUI window. Issue::
 
     >>> preview(x**2 + Integral(x**2, x) + 1/x)
 
@@ -697,69 +697,140 @@ is to modify ``sys.displayhook``::
     >>> sys.displayhook = oldhook
 
 Alternatively one can use SymPy's function :func:`init_printing`. This works
-only for pretty printer, but is the fastest way to setup this kind of printer.
-
-Printing foreign objects
-------------------------
+only for pretty printer, but is the fastest way to setup this type of printer.
 
 Customizing built-in printers
 -----------------------------
+
+Suppose we dislike how certain classes of expressions are printed. One such
+issue may be pretty printing of polynomials (instances of :class:`Poly` class),
+in which case :class:`PrettyPrinter` simply doesn't have support for printing
+polynomials and falls back to :class:`StrPrinter`::
+
+    >>> Poly(x**2 + 1)
+    Poly(x**2 + 1, x, domain='ZZ')
+
+One way to add support for pretty printing polynomials is to extend pretty
+printer's class and implement ``_print_Poly`` method. We would choose this
+approach if we wanted this to be a permanent change in SymPy. We will choose
+a different way and subclass :class:`PrettyPrinter` and implement ``_print_Poly``
+in the new class.
+
+Let's call the new pretty printer :class:`PolyPrettyPrinter`. It's implementation
+looks like this:
+
+.. literalinclude:: python/pretty_poly.py
+
+Using :func:`pretty_poly` allows us to print polynomials in 2D and Unicode::
+
+    >>> pretty_poly(Poly(x**2 + 1))
+        ⎛ 2          ⎞
+    Poly⎝x  + 1, x, ℤ⎠
+
+We can use techniques from previous section to make this new pretty printer
+the default for all inputs.
 
 Implementing printers from scratch
 ----------------------------------
 
 SymPy implements a variety of printers and often extending those existent
-may be sufficient. However, we can also add completely new ones. Suppose
-we would like to translate SymPy's expressions to Mathematica syntax.
-This can be done by creating a new printer, which boils down to adding
-a new class, let's say :class:`MathematicaPrinter`, which derives from
-:class:`Printer` and implements ``_print_*`` methods for all kinds of
-expressions we want to support. In this particular example we would like
-to be able to translate numbers, symbols and functions to Mathematica
-syntax.
+may be sufficient, to optimize them for certain problem domain or specific
+mathematical notation. However, we can also add completely new ones, for
+example to allow printing SymPy's expression with other symbolic mathematics
+systems' syntax.
 
-A prototype implementation is a follows::
+Suppose we would like to translate SymPy's expressions to Mathematica syntax.
+As of version 0.7.0, SymPy doesn't implement such a printer, so we get do it
+right now. Adding a new printer basically boils down to adding a new class,
+let's say :class:`MathematicaPrinter`, which derives from :class:`Printer`
+and implements ``_print_*`` methods for all kinds of expressions we want to
+support. In this particular example we would like to be able to translate:
 
-    from sympy.printing.printer import Printer
+* numbers
+* symbols
+* functions
+* exponentiation
 
-    class MathematicaPrinter(Printer):
-        """Print SymPy's expressions using Mathematica syntax. """
-        printmethod = "_mathematica"
+and compositions of all of those. A prototype implementation is as follows:
 
-        _default_settings = {
-            "order": None,
-        }
+.. literalinclude:: python/mathematica.py
 
-        _translation_table = {
-            'asin': 'ArcSin',
-        }
+Before we explain this code, let's see what it can do::
 
-        def emptyPrinter(self, expr):
-            return str(expr)
+    >>> mathematica(S(1)/2)
+    1/2
+    >>> mathematica(x)
+    x
 
-        def _print_Function(self, expr):
-            name = expr.func.__name__
-            args = ", ".join([ self._print(arg) for arg in expr.args ])
+    >>> mathematica(x**2)
+    x^2
 
-            if expr.func.nargs is not None:
-                try:
-                    name = self._translation_table[name]
-                except KeyError:
-                    name = name.capitalize()
+    >>> mathematica(f(x))
+    f[x]
+    >>> mathematica(sin(x))
+    Sin[x]
+    >>> mathematica(asin(x))
+    ArcSin[x]
 
-            return "%s[%s]" % (name, args)
+    >>> mathematica(sin(x**2))
+    Sin[x^2]
+    >>> mathematica(sin(x**(S(1)/2)))
+    Sin[x^(1/2)]
 
-    def mathematica(expr, **settings):
-        """Transform an expression as a string with Mathematica syntax. """
-        p = MathematicaPrinter(settings)
-        s = p.doprint(expr)
+However, as we didn't include support for :class:`Add`, this doesn't work::
 
-        return s
+    >>> mathematica(x**2 + 1)
+    x**2 + 1
+
+and very many other classes of expressions are printed improperly. If we
+need support for a particular class, we have to add another ``_print_*``
+method to :class:`MathematicaPrinter``. For example, to make the above
+example work, we have to implement ``_print_Add``.
+
+Code generation
+---------------
+
+Besides printing of mathematical expressions, SymPy also implements Fortran
+and C code generation. The simplest way to proceed is to use :func:`codegen`
+which takes a tuple consisting of function name and an expression, or a list
+of tuples of this kind, language in which it will generate code (``C`` for
+C programming language and ``F95`` for Fortran, and file name::
+
+    >>> print codegen(("chebyshevt_20", chebyshevt(20, x)), "F95", "file")[0][1]
+    !******************************************************************************
+    !*                      Code generated with sympy 0.7.0                       *
+    !*                                                                            *
+    !*              See http://www.sympy.org/ for more information.               *
+    !*                                                                            *
+    !*                       This file is part of 'project'                       *
+    !******************************************************************************
+
+    REAL*8 function chebyshevt_20(x)
+    implicit none
+    REAL*8, intent(in) :: x
+
+    chebyshevt_20 = 524288*x**20 - 2621440*x**18 + 5570560*x**16 - 6553600*x &
+          **14 + 4659200*x**12 - 2050048*x**10 + 549120*x**8 - 84480*x**6 + &
+          6600*x**4 - 200*x**2 + 1
+
+    end function
+
+In this example we generated Fortran code for function ``chebyshevt_20`` which
+allows use to evaluate Chebyshev polynomial of first kind of degree 20. Almost
+the same way one can generate C code for this expression.
 
 Tasks
 -----
 
-1. Add support for :class:`Add` and :class:`Mul` to Mathematica printer.
+1. Make Mathematica printer correctly print `\pi`.
+2. Add support for :class:`Add` and :class:`Mul` to Mathematica printer. In
+   the case of products, allow both explicit and implied multiplication, and
+   allow users to choose desired behavior by parametrization of Mathematica
+   printer.
+3. Generate C code for ``chebyshevt(20, x)``.
+4. Make SymPy generate one file of Fortran or/and C code that contains
+   definitions of functions that would allow us to evaluate each of the
+   first ten Chebyshev polynomials of the first kind.
 
 =======================================
 Mathematical problem solving with SymPy
