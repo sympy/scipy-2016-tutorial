@@ -2296,13 +2296,13 @@ We had to specify the variables of the problem explicitly in
 :func:`groebner`, because otherwise it would treat `a` also as a
 variable, which we don't want. Now we can verify the theorem::
 
-    >>> reduced(perpendicular(A, C, B, D), G, vars, order='grlex')[1]
+    >>> reduced(perpendicular(A, C, B, D), G, *V, order='grlex')[1]
     0
 
 The remainder vanished, which proves that `AC \bot BD`. Although, the theorem
 we described and proved here is a simple one, one can handle much more advanced
 problems as well using |groebner| bases techniques. One should refer to Franz
-Winkler's papers for more interesting examples.
+Winkler's papers for more advanced examples.
 
 Tasks
 -----
