@@ -242,9 +242,191 @@ SymPy is available in the following web applications:
 * Sage Notebook (http://www.sagenb.org)
 * FEMhub Online Lab (http://lab.femhub.org)
 
-SymPy Live was developed specifically for SymPy. It is a simple web shell that
-looks similar to isympy under standard Python's interpreter. SymPy Live uses
-Google App Engine as computational backend.
+SymPy Live was developed specifically for SymPy. It is a simple web shell
+that looks similar to isympy under standard Python's interpreter. SymPy
+Live uses Google App Engine as computational backend.
+
+Basics of expressions in SymPy
+==============================
+
+SymPy is all about construction and manipulation of *expressions*. By the
+term expression we mean mathematical expressions represented in the Python
+language using SymPy's classes and objects. Expressions may consist of
+symbols, numbers, function applications (and many other) and operators
+binding them together (addiction, subtraction, multiplication, division,
+exponentiation).
+
+Suppose we want to construct an expression for `x + 1`::
+
+    >>> x = Symbol('x')
+
+    >>> x + 1
+    x + 1
+
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+
+Entering ``x + 1`` gave us an instance of :class:`Add` class. This expression
+consists of a symbol (``x``), a number (``1``) and addition operator, which
+is represented by the topmost class (:class:`Add`). This was the simplest way
+of entering an expression for `x + 1`. We could also enter::
+
+    >>> y = Symbol('y')
+
+    >>> x - y + 17 + y - 16 + sin(pi)
+    x + 1
+
+In this case SymPy automatically rewrote the input expression and gave its
+canonical form, which is ``x + 1`` once again.
+
+.. TODO
+
+The role of symbols
+-------------------
+
+The first thing we had to do before we could start constructing expressions
+was to define symbols.
+
+.. TODO
+
+Immutability of expressions
+---------------------------
+
+Expressions in SymPy are immutable and cannot be modified by an in-place
+operation. This means that a function will always return an object, and
+the original expression will not be modified. Consider the following
+code::
+
+    >>> var('x,y,a,b')
+    (x, y, a, b)
+
+    >>> original = 3*x + 4*y
+    >>> modified = original.subs({x: a, y: b})
+
+    >>> original
+    3*x + 4*y
+    >>> modified
+    3*a + 4*b
+
+The output shows that the :func:`subs` method gave a new expression with
+symbol ``x`` replaced with symbol ``a`` and symbol ``y`` replaced with
+symbol ``b``. The original expression wasn't modified. This behaviour
+applies to all classes that are subclasses of :class:`Basic`. An exception
+to immutability rule is :class:`Matrix`, which allows in-place modifications,
+but it is not a subclass of :class:`Basic`::
+
+    >>> Matrix.mro()
+    [<class 'sympy.matrices.matrices.Matrix'>, <type 'object'>]
+
+Comparing expressions with ``==``
+---------------------------------
+
+Consider the following two expressions::
+
+    >>> f = (x + 1)**2
+    >>> f
+           2
+    (x + y)
+
+    >>> g = x**2 + 2*x + 1
+    >>> g
+     2
+    x  + 2⋅x + 1
+
+We should remember from calculus 101 that those two expressions are
+equivalent, because we can use binomial theorem to expand ``f`` and
+we will get ``g``. However in SymPy::
+
+    >>> f == g
+    False
+
+This is correct result, because SymPy implements structural understanding
+of ``==`` operator, not semantic. So, for SymPy ``f`` and ``g`` are very
+different expressions.
+
+What to do if we have two variables and we want to know if their contents
+are equivalent, but not necessarily structurally equal? There is no simple
+answer to this question in general. In the particular case of ``f`` and
+``g``, it is sufficient to issue::
+
+    >>> expand(f) == expand(g)
+    True
+
+or, based on `f = g \equiv f - g = 0` equivalence::
+
+    >>> expand(f - g) == 0
+    True
+
+In case of more complicated expression, e.g. those involving elementary or
+special functions, this approach may be insufficient. For example::
+
+    >>> u = sin(x)**2 - 1
+    >>> v = cos(x)**2
+
+    >>> u == v
+    False
+    >>> expand(u - v) == 0
+    False
+
+In this case we have to use more advanced term rewriting function::
+
+    >>> simplify(u - v) == 0
+    True
+
+The meaning of expressions
+--------------------------
+
+Expressions don't have any meaning assigned to them by default. Thus `x + 1`
+is simply an expression, not a function or a univariate polynomial. Meaning
+is assigned when we use expressions in a context, e.g.::
+
+    >>> div(x**2 - y, x - y)
+    ⎛        2    ⎞
+    ⎝x + y, y  - y⎠
+
+In this case, ``x**2 - y`` and ``x - y`` where treated as multivariate
+polynomials in variables ``x`` and ``y`` (in this order). We could change
+this understanding and ask explicitly for polynomials in variables ``y``
+and ``x``. This makes :func:`div` return a different result::
+
+    >>> div(x**2 - y, x - y, y, x)
+    ⎛    2    ⎞
+    ⎝1, x  - x⎠
+
+Quite often SymPy is capable of deriving the most useful understanding of
+expressions in a given context. However, there are situations when expressions
+simply don't carry enough information to make SymPy perform computations without
+telling it explicitly what to do::
+
+    >>> roots(x**2 - y)
+    Traceback (most recent call last):
+    ...
+    PolynomialError: multivariate polynomials are not supported
+
+Here we have to tell :func:`roots` in which variable roots should be computed::
+
+    >>> roots(x**2 - y, x)
+    ⎧   ⎽⎽⎽       ⎽⎽⎽   ⎫
+    ⎨-╲╱ y : 1, ╲╱ y : 1⎬
+    ⎩                   ⎭
+
+Of course the choice of ``y`` is also a valid one, assuming that this is what
+you really want.
+
+Turning strings into expressions
+--------------------------------
+
+:func:`sympify`, ``S``
+
+.. TODO
+
+Advanced manipulation of expressions
+====================================
+
+* manual and interactive traversal of subexpressions
+* search and replace in expressions
+* most common expression manipulation functions
+* transforming expressions between different forms
 
 Gotchas and pitfalls
 ====================
