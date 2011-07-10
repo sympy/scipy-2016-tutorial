@@ -372,6 +372,25 @@ gives use :exc:`TypeError`. For users' convenience, :func:`sympify` converts
 People who what pure Python behaviour of :func:`sympify` can disable this
 automatic conversion by passing ``convert_xor=False`` to it.
 
+``=`` is not comparison operator
+--------------------------------
+
+The equals sign (``=``) is the assignment operator in Python, not equality
+operator. In other many mathematical systems, ``=`` is used for comparing
+values and/or for constructing equalities, but with SymPy you have to use
+``==`` for the former and ``Eq(x, y)`` for the later. Note that instances
+of :class:`Eq` class, in boolean context, collapse to ``==``::
+
+    >>> var('x,y')
+
+    >>> x == y
+    False
+
+    >>> Eq(x, y)
+    x = y
+    >>> bool(_)
+    False
+
 Why you shouldn't write ``10**-1000``
 -------------------------------------
 
