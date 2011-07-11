@@ -38,8 +38,7 @@ rationals) of `q`:
 
 If `p` and `q` aren't co-prime, we can use :func:`cancel` to remove common
 factors and if `\deg(p) >= \deg(q)`, then :func:`div` can be used to extract
-the polynomial part of partial fraction expansion of `f` and reduce the degree
-of `p`.
+the polynomial part of `f` and reduce the degree of `p`.
 
 Suppose we would like to compute partial fraction decomposition of::
 
