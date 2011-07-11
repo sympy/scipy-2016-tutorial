@@ -489,8 +489,8 @@ Tasks
    expression for `1 + x + x^2 + \ldots + x^n` for any integer `n >= 0`. Extend
    this function to allow `n < 0`.
 
-2. Write a function that can compute nested powers, e.g. `x^x`, `x^x^x` and so
-   on. The function should take two parameters: an expression and a positive
+2. Write a function that can compute nested powers, e.g. `x^x`, `x^{x^x}` and
+   so on. The function should take two parameters: an expression and a positive
    integer `n` that specifies the depth.
 
 Building blocks of expressions
@@ -577,8 +577,6 @@ includes:
       /   k
      /__,
     k = 1
-    >>> Product(1/k, (k, 1, n))
-    Product(1/k, k, 1, n)
 
 * other::
 
@@ -603,6 +601,153 @@ Tasks
    etc.). Take advantage of :func:`doit` and write a function that generates
    integral tables for a few polynomials, rational functions and elementary
    functions.
+
+Foreign types in SymPy
+----------------------
+
+SymPy internally expects that all objects it works with are instances of
+subclasses of :class:`Basic` class. So why ``x + 1`` works without raising
+any exceptions? The number ``1`` is not a SymPy's type, but::
+
+    >>> type(1)
+    <type 'int'>
+
+it's a built-in type. SymPy implements :func:`sympify` function for the task
+of converting foreign types to SymPy's types (yes, Python's built-in types
+are also considered as foreign). All SymPy's classes, methods and functions
+use :func:`sympify` and this is the reason you can safely write ``x + 1``
+instead of more verbose and less convenient ``x + Integer(1)``. Note that
+not all functions return instances of SymPy's types. Usually, if a function
+is supposed to return a property of an expression, it will use built-in
+Python's types, e.g.::
+
+    >>> Poly(x**2 + y).degree(y)
+    1
+    >>> type(_)
+    <type 'int'>
+
+Now see what :func:`sympify` can do. Let's start with built-ins::
+
+    >>> sympify(1)
+    1
+    >>> type(_)
+    <class 'sympy.core.numbers.One'>
+
+    >>> sympify(117)
+    117
+    >>> type(_)
+    <class 'sympy.core.numbers.Integer'>
+
+    >>> sympify(0.5)
+    0.500000000000000
+    >>> type(_)
+    <class 'sympy.core.numbers.Float'>
+
+    >>> from fractions import Fraction
+
+    >>> sympify(Fraction(1, 2))
+    1/2
+    >>> type(_)
+    <class 'sympy.core.numbers.Rational'>
+
+SymPy implements explicit sympification rules, heuristics based on ``__int__``,
+``__float__`` and other attributes, and in the worst case scenario it falls
+back to parsing string representation of an object. This usually works fine,
+but sometimes :func:`sympify` can be wrong::
+
+    >>> from gmpy import mpz, mpq
+
+    >>> sympify(mpz(117))
+    117.000000000000
+    >>>> type(_)
+    <class 'sympy.core.numbers.Float'>
+
+    >>> sympify(mpq(1, 2))
+    0.500000000000000
+    >>>> type(_)
+    <class 'sympy.core.numbers.Float'>
+
+This happens because :func:`sympify` doesn't know about neither ``mpz`` nor
+``mpq``, and it first looks for ``__float__`` attribute, which is implemented
+by both those types. Getting float for exact value isn't very useful so let's
+extend :func:`sympify` and add support for ``mpz``. The way to achieve this
+is to add a new entry to ``converter`` dictionary. ``converter`` takes types
+as keys and sympification functions as values. Before we extend this ``dict``,
+we have to resolve a little problem with ``mpz``::
+
+    >>> mpz
+    <built-in function mpz>
+
+which isn't a type but a function. We can use a little trick here and take
+the type of some ``mpz`` object::
+
+    >>> type(mpz(1))
+    <type 'mpz'>
+
+Let's now add an entry to ``converter`` for ``mpz``::
+
+    >>> from sympy.core.sympify import converter
+
+    >>> def mpz_to_Integer(obj):
+    ...     return Integer(int(obj))
+    ...
+    ...
+
+    >>> converter[type(mpz(1))] = mpz_to_Integer
+
+We could use ``lambda`` as well. Now we can sympify ``mpz``::
+
+    >>> sympify(mpz(117))
+    117
+    >>> type(_)
+    <class 'sympy.core.numbers.Integer'
+
+Similar thing should be done for ``mpq``. Let's try one more type::
+
+    >>> import numpy
+
+    >>> ar = numpy.array([1, 2, 3])
+    >>> sympify(ar)
+
+    >>> sympify(ar)
+    Traceback (most recent call last):
+    ...
+    SympifyError: SympifyError: "could not parse u'[1 2 3]'"
+
+:func:`sympify` isn't aware of ``numpy.ndarray`` and heuristics didn't work,
+so it computed string representation of ``ar`` using :func:`str` and tried
+to parse is, which failed because::
+
+    >>> str(ar)
+    [1 2 3]
+
+We might be tempted to add support for ``numpy.ndarray`` to :func:`sympify`
+by treating NumPy's arrays (at least a subset of) as SymPy's matrices, but
+matrices aren't sympifiable::
+
+    >>> Matrix(3, 3, lambda i, j: i + j)
+    ⎡0  1  2⎤
+    ⎢       ⎥
+    ⎢1  2  3⎥
+    ⎢       ⎥
+    ⎣2  3  4⎦
+    >>> sympify(_)
+    Traceback (most recent call last):
+    ...
+    SympifyError: SympifyError: 'Matrix cannot be sympified'
+
+We will explain this odd behavior later.
+
+Tasks
+~~~~~
+
+1. Add support for ``mpq`` to :func:`sympify`.
+
+2. SymPy implements :class:`Tuple` class, which provides functionality of
+   Python's built-in ``tuple``, but is a subclass of :class:`Basic`. Take
+   advantage of this and make :func:`sympify` work for 1D horizontal NumPy
+   arrays, for which it should return instances of :class:`Tuple`. Raise
+   :exc:`SympifyError` for other classes of arrays.
 
 The role of symbols
 -------------------
@@ -852,9 +997,7 @@ with this function. Let's look at the following phenomenon::
 ``117`` is an instance of Python's built-in type :class:`int`, but this type
 is not a subclass of :class:`Atom`, so Python choses the other branch in
 :func:`depth` and this must fail. Before the last example we pass only
-instances of SymPy's expression to :func:`depth`. Even in the case of
-``x + 1`` where we added SymPy's symbol with Python's integer, because this
-was transformed in an instance of :class:`Add`. If we want :func:`depth` to
+instances of SymPy's expression to :func:`depth`. If we want :func:`depth` to
 work also for non-SymPy types, we have to sympify ``expr`` with :func:`sympify`
 before using it.
 
@@ -1191,14 +1334,6 @@ Tasks
 1. Construct a polynomial of degree, let's say, 1000. Use both techniques
    to save and restore this expression. Compare speed of those approaches.
    Verify that the result is correct.
-
-Advanced manipulation of expressions
-====================================
-
-* manual and interactive traversal of subexpressions
-* search and replace in expressions
-* most common expression manipulation functions
-* transforming expressions between different forms
 
 Gotchas and pitfalls
 ====================
