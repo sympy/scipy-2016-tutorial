@@ -72,11 +72,6 @@ Introduction to SymPy
   * generating code with SymPy (C, Fortran)
   * defining your own customized printers
 
-* querying expression properties
-
-  * why ``sqrt(x**2)`` doesn't give ``x``?
-  * defining your own query handlers
-
 * not only symbolics: numerical computing (mpmath)
 
   * evaluation of expressions to arbitrary precision
@@ -136,7 +131,6 @@ Additional software
 
 * IPython
 * Matplotlib
-* NetworkX
 * GMPY
 
 Authors' bio
