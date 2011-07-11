@@ -488,7 +488,6 @@ Tasks
    construct this expression in a different way? Write a function that
    could generate an expression for `1 + x + x^2 + \ldots + x^n` for any
    integer `n >= 0`. Extend this function to allow `n < 0`.
-
 2. Write a function that can compute nested powers, e.g. `x^x`, `x^{x^x}` and
    so on. The function should take two parameters: an expression and a positive
    integer `n` that specifies the depth.
@@ -742,7 +741,6 @@ Tasks
 ~~~~~
 
 1. Add support for ``mpq`` to :func:`sympify`.
-
 2. SymPy implements :class:`Tuple` class, which provides functionality of
    Python's built-in ``tuple``, but is a subclass of :class:`Basic`. Take
    advantage of this and make :func:`sympify` work for 1D horizontal NumPy
@@ -1006,7 +1004,6 @@ Tasks
 
 1. Change :func:`depth` so that it sympifies its input argument. Rewrite
    :func:`depth` so that is calls :func:`sympify` only once.
-
 2. Add support for iterable containers to :func:`depth`. Containers should
    be treated as branches and have depth defined the same way.
 
@@ -1779,7 +1776,7 @@ This is what ``str(expression)`` returns and it looks like this::
 
 Note that :func:`str` is by design not aware of global configuration,
 so if you for example run ``bin/isympy -o grlex``, :func:`str` will
-ignore this. There is another function :func:`sstr` that take global
+ignore this. There is another function :func:`sstr` that takes global
 configuration into account.
 
 Low-level
@@ -1787,7 +1784,7 @@ Low-level
 
 Due to internal implementation of Python, SymPy can't use :func:`repr`
 for generating low-level textual representation of expressions. To get
-this kind of representation, :func:`srepr` was invented::
+this kind of representation you have to use:func:`srepr` ::
 
     >>> srepr(x**2)
     Pow(Symbol('x'), Integer(2))
@@ -1826,7 +1823,7 @@ This is a nice 2D ASCII-art printing produced by :func:`pprint`::
     /
 
 It also has support for Unicode character set, which makes shapes look
-much more natural than in ASCII case::
+much more natural than in ASCII-art case::
 
     >>> pprint(Integral(x**2, x), use_unicode=True)
     ⌠
@@ -1835,8 +1832,8 @@ much more natural than in ASCII case::
     ⌡
 
 By default :func:`pprint` tries to figure out the best of Unicode and
-ASCII art for generating output. If Unicode is supported, then this will
-be the default. Otherwise it falls back to ASCII art. User can select
+ASCII-art for generating output. If Unicode is supported, then this will
+be the default. Otherwise it falls back to ASCII art. User can select the
 desired character set by setting ``use_unicode`` option in :func:`pprint`.
 
 Python printing
@@ -1872,7 +1869,6 @@ LaTeX printing
     \frac{1}{x}
     >>> latex(Integral(x**2, x))
     \int x^{2}\,dx
-    >>>
 
 MathML printing
 ~~~~~~~~~~~~~~~
@@ -1955,6 +1951,16 @@ Using :func:`pretty_poly` allows us to print polynomials in 2D and Unicode::
 We can use techniques from previous section to make this new pretty printer
 the default for all inputs.
 
+Tasks
+~~~~~
+
+1. Due to regression in SymPy 0.7.0, :class:`Lambda` doesn't pretty print
+   anymore. Following implementation of :class:`PolyPrettyPrinter` and
+   ``_print_Poly``, create another printer for :class:`Lambda`, or
+   just extend the printer from this section.
+2. Following the way how :class:`Poly` is printed by :func:`str` printer,
+   make :class:`PolyPrettyPrinter` print domain including ``domain=`` string.
+
 Implementing printers from scratch
 ----------------------------------
 
@@ -2009,8 +2015,17 @@ However, as we didn't include support for :class:`Add`, this doesn't work::
 
 and very many other classes of expressions are printed improperly. If we
 need support for a particular class, we have to add another ``_print_*``
-method to :class:`MathematicaPrinter``. For example, to make the above
+method to :class:`MathematicaPrinter`. For example, to make the above
 example work, we have to implement ``_print_Add``.
+
+Tasks
+~~~~~
+
+1. Make Mathematica printer correctly print `\pi`.
+2. Add support for :class:`Add` and :class:`Mul` to Mathematica printer. In
+   the case of products, allow both explicit and implied multiplication, and
+   allow users to choose desired behavior by parametrization of Mathematica
+   printer.
 
 Code generation
 ---------------
@@ -2041,18 +2056,13 @@ C programming language and ``F95`` for Fortran, and file name::
     end function
 
 In this example we generated Fortran code for function ``chebyshevt_20`` which
-allows use to evaluate Chebyshev polynomial of first kind of degree 20. Almost
-the same way one can generate C code for this expression.
+allows use to evaluate Chebyshev polynomial of the first kind of degree 20.
+Almost the same way one can generate C code for this expression.
 
 Tasks
------
+~~~~~
 
-1. Make Mathematica printer correctly print `\pi`.
-2. Add support for :class:`Add` and :class:`Mul` to Mathematica printer. In
-   the case of products, allow both explicit and implied multiplication, and
-   allow users to choose desired behavior by parametrization of Mathematica
-   printer.
-3. Generate C code for ``chebyshevt(20, x)``.
-4. Make SymPy generate one file of Fortran or/and C code that contains
-   definitions of functions that would allow us to evaluate each of the
-   first ten Chebyshev polynomials of the first kind.
+1. Generate C code for ``chebyshevt(20, x)``.
+2. Make SymPy generate one file of Fortran or/and C code that would contain
+   definitions of functions that would allow us to evaluate each of the first
+   ten Chebyshev polynomials of the first kind.

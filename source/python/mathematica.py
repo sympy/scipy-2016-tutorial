@@ -5,9 +5,7 @@ class MathematicaPrinter(Printer):
     """Print SymPy's expressions using Mathematica syntax. """
     printmethod = "_mathematica"
 
-    _default_settings = {
-        "order": None,
-    }
+    _default_settings = {}
 
     _translation_table = {
         'asin': 'ArcSin',
