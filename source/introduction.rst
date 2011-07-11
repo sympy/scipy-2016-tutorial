@@ -20,9 +20,12 @@ modify exisiting printers and implement new ones.
 Installing, configuring and running SymPy
 =========================================
 
-The easiest way to get SymPy is to visit `this <http://code.google.com/p/sympy>`_
-page and download the latest tarball from *Featured Downloads* section,
-or use the following direct link::
+The easiest way to get SymPy is to type ``sudo pip install sympy``,
+which will download the latest version of the package from PyPI and
+install it.  If you want to get the source and install it manually,
+visit `this <http://code.google.com/p/sympy>`_ page and download the
+latest tarball from *Featured Downloads* section, or use the following
+direct link::
 
     $ wget http://sympy.googlecode.com/files/sympy-0.7.0.tar.gz
     $ tar -xz -C sympy --strip-components 1 -f sympy-0.7.0.tar.gz
@@ -274,7 +277,7 @@ of entering an expression for `x + 1`. We could also enter::
 
 In this case SymPy automatically rewrote the input expression and gave its
 canonical form, which is ``x + 1`` once again. This is a very important
-behaviour: all expressions are subject to automatic evaluation, during which
+behavior: all expressions are subject to automatic evaluation, during which
 SymPy tries to find a canonical form for expressions, but it doesn't apply
 "heroic" measures to achieve this goal. For example the following expression::
 
@@ -1024,7 +1027,7 @@ code::
 
 The output shows that the :func:`subs` method gave a new expression with
 symbol ``x`` replaced with symbol ``a`` and symbol ``y`` replaced with
-symbol ``b``. The original expression wasn't modified. This behaviour
+symbol ``b``. The original expression wasn't modified. This behavior
 applies to all classes that are subclasses of :class:`Basic`. An exception
 to immutability rule is :class:`Matrix`, which allows in-place modifications,
 but it is not a subclass of :class:`Basic`::
@@ -1451,7 +1454,7 @@ gives use :exc:`TypeError`. For users' convenience, :func:`sympify` converts
     >>> type(_)
     <class 'sympy.core.power.Pow'>
 
-People who what pure Python behaviour of :func:`sympify` can disable this
+People who what pure Python behavior of :func:`sympify` can disable this
 automatic conversion by passing ``convert_xor=False`` to it.
 
 ``=`` is not comparison operator
@@ -1810,7 +1813,7 @@ This is a nice 2D ASCII-art printing produced by :func:`pprint`::
     1
     -
     x
-    >>> pprint(Integral(x**2, x), use_unicde=False)
+    >>> pprint(Integral(x**2, x), use_unicode=False)
       /
      |
      |  2
