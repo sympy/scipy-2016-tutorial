@@ -21,7 +21,7 @@ Installing, configuring and running SymPy
 =========================================
 
 The easiest way to get SymPy is to type ``sudo pip install sympy``,
-which will download the latest version of the package fro PyPI and
+which will download the latest version of the package from PyPI and
 install it.  If you want to get the source and install it manually,
 visit `this <http://code.google.com/p/sympy>`_ page and download the
 latest tarball from *Featured Downloads* section, or use the following
