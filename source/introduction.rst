@@ -10,16 +10,12 @@ It aims to become a full-featured computer algebra system (CAS) while keeping th
 code as simple as possible in order to be comprehensible and easily extensible.
 SymPy is written entirely in Python and does not require any external libraries.
 
-This tutorial gives an overview and introduction to SymPy. We will start by
-showing how to install and configure SymPy. Then we will proceed to the basics
-of constructing and manipulating mathematical expressions in SymPy. We will
-also discuss the most common problems with SymPy and differences between it
-and mathematical systems, and how to deal with them. In the last part of this
-tutorial we will show how to solve simple, yet illustrative, mathematical
-problems with SymPy.
-
-This knowledge should be enough to start using SymPy in daily work and hacking
-SymPy's internals (though hacking core modules may require additional expertise).
+We will start the presentation of SymPy by showing how to install and setup it.
+Then we will proceed with the basics of constructing and manipulating mathematical
+expressions in SymPy. We will also discuss the most common problems with SymPy and
+differences between it and mathematical systems, and how to deal with them. At the
+end we will discuss SymPy's capabilities of printing expressions and show how to
+modify exisiting printers and implement new ones.
 
 Installing, configuring and running SymPy
 =========================================
