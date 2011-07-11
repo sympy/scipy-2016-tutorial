@@ -330,7 +330,7 @@ There is, however, a much simpler way to get the same result::
 Tasks
 -----
 
-#. Repeat this procedure but expand wrt `a` in the first step.
+#. Repeat this procedure but expand with respect to `a` in the first step.
 #. Use this procedure to derive a formula for `\cos(a + b)`.
 
 Not only symbolics: numerical computing
@@ -596,11 +596,9 @@ Tasks
 -----
 
 1. Compute first 55 digits of numerical approximation of `f(\pi)`.
-
 2. Read this `webcomic <http://www.qwantz.com/index.php?comic=1013>`_.
    What is the first digit of `e` to contain `999999`? What is the first
    digit of `\pi` to contain `789`?
-
 3. In addition to the above example, Gruntz gives another example of ill
    conditioned function in his thesis to show why symbolic computation of
    limits can be preferred to numerical computation:
@@ -914,7 +912,7 @@ Tasks
  * `f = z^5 + z + a` and `g = \frac{1}{z + b}`
 
 2. Can this or a similar procedure be used with other classes of expressions
-   than rational functions? If so, what kind of expressions can be used?
+   than rational functions? If so, what kind of expressions can be allowed?
 
 .. _groebner-bases:
 
@@ -1288,6 +1286,16 @@ computation, we use the complex expansion algorithm for this purpose
 form, to get this nice *visual* form with literal colors it is
 sufficient to substitute color variables for roots of unity.
 
+Tasks
+~~~~~
+
+1. Instead of computing |groebner| basis of `F`, simply solve it using
+   :func:`solve`. Can you enumerate color assignments this way? If so, why?
+2. Use this procedure to check if:
+
+   * the graph with 12 vertices and 23 edges is `2`--colorable.
+   * the graph with 12 vertices and 24 edges is `4`--colorable.
+
 Algebraic geometry
 ------------------
 
@@ -1425,17 +1433,9 @@ problems as well using |groebner| bases techniques. One should refer to Franz
 Winkler's papers for more advanced examples.
 
 Tasks
------
+~~~~~
 
-#. The |groebner| bases method is a generalization of Gaussian elimination
+1. The |groebner| bases method is a generalization of Gaussian elimination
    and Euclid's algorithms. Try to solve a linear system and compute GCD
    of polynomials using :func:`groebner`. Compare the results and speed of
    computations with :func:`solve` and :func:`gcd`.
-#. Check if the graph with 12 vertices and 23 edges is `2`--colorable.
-#. In the graph coloring example solve `F` instead of computing its |groebner|
-   basis. Can you enumerate color assignments this way? If so, why?
-#. Recompute |groebner| bases from this section using different
-   orderings of monomials (e.g. ``grlex`` instead of ``lex``) and check
-   if the resulting bases are still useful in the context they were
-   used. If they are, compare the time to compute the bases in the
-   different orderings.
