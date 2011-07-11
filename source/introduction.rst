@@ -20,9 +20,12 @@ modify exisiting printers and implement new ones.
 Installing, configuring and running SymPy
 =========================================
 
-The easiest way to get SymPy is to visit `this <http://code.google.com/p/sympy>`_
-page and download the latest tarball from *Featured Downloads* section,
-or use the following direct link::
+The easiest way to get SymPy is to type ``sudo pip install sympy``,
+which will download the latest version of the package fro PyPI and
+install it.  If you want to get the source and install it manually,
+visit `this <http://code.google.com/p/sympy>`_ page and download the
+latest tarball from *Featured Downloads* section, or use the following
+direct link::
 
     $ wget http://sympy.googlecode.com/files/sympy-0.7.0.tar.gz
     $ tar -xz -C sympy --strip-components 1 -f sympy-0.7.0.tar.gz
