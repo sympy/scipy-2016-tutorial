@@ -252,9 +252,9 @@ Basics of expressions in SymPy
 SymPy is all about construction and manipulation of *expressions*. By the
 term expression we mean mathematical expressions represented in the Python
 language using SymPy's classes and objects. Expressions may consist of
-symbols, numbers, function applications (and many other) and operators
-binding them together (addiction, subtraction, multiplication, division,
-exponentiation).
+symbols, numbers, functions and function applications (and many other) and
+operators binding them together (addiction, subtraction, multiplication,
+division, exponentiation).
 
 Suppose we want to construct an expression for `x + 1`::
 
@@ -277,9 +277,221 @@ of entering an expression for `x + 1`. We could also enter::
     x + 1
 
 In this case SymPy automatically rewrote the input expression and gave its
-canonical form, which is ``x + 1`` once again.
+canonical form, which is ``x + 1`` once again. This is a very important
+behaviour: all expressions are subject to automatic evaluation, during which
+SymPy tries to find a canonical form for expressions, but it doesn't apply
+"heroic" measures to achieve this goal. For example the following expression::
+
+    >>> (x**2 - 1)/(x - 1)
+     2
+    x  - 1
+    ──────
+    x - 1
+
+is left unsimplified. This is because automatic canonicalization would
+lose important information about this expression (`x \not= 1`). We can
+use :func:`cancel` remove common factors from the numerator and the
+denominator::
+
+    >>> cancel(_)
+    x + 1
+
+SymPy never applies any transformations automatically that could cause
+information loss or that would result in results that are valid only
+almost everywhere. Consider the following expression::
+
+    >>> log(x*y)
+    log(x⋅y)
+
+We know that `\log(x y)` is equivalent to `\log x + \log y` and there
+is :func:`expand` that is supposed be able to do this::
+
+    >>> expand(_)
+    log(x⋅y)
+
+Unfortunately nothing interesting happened. This is because the formula
+stated above is not universally valid, e.g.::
+
+    >>> log( * )
+
+    >>> log( ) + log( )
 
 .. TODO
+
+It is possible to ignore such cases and expand forcibly::
+
+    >>> expand(log(x*y), force=True)
+    log(x) + log(y)
+
+Many other expression manipulation function also support ``force`` option.
+Usually a better way is to assign additional knowledge with an expression::
+
+    >>> var('a,b', positive=True)
+    (a, b)
+
+    >>> log(a*b)
+    log(a⋅b)
+
+    >>> expand(_)
+    log(a) + log(b)
+
+In this case ``force=True`` wasn't necessary, because we gave sufficient
+information to :func:`expand` so that it was able to decide that the
+expansion rule is valid universally for this expression.
+
+Arithmetic operators
+--------------------
+
+Arithmetic operators ``+``, ``-``, ``*``, ``/``, ``**`` are mapped to
+combinations of three core SymPy's classes: :class:`Add`, :class:`Mul`
+and :class:`Pow`, and work the following way:
+
+* ``x + y`` uses :class:`Add` class and ``__add__`` method::
+
+    >>> x + y
+    x + y
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+
+    >>> x.__add__(y)
+    x + y
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+
+    >>> Add(x, y)
+    x + y
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+
+* ``x - y`` uses :class:`Add` and :class:`Mul` classes, and ``__sub__`` method::
+
+    >>> x - y
+    x - y
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+    >>> __.args
+    (-y, x)
+    >>> type(_[0])
+    <class 'sympy.core.mul.Mul'>
+
+    >>> x.__sub__(y)
+    x - y
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+    >>> __.args
+    (-y, x)
+    >>> type(_[0])
+    <class 'sympy.core.mul.Mul'>
+
+    >>> Add(x, -y))
+    x - y
+    >>> type(_)
+    <class 'sympy.core.add.Add'>
+    >>> __.args
+    (-y, x)
+    >>> type(_[0])
+    <class 'sympy.core.mul.Mul'>
+
+* ``x*y`` uses :class:`Mul` class and ``__mul__`` method::
+
+    >>> x*y
+    x*y
+    >>> type(_)
+    <class 'sympy.core.mul.Mul'>
+
+    >>> x.__mul__(y)
+    x*y
+    >>> type(_)
+    <class 'sympy.core.mul.Mul'>
+
+    >>> Mul(x, y)
+    x*y
+    >>> type(_)
+    <class 'sympy.core.mul.Mul'>
+
+* ``x/y`` uses :class:`Pow` and :class:`Mul` classes and ``__div__`` method::
+
+    >>> x/y
+    x
+    ─
+    y
+    >>> type(_)
+    <class 'sympy.core.mul.Mul'>
+    >>> __.args
+    ⎛   1⎞
+    ⎜x, ─⎟
+    ⎝   y⎠
+    >>> type(_[1])
+    <class 'sympy.core.pow.Pow'>
+
+    >>> x.__div__(y)
+    x
+    ─
+    y
+    >>> type(_)
+    <class 'sympy.core.mul.Mul'>
+    >>> __.args
+    ⎛   1⎞
+    ⎜x, ─⎟
+    ⎝   y⎠
+    >>> type(_[1])
+    <class 'sympy.core.pow.Pow'>
+
+    >>> Mul(x, 1/y)
+    x
+    ─
+    y
+    >>> type(_)
+    <class 'sympy.core.mul.Mul'>
+    >>> __.args
+    ⎛   1⎞
+    ⎜x, ─⎟
+    ⎝   y⎠
+    >>> type(_[1])
+    <class 'sympy.core.pow.Pow'>
+
+* ``x**y`` uses :class:`Pow` class and ``__pow__`` method::
+
+    >>> x**y
+     y
+    x
+    >>> type(_)
+    <class 'sympy.core.pow.Pow'>
+
+    >>> x.__pow__(y)
+     y
+    x
+    >>> type(_)
+    <class 'sympy.core.pow.Pow'>
+
+    >>> Pow(x, y)
+     y
+    x
+    >>> type(_)
+    <class 'sympy.core.pow.Pow'>
+
+When the first argument is not an instance SymPy's class, e.g. as in ``1 - x``,
+then Python falls back to ``__r*__`` methods, which are also implemented in all
+SymPy's classes::
+
+    >>> (1).__sub__(x)
+    NotImplemented
+
+    >>> x.__rsub__(1)
+    -x + 1
+    >>> 1 - x
+    -x + 1
+
+Building blocks of expressions
+------------------------------
+
+Expressions can consist of:
+
+* numbers: Integer(2), Rational(1, 2), Float("1e-1000")
+
+* symbols: Symbol('x'), Dummy('y')
+* functions: sin, cos, ta
+* other: Derivative, Integral, Poly, RootOf, RootSum
 
 The role of symbols
 -------------------
@@ -288,6 +500,43 @@ The first thing we had to do before we could start constructing expressions
 was to define symbols.
 
 .. TODO
+
+
+Obtaining parts of expressions
+------------------------------
+
+We already know how to construct expressions, but how to get parts of complex
+expressions? The most basic and low-level way of decomposing expressions is to
+use ``args`` property::
+
+    >>> x + y + 1
+    x + y + 1
+    >>> _.args
+    (1, y, x)
+    >>> map(type)
+    [<class 'sympy.core.numbers.One'>, <class 'sympy.core.symbol.Symbol'>, <class 'sympy.core.symbol.Symbol'>]
+
+``args`` always gives a ``tuple`` of instances of SymPy's classes. One should
+notice the weird order of elements, which doesn't match printing order. This
+happens for classes that in which order of arguments is insignificant. The
+most notable examples of such class are :class:`Add` and :class:`Mul` (for
+commutative part). In this particular case we can use :func:`as_ordered_terms`
+method to get ``args`` in printing order::
+
+    >>> (x + y + 1).as_ordered_terms()
+    [x, y, 1]
+
+When dealing which classes that have fixed order of arguments, printing
+order and ``args`` order match::
+
+    >>> Derivative(sin(x), x, x)
+       2
+      d
+    ─────(sin(x))
+    dx dx
+
+    >>> _.args
+    (sin(x), x, x)
 
 Immutability of expressions
 ---------------------------
@@ -317,6 +566,24 @@ but it is not a subclass of :class:`Basic`::
 
     >>> Matrix.mro()
     [<class 'sympy.matrices.matrices.Matrix'>, <type 'object'>]
+
+Be also aware of the fact that SymPy's symbols aren't Python's variables (they
+just can be assigned to Python's variables), so if you issue::
+
+    >>> u = Symbol('u')
+    >>> v = u
+    >>> v += 1
+    >>> v
+    u + 1
+
+then in-place operator ``+=`` constructed an new instance of :class:`Add` and
+left the original expression stored in variable ``u`` unchanged::
+
+    >>> u
+    u
+
+For efficiency reason, any in-place operator used on elements of a matrix,
+modifies the matrix in-place and doesn't waste memory for unnecessary copies.
 
 Comparing expressions with ``==``
 ---------------------------------
@@ -411,14 +678,139 @@ Here we have to tell :func:`roots` in which variable roots should be computed::
     ⎩                   ⎭
 
 Of course the choice of ``y`` is also a valid one, assuming that this is what
-you really want.
+you really want. This of course doesn't apply only to polynomials.
 
 Turning strings into expressions
 --------------------------------
 
-:func:`sympify`, ``S``
+Suppose we saved the following expression::
 
-.. TODO
+    >>> var('x,y')
+
+    >>> expr = x**2 + sin(y) + S(1)/2
+    >>> expr
+     2            1
+    x  + sin(y) + ─
+                  2
+
+by printing it with :func:`sstr` printer and storing to a file::
+
+    >>> sstr(expr)
+    x**2 + sin(y) + 1/2
+
+    >>> with open("expression.txt", "w") as f:
+    ...     f.write(_)
+    ...
+    ...
+
+We used this kind of printer because we wanted the file to be fairly readable.
+Now we want to restore the original expression. First we have to read the text
+form from the file::
+
+    >>> with open("expression.txt") as f:
+    ...     text_form = f.read()
+    ...
+    ...
+
+    >>> text_form
+    x**2 + sin(y) + 1/2
+    >>> type(_)
+    <type 'str'>
+
+We could try to try to use :func:`eval` on ``text_form`` but this doesn't give
+expected results::
+
+    >>> eval(text_form)
+     2
+    x  + sin(y) + 0.5
+
+This happens because ``1/2`` isn't understood by Python as rational number
+and is equivalent to a problem we had when entering expressions of this kind
+in interactive sessions.
+
+To overcome this problem we have to use :func:`sympify`, which implements
+:mod:`tokenize`--based parser that allows us to handle this issue::
+
+    >>> sympify(text_form)
+     2            1
+    x  + sin(y) + ─
+                  2
+    >>> _ == expr
+    True
+
+Let's now consider a more interesting problem. Suppose we define our own function::
+
+    >>> class my_func(Function):
+    ...     """Returns zero for integer values. """
+    ...
+    ...     @classmethod
+    ...     def eval(cls, arg):
+    ...         if arg.is_Number:
+    ...             return 2*arg
+    ...
+    ...
+
+This function gives twice the input argument if the argument is a number and
+doesn't do anything for all other classes of arguments::
+
+    >>> my_func(117)
+    234
+    >>> my_func(S(1)/2)
+    1
+
+    >>> my_func(x)
+    my_func(x)
+    >>> _.subs(x, 2.1)
+    4.20000000000000
+
+    >>> my_func(1) + 1
+    3
+
+Let's create an expression that contains :func:`my_func`::
+
+    >>> expr = my_func(x) + 1
+    >>> expr
+    my_func(x) + 1
+
+    >>> _.subs(x, 1)
+    3
+
+Now we will print it using :func:`sstr` printer and sympify the result::
+
+    >>> sympified = sympify(sstr(expr))
+    >>> sympified
+    my_func(x) + 1
+
+We can use :func:`subs` method to quickly verify the expression is correct::
+
+    >>> sympified.subs(x, 1)
+    my_func(1) + 1
+
+This is not exactly what we expected. This happens because::
+
+    >>> expr == sympified
+    False
+
+    >>> expr.args
+    (1, my_func(x))
+    >>> type(_[1]) is my_func
+    True
+
+    >>> sympified.args
+    (1, my_func(x))
+    >>> type(_[1]) is my_func
+    False
+
+:func:`sympify` evaluates the given string in the context of ``from sympy import *``
+and is not aware of user defined names. We can explicitly pass a mapping between
+names and values to it::
+
+    >>> sympify(sstr(expr), {'my_func': my_func})
+    my_func(x) + 1
+    >>> _.subs(x, 1)
+    3
+
+This time we got the desired result.
 
 Advanced manipulation of expressions
 ====================================
