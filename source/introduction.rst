@@ -312,11 +312,10 @@ is :func:`expand` that is supposed be able to do this::
 Unfortunately nothing interesting happened. This is because the formula
 stated above is not universally valid, e.g.::
 
-    >>> log( * )
-
-    >>> log( ) + log( )
-
-.. TODO
+    >>> log((-2)*(-3))
+    log(6)
+    >>> log(-2) + log(-3)
+    log(2) + log(3) + 2⋅ⅈ⋅π
 
 It is possible to ignore such cases and expand forcibly::
 
@@ -482,25 +481,273 @@ SymPy's classes::
     >>> 1 - x
     -x + 1
 
+Tasks
+~~~~~
+
+1. Construct an expression for `1 + x + x^2 + \ldots + x^10`. Can you construct
+   this expression in a different way? Write a function that could generate an
+   expression for `1 + x + x^2 + \ldots + x^n` for any integer `n >= 0`. Extend
+   this function to allow `n < 0`.
+
+2. Write a function that can compute nested powers, e.g. `x^x`, `x^x^x` and so
+   on. The function should take two parameters: an expression and a positive
+   integer `n` that specifies the depth.
+
 Building blocks of expressions
 ------------------------------
 
-Expressions can consist of:
+Expressions can consist of instances of subclasses of :class:`Expr` class. This
+includes:
 
-* numbers: Integer(2), Rational(1, 2), Float("1e-1000")
+* numbers::
 
-* symbols: Symbol('x'), Dummy('y')
-* functions: sin, cos, ta
-* other: Derivative, Integral, Poly, RootOf, RootSum
+    >>> Integer(2)
+    2
+    >>> Rational(1, 2)
+    1/2
+    >>> Float("1e-1000")
+    1.00000000000000e-1000
+
+* symbols::
+
+    >>> Symbol('x')
+    x
+    >>> Dummy('y')
+    y
+
+* numer symbols::
+
+    >>> pi
+    π
+    >>> E
+    ℯ
+    >>> Catalan
+    Catalan
+
+* functions::
+
+    >>> Function('f')
+    f
+    >>> sin
+    sin
+    >>> cos
+    cos
+
+* function applications::
+
+    >>> Function('f')(x)
+    f(x)
+    >>> sin(x)
+    sin(x)
+    >>> cos(x)
+    cos(x)
+
+* operators::
+
+    >>> Add(x, y, z)
+    x + y + z
+    >>> Mul(x, y, z)
+    x⋅y⋅z
+    >>> Pow(x, y)
+     y
+    x
+    >>> Or(x, y, z)
+    x ∨ y ∨ z
+    >>> And(x, y, z)
+    x ∧ y ∧ z
+
+* "big" operators::
+
+    >>> Derivative(1/x, x)
+    d ⎛1⎞
+    ──⎜─⎟
+    dx⎝x⎠
+    >>> Integral(1/x, x)
+    ⌠
+    ⎮ 1
+    ⎮ ─ dx
+    ⎮ x
+    ⌡
+    >>> Sum(1/k, (k, 1, n))
+      n
+     ___
+     \  `
+      \   1
+       )  ─
+      /   k
+     /__,
+    k = 1
+    >>> Product(1/k, (k, 1, n))
+    Product(1/k, k, 1, n)
+
+* other::
+
+    >>> Poly(x**2 + y, x)
+    Poly(x**2 + y, x, domain='ZZ[y]')
+    >>> RootOf(z**5 + z + 3, 2)
+          ⎛ 5           ⎞
+    RootOf⎝z  + z + 3, 2⎠
+
+This list isn't at all complete and we included only few classes that SymPy
+implements that can be used as expression building blocks. Besides those,
+SymPy has also very many classes that represent entities that can't be used
+for constructing expressions, but can be useful as containers of expressions
+or as utilities for expression building blocks.
+
+Tasks
+~~~~~
+
+1. Expressions implement :func:`doit` method. For most types expressions it
+   doesn't do anything useful, but in case of "big" operators, it executes
+   an action assigned to to a "big" operator (it differentiates, integrates,
+   etc.). Take advantage of :func:`doit` and write a function that generates
+   integral tables for a few polynomials, rational functions and elementary
+   functions.
 
 The role of symbols
 -------------------
 
-The first thing we had to do before we could start constructing expressions
-was to define symbols.
+Let's now talk about the most important part of expressions: symbols. Symbols
+are placeholders, abstract entities that can be filled in with whatever
+content we want (unless there are explicit restrictions given). For example
+in expression ``x + 1`` we have one symbol ``x``. Let's start fresh Python's
+interpreter and issue::
 
-.. TODO
+    >>> from sympy import *
+    >>> init_printing()
 
+We want to start work with our very advanced ``x + 1`` expression, so we
+may be tempted to simply write::
+
+    >>> x + 1
+    Traceback (most recent call last):
+    ...
+    NameError: name 'x' is not defined
+
+For users that come from other symbolic mathematics systems, this behavior
+may seem odd, because in those systems, symbols are constructed implicitly
+when necessary. In general purpose programming language like Python, we
+have to define all objects we want to use before we actually use them. So,
+the first thing we have to always do is to construct symbols and assign
+them to Python's variables::
+
+    >>> x = Symbol('x')
+
+    >>> x + 1
+    x + 1
+
+Now it worked. Symbols are independent of variables, so nothing prevents
+you from issuing::
+
+    >>> t = Symbol('a')
+
+Well, besides taste. It's also perfectly valid to create symbols containing
+special characters::
+
+    >>> Symbol('+')
+    +
+
+``_`` and ``^`` characters in symbols have special meaning and are used to
+denote subscripts and superscripts, respectively::
+
+    >>> Symbol('x_1')
+    x₁
+    >>> Symbol('x^1')
+    x¹
+
+If you need more symbols in your expression, you have to define and assign
+them all before using them. Later you can reuse existing symbols for other
+purposes. To make life easier, SymPy provides several methods for constructing
+symbols. The most low-level method is to use :class:`Symbol` class, as we
+have been doing it before. However, if you need more symbols, then your can
+use :func:`symbols`::
+
+    >>> symbols('x,y,z')
+    (x, y, z)
+
+It takes a textual specification of symbols and returns a ``tuple`` with
+constructed symbols. :func:`symbols` supports several syntaxes and can make
+your life much simpler, when it comes to constructing symbols. First of all,
+commas can be followed by or completely replaced by whitespace::
+
+    >>> symbols('x, y, z')
+    (x, y, z)
+    >>> symbols('x y z')
+    (x, y, z)
+
+If you need indexed symbols, then use range syntax::
+
+    >>> symbols("x:5")
+    (x₀, x₁, x₂, x₃, x₄)
+    >>> symbols('x5:10')
+    (x₅, x₆, x₇, x₈, x₉)
+
+You can also create consecutive symbols with lexicographic syntax::
+
+    >>> symbols('a:d')
+    (a, b, c, d)
+
+Note that range syntax simulates :func:`range`'s behavior, so it is exclusive,
+lexicographic syntax is inclusive, because it makes more sense in this case.
+
+When we issue::
+
+    >>> symbols('u,v')
+    (u, v)
+
+we may be tempted to use ``u`` and ``v``::
+
+    >>> u
+    Traceback (most recent call last):
+    ...
+    NameError: name 'u' is not defined
+
+    >>> v
+    Traceback (most recent call last):
+    ...
+    NameError: name 'v' is not defined
+
+We got :exc:`NameError`, because we constructed those symbols, but we didn't
+assign them to any variables. This solves the problem::
+
+    >>> u, v = symbols('u,v')
+    >>> u, v
+    u, v
+
+but is a little redundant, because we have to repeat the same information
+twice. To save time and typing effort, SymPy has another function :func:`var`
+for constructing symbols, which has exactly the same syntax and semantics
+as :func:`symbols`, but it also injects constructed symbols into the global
+namespace, making this function very useful in interactive sessions::
+
+    >>> del u, v
+    >>> var('u,v)
+    (u, v)
+
+    >>> u + v
+    u + v
+
+We don't allow to use :func:`var` in SymPy's library code. There is one
+more way of constructing symbols, which is related to indexed symbols.
+Sometimes we don't know in advance how many symbols will be required to
+solve a certain problem. For this case, SymPy has :func:`numbered_symbols`
+generator::
+
+    >>> X = numbered_symbols('x')
+
+    >>> X.next()
+    x₀
+
+    >>> [ X.next() for i in xrange(5) ]
+    [x₁, x₂, x₃, x₄, x₅]
+
+Tasks
+~~~~~
+
+1. Implement a function that would generate an expression for `x_1^1 +
+   x_2^2 + \ldots + x_n^n`. This function would take two arguments: base
+   name for indexed symbols and integer exponent `n >= 1`. What's the
+   best approach among the four presented above?
 
 Obtaining parts of expressions
 ------------------------------
@@ -537,6 +784,88 @@ order and ``args`` order match::
 
     >>> _.args
     (sin(x), x, x)
+
+Lets suppose that :class:`Cls` represents any SymPy's class and ``expr``
+is an instance of this class (``expr = Cls()``). Then the following holds::
+
+    Cls(*expr.args) == expr
+
+This is very useful invariant, because we can easily decompose, modify and
+rebuild expressions of various kinds in SymPy exactly the same way. This
+invariant is being used in all functions that manipulation expressions.
+
+Let's now use ``args`` to something a little more interesting than simple
+decomposition of expressions. Working with expressions, one may be interested
+in the depth of such expressions. By viewing expressions as n-ary trees, by
+depth we understand the longest path in a tree.
+
+Trees consist of branches and leafs. In SymPy, leafs of expressions are
+instances of subclasses of :class:`Atom` class (numbers, symbols, special
+constants)::
+
+    >>> Integer(10)
+    10
+    >>> isinstance(_, Atom)
+    True
+
+    >>> pi
+    π
+    >>> isinstance(_, Atom)
+    True
+
+Atoms can be also recognized by the fact that their ``args`` are empty.
+Note, however, that this is an implementation detail, and one should use
+either :func:`isinstance` built-in function or `is_Atom` property to
+recognize atoms properly. Everything else than an :class:`Atom` is a
+branch.
+
+Let's implement :func:`depth` function:
+
+.. literalinclude:: python/depth.py
+
+The implementation is straightforward. First we check if the input
+expression is an atom. In this case we return ``1`` and terminate
+recursion. Otherwise :func:`depth` recurses for every argument of
+``expr`` and returns ``1`` plus maximum of depths of all branches.
+
+Let's see :func:`depth` in action::
+
+    >>> depth(x)
+    1
+    >>> depth(x + 1)
+    2
+    >>> depth(x + sin(x))
+    3
+    >>> depth(x + sin(x) + sin(cos(x)))
+    4
+
+All those examples work as expected. However, not everything is perfect
+with this function. Let's look at the following phenomenon::
+
+    >>> depth(Integer(117))
+    1
+    >>> depth(117)
+    Traceback (most recent call last):
+    ...
+    AttributeError: 'int' object has no attribute 'args'
+
+``117`` is an instance of Python's built-in type :class:`int`, but this type
+is not a subclass of :class:`Atom`, so Python choses the other branch in
+:func:`depth` and this must fail. Before the last example we pass only
+instances of SymPy's expression to :func:`depth`. Even in the case of
+``x + 1`` where we added SymPy's symbol with Python's integer, because this
+was transformed in an instance of :class:`Add`. If we want :func:`depth` to
+work also for non-SymPy types, we have to sympify ``expr`` with :func:`sympify`
+before using it.
+
+Tasks
+~~~~~
+
+1. Change :func:`depth` so that it sympifies its input argument. Rewrite
+   :func:`depth` so that is calls :func:`sympify` only once.
+
+2. Add support for iterable containers to :func:`depth`. Containers should
+   be treated as branches and have depth defined the same way.
 
 Immutability of expressions
 ---------------------------
@@ -584,6 +913,15 @@ left the original expression stored in variable ``u`` unchanged::
 
 For efficiency reason, any in-place operator used on elements of a matrix,
 modifies the matrix in-place and doesn't waste memory for unnecessary copies.
+
+Tasks
+~~~~~
+
+1. This is the first time we used :func:`subs`. This is a very important method
+   and we will talk more about it later. However, we can also use :func:`subs`
+   to generate some cool looking expressions. Start with ``x**x`` expression
+   and substitute in it ``x**x`` for ``x``. What do you get? (make sure you
+   use pretty printer) Can you achieve the same effect without :func:`subs`?
 
 Comparing expressions with ``==``
 ---------------------------------
@@ -810,7 +1148,49 @@ names and values to it::
     >>> _.subs(x, 1)
     3
 
-This time we got the desired result.
+This time we got the desired result. This shows that we have to be careful when
+working with expressions encoded as strings. This happens to be even more tricky
+when we put assumptions on symbols. Do you remember the example in which we
+tried to expand `\log(a b)`? Lets do it once again::
+
+    >>> var('a,b', positive=True)
+    (a, b)
+    >>> log(a*b).expand()
+    log(a) + log(b)
+
+This worked as previously. However, let's now print `\log(a b)`, sympify the
+resulting string and expand the restored expression::
+
+    >>> sympify(sstr(log(a*b))).expand()
+    log(a⋅b)
+
+This didn't work, because :func:`sympify` doesn't know what ``a`` and ``b``
+are, so it assumed that those are symbols and it created them implicitly.
+This issue is similar to what we already experienced with :func:`my_func`.
+
+The most reliable approach to storing expression is to use :mod:`pickle`
+module. In the case of `\log(a b)` it works like this::
+
+    >>> import pickle
+    >>> pickled = pickle.dumps(log(a*b))
+    >>> expr = pickle.loads(pickled)
+    >>> expr.expand()
+    log(a) + log(b)
+
+Unfortunately, due to :mod:`pickle`'s limitations, this doesn't work for
+user defined functions like :func:`my_func`::
+
+    >>> pickle.dumps(my_func(x))
+    Traceback (most recent call last):
+    ...
+    PicklingError: Can't pickle my_func: it's not found as __main__.my_func
+
+Tasks
+~~~~~
+
+1. Construct a polynomial of degree, let's say, 1000. Use both techniques
+   to save and restore this expression. Compare speed of those approaches.
+   Verify that the result is correct.
 
 Advanced manipulation of expressions
 ====================================
