@@ -595,19 +595,19 @@ or as utilities for expression building blocks.
 Tasks
 ~~~~~
 
-1. Expressions implement a:func:`doit` method. For most types
-   expressions it doesn't do anything useful, but in the case of
-   unevaluated operators, it executes an action assigned to to a "big"
-   operator (it differentiates, integrates, etc.). Take advantage of
-   :func:`doit` and write a function that generates integral tables for
-   a few polynomials, rational functions and elementary functions.
+1. Expressions implement a :func:`doit` method. For most types expressions
+   it doesn't do anything useful, but in the case of unevaluated operators,
+   it executes an action assigned to to an unevaluated operator (it
+   differentiates, integrates, etc.). Take advantage of :func:`doit` and
+   write a function that generates integral tables for a few polynomials,
+   rational functions and elementary functions.
 
 Foreign types in SymPy
 ----------------------
 
 SymPy internally expects that all objects it works with are instances of
 subclasses of :class:`Basic` class. So why ``x + 1`` works without raising
-any exceptions? The number ``1`` is not a SymPy's type, but::
+an exception? The number ``1`` is not a SymPy's type, but::
 
     >>> type(1)
     <type 'int'>
@@ -615,7 +615,7 @@ any exceptions? The number ``1`` is not a SymPy's type, but::
 it's a built-in type. SymPy implements :func:`sympify` function for the task
 of converting foreign types to SymPy's types (yes, Python's built-in types
 are also considered as foreign). All SymPy's classes, methods and functions
-use :func:`sympify` and this is the reason you can safely write ``x + 1``
+use :func:`sympify` and this is the reason why you can safely write ``x + 1``
 instead of more verbose and less convenient ``x + Integer(1)``. Note that
 not all functions return instances of SymPy's types. Usually, if a function
 is supposed to return a property of an expression, it will use built-in
