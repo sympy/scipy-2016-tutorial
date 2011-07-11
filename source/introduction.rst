@@ -484,10 +484,10 @@ SymPy's classes::
 Tasks
 ~~~~~
 
-1. Construct an expression for `1 + x + x^2 + \ldots + x^10`. Can you construct
-   this expression in a different way? Write a function that could generate an
-   expression for `1 + x + x^2 + \ldots + x^n` for any integer `n >= 0`. Extend
-   this function to allow `n < 0`.
+1. Construct an expression for `1 + x + x^2 + \ldots + x^{10}`. Can you
+   construct this expression in a different way? Write a function that
+   could generate an expression for `1 + x + x^2 + \ldots + x^n` for any
+   integer `n >= 0`. Extend this function to allow `n < 0`.
 
 2. Write a function that can compute nested powers, e.g. `x^x`, `x^{x^x}` and
    so on. The function should take two parameters: an expression and a positive
@@ -556,7 +556,7 @@ includes:
     >>> And(x, y, z)
     x ∧ y ∧ z
 
-* "big" operators::
+* unevaluated operators::
 
     >>> Derivative(1/x, x)
     d ⎛1⎞
@@ -595,12 +595,12 @@ or as utilities for expression building blocks.
 Tasks
 ~~~~~
 
-1. Expressions implement :func:`doit` method. For most types expressions it
-   doesn't do anything useful, but in case of "big" operators, it executes
-   an action assigned to to a "big" operator (it differentiates, integrates,
-   etc.). Take advantage of :func:`doit` and write a function that generates
-   integral tables for a few polynomials, rational functions and elementary
-   functions.
+1. Expressions implement a:func:`doit` method. For most types
+   expressions it doesn't do anything useful, but in the case of
+   unevaluated operators, it executes an action assigned to to a "big"
+   operator (it differentiates, integrates, etc.). Take advantage of
+   :func:`doit` and write a function that generates integral tables for
+   a few polynomials, rational functions and elementary functions.
 
 Foreign types in SymPy
 ----------------------
@@ -667,7 +667,7 @@ but sometimes :func:`sympify` can be wrong::
     >>>> type(_)
     <class 'sympy.core.numbers.Float'>
 
-This happens because :func:`sympify` doesn't know about neither ``mpz`` nor
+This happens because :func:`sympify` doesn't know about either ``mpz`` or
 ``mpq``, and it first looks for ``__float__`` attribute, which is implemented
 by both those types. Getting float for exact value isn't very useful so let's
 extend :func:`sympify` and add support for ``mpz``. The way to achieve this
@@ -702,7 +702,7 @@ We could use ``lambda`` as well. Now we can sympify ``mpz``::
     >>> type(_)
     <class 'sympy.core.numbers.Integer'
 
-Similar thing should be done for ``mpq``. Let's try one more type::
+Similar things should be done for ``mpq``. Let's try one more type::
 
     >>> import numpy
 
