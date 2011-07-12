@@ -259,12 +259,12 @@ Solution 1
 
     >>> def build_expression_2(name, n):
     ...     X = symbols('%s1:%d' % (name, n+1))
-    ...     return Add([ x**i for x, i in zip(X, xrange(1, n+1)) ])
+    ...     return Add(*[ x**i for x, i in zip(X, xrange(1, n+1)) ])
     ...
 
     >>> def build_expression_3(name, n):
     ...     X = numbered_symbols(name, start=1)
-    ...     return Add([ x**i for x, i in zip(X, xrange(1, n+1)) ])
+    ...     return Add(*[ x**i for x, i in zip(X, xrange(1, n+1)) ])
     ...
 
     >>> build_expression_1('x', 5):
