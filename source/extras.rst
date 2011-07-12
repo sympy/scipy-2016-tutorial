@@ -1049,6 +1049,119 @@ Summing roots of polynomials
 Solution 1
 ~~~~~~~~~~
 
+* `f = z^5 + z + a` and `g = \frac{1}{z + 1}`::
+
+    >>> var('a')
+    a
+    >>> f = z**5 + z + a
+    >>> f
+         5
+    a + z  + z
+    >>> g = 1/(z + 1)
+    >>> g
+      1
+    ─────
+    z + 1
+    >>> R = var('r:5')
+    >>> G = together(sum( [ g.subs(z, r) for r in R] ))
+    >>> G
+    (r₀ + 1)⋅(r₁ + 1)⋅(r₂ + 1)⋅(r₃ + 1) + (r₀ + 1)⋅(r₁ + 1)⋅(r₂ + 1)⋅(r₄ + 1) + (r₀ + 1)⋅(r₁ + 1)⋅(r₃ + 1)⋅(r₄ + 1) + (r₀ + 1)⋅(r₂ + 1)⋅(r₃ + 1)⋅(r₄ + 1) + (r₁ + 1)⋅(r₂ + 1)⋅(r₃ + 1)⋅(r₄ + 1)
+    ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                            (r₀ + 1)⋅(r₁ + 1)⋅(r₂ + 1)⋅(r₃ + 1)⋅(r₄ + 1)
+    >>> V = viete(f, R, z)
+    >>> for lhs, rhs in V:
+    ...     pprint(Eq(lhs, rhs))
+    ...
+    r₀ + r₁ + r₂ + r₃ + r₄ = 0
+    r₀⋅r₁ + r₀⋅r₂ + r₀⋅r₃ + r₀⋅r₄ + r₁⋅r₂ + r₁⋅r₃ + r₁⋅r₄ + r₂⋅r₃ + r₂⋅r₄ + r₃⋅r₄ = 0
+    r₀⋅r₁⋅r₂ + r₀⋅r₁⋅r₃ + r₀⋅r₁⋅r₄ + r₀⋅r₂⋅r₃ + r₀⋅r₂⋅r₄ + r₀⋅r₃⋅r₄ + r₁⋅r₂⋅r₃ + r₁⋅r₂⋅r₄ + r₁⋅r₃⋅r₄ + r₂⋅r₃⋅r₄ = 0
+    r₀⋅r₁⋅r₂⋅r₃ + r₀⋅r₁⋅r₂⋅r₄ + r₀⋅r₁⋅r₃⋅r₄ + r₀⋅r₂⋅r₃⋅r₄ + r₁⋅r₂⋅r₃⋅r₄ = 1
+    r₀⋅r₁⋅r₂⋅r₃⋅r₄ = -a
+    >>> p = expand(numer(G))
+    >>> q = expand(denom(G))
+    >>> (P, Q), mapping = symmetrize((p, q), R, formal=True)
+    >>> P
+    (4⋅s₁ + 3⋅s₂ + 2⋅s₃ + s₄ + 5, 0)
+    >>> Q
+    (s₁ + s₂ + s₃ + s₄ + s₅ + 1, 0)
+    >>> for s, poly in mapping:
+    ...     pprint(Eq(s, poly))
+    ...
+    s₁ = r₀ + r₁ + r₂ + r₃ + r₄
+    s₂ = r₀⋅r₁ + r₀⋅r₂ + r₀⋅r₃ + r₀⋅r₄ + r₁⋅r₂ + r₁⋅r₃ + r₁⋅r₄ + r₂⋅r₃ + r₂⋅r₄ + r₃⋅r₄
+    s₃ = r₀⋅r₁⋅r₂ + r₀⋅r₁⋅r₃ + r₀⋅r₁⋅r₄ + r₀⋅r₂⋅r₃ + r₀⋅r₂⋅r₄ + r₀⋅r₃⋅r₄ + r₁⋅r₂⋅r₃ + r₁⋅r₂⋅r₄ + r₁⋅r₃⋅r₄ + r₂⋅r₃⋅r₄
+    s₄ = r₀⋅r₁⋅r₂⋅r₃ + r₀⋅r₁⋅r₂⋅r₄ + r₀⋅r₁⋅r₃⋅r₄ + r₀⋅r₂⋅r₃⋅r₄ + r₁⋅r₂⋅r₃⋅r₄
+    s₅ = r₀⋅r₁⋅r₂⋅r₃⋅r₄
+    >>> subslist = [ (s, c) for (s, _), (_, c) in zip(mapping, V) ]
+    >>> subslist
+    [(s₁, 0), (s₂, 0), (s₃, 0), (s₄, 1), (s₅, -a)]
+    >>> P[0].subs(subslist)/Q[0].subs(subslist)
+      6
+    ──────
+    -a + 2
+    >>> # Note, we must give a variable to RootSum, as f has more than one Symbol
+    >>> cancel(P[0].subs(subslist)/Q[0].subs(subslist) - RootSum(f, Lambda(z, g), z)) == 0
+    True
+
+
+* `f = z^5 + z + a` and `g = \frac{1}{z + b}`::
+
+    >>> var('a b')
+    (a, b)
+    >>> f = z**5 + z + a
+    >>> f
+         5
+    a + z  + z
+    >>> g = 1/(z + b)
+    >>> g
+      1
+    ─────
+    b + z
+    >>> R = var('r:5')
+    >>> G = together(sum( [ g.subs(z, r) for r in R] ))
+    >>> G
+    (b + r₀)⋅(b + r₁)⋅(b + r₂)⋅(b + r₃) + (b + r₀)⋅(b + r₁)⋅(b + r₂)⋅(b + r₄) + (b + r₀)⋅(b + r₁)⋅(b + r₃)⋅(b + r₄) + (b + r₀)⋅(b + r₂)⋅(b + r₃)⋅(b + r₄) + (b + r₁)⋅(b + r₂)⋅(b + r₃)⋅(b + r₄)
+    ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                            (b + r₀)⋅(b + r₁)⋅(b + r₂)⋅(b + r₃)⋅(b + r₄)
+    >>> V = viete(f, R, z)
+    >>> for lhs, rhs in V:
+    ...     pprint(Eq(lhs, rhs))
+    ...
+    r₀ + r₁ + r₂ + r₃ + r₄ = 0
+    r₀⋅r₁ + r₀⋅r₂ + r₀⋅r₃ + r₀⋅r₄ + r₁⋅r₂ + r₁⋅r₃ + r₁⋅r₄ + r₂⋅r₃ + r₂⋅r₄ + r₃⋅r₄ = 0
+    r₀⋅r₁⋅r₂ + r₀⋅r₁⋅r₃ + r₀⋅r₁⋅r₄ + r₀⋅r₂⋅r₃ + r₀⋅r₂⋅r₄ + r₀⋅r₃⋅r₄ + r₁⋅r₂⋅r₃ + r₁⋅r₂⋅r₄ + r₁⋅r₃⋅r₄ + r₂⋅r₃⋅r₄ = 0
+    r₀⋅r₁⋅r₂⋅r₃ + r₀⋅r₁⋅r₂⋅r₄ + r₀⋅r₁⋅r₃⋅r₄ + r₀⋅r₂⋅r₃⋅r₄ + r₁⋅r₂⋅r₃⋅r₄ = 1
+    r₀⋅r₁⋅r₂⋅r₃⋅r₄ = -a
+    >>> p = expand(numer(G))
+    >>> q = expand(denom(G))
+    >>> (P, Q), mapping = symmetrize((p, q), R, formal=True)
+    >>> P
+    ⎛   4      3         2                    ⎞
+    ⎝5⋅b  + 4⋅b ⋅s₁ + 3⋅b ⋅s₂ + 2⋅b⋅s₃ + s₄, 0⎠
+    >>> Q
+    ⎛ 5    4       3       2                  ⎞
+    ⎝b  + b ⋅s₁ + b ⋅s₂ + b ⋅s₃ + b⋅s₄ + s₅, 0⎠
+    >>> for s, poly in mapping:
+    ...     pprint(Eq(s, poly))
+    ...
+    s₁ = r₀ + r₁ + r₂ + r₃ + r₄
+    s₂ = r₀⋅r₁ + r₀⋅r₂ + r₀⋅r₃ + r₀⋅r₄ + r₁⋅r₂ + r₁⋅r₃ + r₁⋅r₄ + r₂⋅r₃ + r₂⋅r₄ + r₃⋅r₄
+    s₃ = r₀⋅r₁⋅r₂ + r₀⋅r₁⋅r₃ + r₀⋅r₁⋅r₄ + r₀⋅r₂⋅r₃ + r₀⋅r₂⋅r₄ + r₀⋅r₃⋅r₄ + r₁⋅r₂⋅r₃ + r₁⋅r₂⋅r₄ + r₁⋅r₃⋅r₄ + r₂⋅r₃⋅r₄
+    s₄ = r₀⋅r₁⋅r₂⋅r₃ + r₀⋅r₁⋅r₂⋅r₄ + r₀⋅r₁⋅r₃⋅r₄ + r₀⋅r₂⋅r₃⋅r₄ + r₁⋅r₂⋅r₃⋅r₄
+    s₅ = r₀⋅r₁⋅r₂⋅r₃⋅r₄
+    >>> subslist = [ (s, c) for (s, _), (_, c) in zip(mapping, V) ]
+    >>> subslist
+    [(s₁, 0), (s₂, 0), (s₃, 0), (s₄, 1), (s₅, -a)]
+    >>> P[0].subs(subslist)/Q[0].subs(subslist)
+         4
+      5⋅b  + 1
+    ───────────
+          5
+    -a + b  + b
+    >>> # Note, we must give a variable to RootSum, as f has more than one Symbol
+    >>> cancel(P[0].subs(subslist)/Q[0].subs(subslist) - RootSum(f, Lambda(z, g), z)) == 0
+    True
+
 .. _solution_rootsum_2:
 
 Solution 2
