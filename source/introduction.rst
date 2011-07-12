@@ -2068,6 +2068,8 @@ which takes a tuple consisting of function name and an expression, or a list
 of tuples of this kind, language in which it will generate code (``C`` for
 C programming language and ``F95`` for Fortran, and file name::
 
+    >>> from sympy.utilities.codegen import codegen
+
     >>> print codegen(("chebyshevt_20", chebyshevt(20, x)), "F95", "file")[0][1]
     !******************************************************************************
     !*                      Code generated with sympy 0.7.0                       *
