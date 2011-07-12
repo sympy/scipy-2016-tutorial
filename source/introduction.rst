@@ -487,9 +487,14 @@ Tasks
    construct this expression in a different way? Write a function that
    could generate an expression for `1 + x + x^2 + \ldots + x^n` for any
    integer `n >= 0`. Extend this function to allow `n < 0`.
+
+   (:ref:`solution <solution_arith_op_1>`)
+
 2. Write a function that can compute nested powers, e.g. `x^x`, `x^{x^x}` and
    so on. The function should take two parameters: an expression and a positive
    integer `n` that specifies the depth.
+
+   (:ref:`solution <solution_arith_op_2>`)
 
 Building blocks of expressions
 ------------------------------
@@ -599,6 +604,8 @@ Tasks
    differentiates, integrates, etc.). Take advantage of :func:`doit` and
    write a function that generates integral tables for a few polynomials,
    rational functions and elementary functions.
+
+   (:ref:`solution <solution_blocks_1>`)
 
 Foreign types in SymPy
 ----------------------
@@ -740,11 +747,16 @@ Tasks
 ~~~~~
 
 1. Add support for ``mpq`` to :func:`sympify`.
+
+   (:ref:`solution <solution_foreign_1>`)
+
 2. SymPy implements :class:`Tuple` class, which provides functionality of
    Python's built-in ``tuple``, but is a subclass of :class:`Basic`. Take
-   advantage of this and make :func:`sympify` work for 1D horizontal NumPy
-   arrays, for which it should return instances of :class:`Tuple`. Raise
+   advantage of this and make :func:`sympify` work for row NumPy arrays,
+   for which it should return instances of :class:`Tuple`. Raise
    :exc:`SympifyError` for other classes of arrays.
+
+   (:ref:`solution <solution_foreign_2>`)
 
 The role of symbols
 -------------------
@@ -891,6 +903,8 @@ Tasks
    name for indexed symbols and integer exponent `n >= 1`. What's the
    best approach among the four presented above?
 
+   (:ref:`solution <solution_symbols_1>`)
+
 Obtaining parts of expressions
 ------------------------------
 
@@ -1003,8 +1017,13 @@ Tasks
 
 1. Change :func:`depth` so that it sympifies its input argument. Rewrite
    :func:`depth` so that is calls :func:`sympify` only once.
+
+   (:ref:`solution <solution_parts_1>`)
+
 2. Add support for iterable containers to :func:`depth`. Containers should
    be treated as branches and have depth defined the same way.
+
+   (:ref:`solution <solution_parts_2>`)
 
 Immutability of expressions
 ---------------------------
@@ -1061,6 +1080,8 @@ Tasks
    to generate some cool looking expressions. Start with ``x**x`` expression
    and substitute in it ``x**x`` for ``x``. What do you get? (make sure you
    use pretty printer) Can you achieve the same effect without :func:`subs`?
+
+   (:ref:`solution <solution_immutability_1>`)
 
 Comparing expressions with ``==``
 ---------------------------------
@@ -1330,6 +1351,8 @@ Tasks
 1. Construct a polynomial of degree, let's say, 1000. Use both techniques
    to save and restore this expression. Compare speed of those approaches.
    Verify that the result is correct.
+
+   (:ref:`solution <solution_sympify_1>`)
 
 Gotchas and pitfalls
 ====================
@@ -1957,8 +1980,13 @@ Tasks
    anymore. Following implementation of :class:`PolyPrettyPrinter` and
    ``_print_Poly``, create another printer for :class:`Lambda`, or
    just extend the printer from this section.
+
+   (:ref:`solution <solution_custom_printers_1>`)
+
 2. Following the way how :class:`Poly` is printed by :func:`str` printer,
    make :class:`PolyPrettyPrinter` print domain including ``domain=`` string.
+
+   (:ref:`solution <solution_custom_printers_2>`)
 
 Implementing printers from scratch
 ----------------------------------
@@ -2021,10 +2049,15 @@ Tasks
 ~~~~~
 
 1. Make Mathematica printer correctly print `\pi`.
+
+   (:ref:`solution <solution_new_printers_1>`)
+
 2. Add support for :class:`Add` and :class:`Mul` to Mathematica printer. In
    the case of products, allow both explicit and implied multiplication, and
    allow users to choose desired behavior by parametrization of Mathematica
    printer.
+
+   (:ref:`solution <solution_new_printers_2>`)
 
 Code generation
 ---------------
