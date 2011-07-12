@@ -698,7 +698,7 @@ We could use ``lambda`` as well. Now we can sympify ``mpz``::
     >>> sympify(mpz(117))
     117
     >>> type(_)
-    <class 'sympy.core.numbers.Integer'
+    <class 'sympy.core.numbers.Integer'>
 
 Similar things should be done for ``mpq``. Let's try one more type::
 

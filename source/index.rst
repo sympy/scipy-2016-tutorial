@@ -21,3 +21,4 @@ be found in SymPy's `documentation <http://docs.sympy.org>`_ and on
 
     introduction.rst
     mathematics.rst
+    extras.rst
