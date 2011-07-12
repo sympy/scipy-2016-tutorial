@@ -386,6 +386,11 @@ or::
     >>> zeta(S(14)/17).evalf()
     -5.10244976858838
 
+Note that in SymPy, ``exp(1)`` is denoted by capital :exp:``E``
+
+    >>> E.evalf()
+    2.71828182845905
+
 Symbolic entities are ignored::
 
     >>> pi*x
