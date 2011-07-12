@@ -478,20 +478,20 @@ Solution 2
     ...         expr = poly.as_expr()
     ...         gens = list(poly.gens)
     ...         domain = poly.get_domain()
-    ...         #
+    ...
     ...         pform = self._print(expr)
     ...         pform = prettyForm(*stringPict.next(pform, ", "))
-    ...         #
+    ...
     ...         for gen in gens:
     ...             pform = prettyForm(*stringPict.next(pform, self._print(gen)))
     ...             pform = prettyForm(*stringPict.next(pform, ", "))
-    ...         #
+    ...
     ...         pform = prettyForm(*stringPict.next(pform, "domain="))
     ...         pform = prettyForm(*stringPict.next(pform, self._print(domain)))
-    ...         #
+    ...
     ...         pform = prettyForm(*pform.parens("(", ")", ifascii_nougly=True))
     ...         pform = prettyForm(*prettyForm('Poly').right(pform))
-    ...         #
+    ...
     ...         return pform
     ...
 
