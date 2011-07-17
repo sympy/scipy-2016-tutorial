@@ -38,9 +38,14 @@ extensions = [
     'plot_directive',
     'tikz_directive',
     'mathjax',
+    'sympylive',
 ]
 
 mathjax_path = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full'
+
+# URL to SymPy Live (default: http://live.sympy.org). Enable this and adjust
+# to your needs for debugging or if you host your own instance of SymPy Live.
+#sympylive_url = 'http://localhost:8080'
 
 plot_html_show_formats = True
 plot_include_source = True
