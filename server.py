@@ -36,8 +36,8 @@ def runserver(port=8000):
     setup_logging()
 
     application = tornado.web.Application([
-        (r"/(.*\.html)$", WebPageHandler),
-        (r"/_static/(.*)", tornado.web.StaticFileHandler, {"path": "build/html/_static"}),
+        (r"/$", tornado.web.RedirectHandler, {"url": "/index.html"}),
+        (r"/(.*)", tornado.web.StaticFileHandler, {"path": "build/html"}),
     ])
 
     def on_start():
