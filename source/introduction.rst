@@ -971,7 +971,7 @@ constants)::
 
 Atoms can be also recognized by the fact that their ``args`` are empty.
 Note, however, that this is an implementation detail, and one should use
-either :func:`isinstance` built-in function or `is_Atom` property to
+either :func:`isinstance` built-in function or ``is_Atom`` property to
 recognize atoms properly. Everything else than an :class:`Atom` is a
 branch.
 
