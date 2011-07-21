@@ -52,7 +52,6 @@ Suppose we would like to compute partial fraction decomposition of::
 This can be achieved with SymPy's built-in function :func:`apart`::
 
     >>> apart(f)
-    >>>
         1      1
     - ────── + ──
        2        2
