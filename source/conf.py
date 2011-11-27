@@ -246,5 +246,5 @@ man_pages = [
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
     'http://docs.python.org/': None,
-    'http://docs.sympy.org/0.7.0/': None,
+    'http://docs.sympy.org/0.7.1/': None,
 }

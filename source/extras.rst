@@ -440,6 +440,8 @@ Customizing built-in printers
 Solution 1
 ~~~~~~~~~~
 
+.. TODO: adjust this solution
+
 ::
 
     >>> from sympy import Symbol, Lambda, sin
@@ -559,7 +561,7 @@ Solution 1
 
     >>> print codegen(("chebyshevt_20", chebyshevt(20, x)), "C", "file")[0][1]
     /******************************************************************************
-     *                      Code generated with sympy 0.7.0                       *
+     *                      Code generated with sympy 0.7.1                       *
      *                                                                            *
      *              See http://www.sympy.org/ for more information.               *
      *                                                                            *
@@ -589,7 +591,7 @@ Solution 2
     >>> functions = [ ("chebyshevt_%d" % i, chebyshevt(i, x)) for i in xrange(0, 10) ]
     >>> print codegen(functions, "F95", "file")[0][1]
     !******************************************************************************
-    !*                      Code generated with sympy 0.7.0                       *
+    !*                      Code generated with sympy 0.7.1                       *
     !*                                                                            *
     !*              See http://www.sympy.org/ for more information.               *
     !*                                                                            *

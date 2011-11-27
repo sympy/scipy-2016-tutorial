@@ -15,7 +15,7 @@ Then we will proceed with the basics of constructing and manipulating mathematic
 expressions in SymPy. We will also discuss the most common problems with SymPy and
 differences between it and mathematical systems, and how to deal with them. At the
 end we will discuss SymPy's capabilities of printing expressions and show how to
-modify exisiting printers and implement new ones.
+modify existing printers and implement new ones.
 
 Installing, configuring and running SymPy
 =========================================
@@ -27,11 +27,12 @@ visit `this <http://code.google.com/p/sympy>`_ page and download the
 latest tarball from *Featured Downloads* section, or use the following
 direct link::
 
-    $ wget http://sympy.googlecode.com/files/sympy-0.7.0.tar.gz
-    $ tar -xz -C sympy --strip-components 1 -f sympy-0.7.0.tar.gz
+    $ wget http://sympy.googlecode.com/files/sympy-0.7.1.tar.gz
+    $ tar -xz -C sympy --strip-components 1 -f sympy-0.7.1.tar.gz
 
-You will also find an installer for Windows there. An alternative way is to
-clone SymPy's `git <http://www.git-scm.org>`_ repository from `GitHub <http://github.com/sympy/sympy>`_::
+You will also find an installer for Windows there. An alternative way is
+to clone SymPy's `git <http://www.git-scm.org>`_ repository from
+`GitHub <http://github.com/sympy/sympy>`_::
 
     $ git clone git://github.com/sympy/sympy.git
 
@@ -39,8 +40,8 @@ To use it, issue::
 
     $ cd sympy
     $ python
-    Python 2.6.6 (r266:84292, Dec 28 2010, 00:22:44)
-    [GCC 4.5.1] on linux2
+    Python 2.7.2+ (default, Oct  4 2011, 20:06:09)
+    [GCC 4.6.1] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
     >>> from sympy import *
     >>> var('x')
@@ -52,21 +53,25 @@ If you want SymPy to be available globally, you can install it using
 ``./setup.py install``. SymPy is available in major Linux distributions,
 so you can install it also using package manager of your distribution
 (for example in Ubuntu install ``python-sympy`` and in Gentoo install
-``dev-python/sympy``).
+``dev-python/sympy``). Note that distributions often contain very outdated
+versions of packages, so make sure you don't install some ancient version
+of SymPy on your system.
 
 By default, SymPy doesn't have any dependencies besides Python. The following
-version of Python are supported: 2.4, 2.5, 2.6, 2.7. Python 3.x is not supported
-yet, although there is undergoing work to make SymPy compatible with it. Also
-release 0.7.0 of SymPy is the last one that supports Python 2.4. SymPy should
-also work smoothly under Jython (IronPython and PyPy have problems with running
-SymPy).
+version of Python are supported: 2.5, 2.6, 2.7. Version 2.4 was originally
+supported but was dropped in SymPy 0.7.1. Support for Python 3.2+ will be
+added in version 0.7.2 (use git version for now). Version 0.7.2 will also
+support PyPy 1.6+. If you use Jython, IronPython or other interpreter, you
+may find out SymPy not working properly (Jython) or not importing at all
+(IronPython).
 
-Certain features of SymPy may require additional dependencies. For example
-:mod:`sympy.polys` module can take advantage of gmpy library for coefficient
-arithmetics. However, if gmpy is not available, this module falls back to
-pure Python implementation, so ``import sympy`` will work correctly without
-gmpy being installed. Other dependencies include IPython, Matplotlib, NumPy,
-SciPy, Cython, Pyglet, LaTeX distribution and more.
+Certain SymPy's modules may require additional dependencies to provide more
+features or improve speed of computations. For example, :mod:`sympy.polys`
+and :mod:`sympy.mpmath` can take advantage of gmpy library to radically
+improve speed of otherwise pure Python library. If gmpy is not available,
+those modules fall back automatically to pure Python implementation of
+arithmetic routines. Other optional dependencies are IPython, Matplotlib,
+NumPy, SciPy, Cython, Pyglet, LaTeX distribution and more.
 
 SymPy in Python/IPython
 -----------------------
@@ -75,8 +80,9 @@ Sessions in standard Python's interpreter and IPython look very similar,
 just the banner and prompt look differently, for example::
 
     $ python
-    Python 2.6.6 (r266:84292, Dec 28 2010, 00:22:44)
-    [GCC 4.5.1] on linux2
+    Python 2.7.2+ (default, Oct  4 2011, 20:06:09)
+    [GCC 4.6.1] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
     >>> import sympy
     >>> x = sympy.Symbol('x')
     >>> sympy.integrate(3*x**2)
@@ -101,7 +107,7 @@ Here is an example session with isympy:
 .. sourcecode:: ipython
 
     sympy$ bin/isympy
-    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy)
+    IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy)
 
     These commands were executed:
     >>> from __future__ import division
@@ -173,8 +179,10 @@ in an interactive session. For example, to test :mod:`sympy.core` issue::
 
     $ bin/test sympy/core
     ============================= test process starts ==============================
-    executable:   /usr/bin/python2.6  (2.6.6-final-0)
+    executable:   /usr/bin/python  (2.7.2-final-0)
+    architecture: 64-bit
     ground types: gmpy
+    random seed:  65858271
 
     sympy/core/tests/test_arit.py[48] ...f..........................................
     ..                                                                          [OK]
@@ -239,11 +247,15 @@ SymPy is available in the following web applications:
 
 * SymPy Live (http://live.sympy.org)
 * Sage Notebook (http://www.sagenb.org)
-* FEMhub Online Lab (http://lab.femhub.org)
 
 SymPy Live was developed specifically for SymPy. It is a simple web shell
 that looks similar to isympy under standard Python's interpreter. SymPy
 Live uses Google App Engine as computational backend.
+
+Upcoming IPython Notebook (IPython 0.12+) will have native support for SymPy.
+If you use IPython from git, you can test this feature now by starting IPython
+with ``ipython notebook`` and run ``%load_ext sympy`` in an input cell. This
+will setup pretty printing among other things.
 
 Basics of expressions in SymPy
 ==============================
@@ -1677,7 +1689,7 @@ and in interactive sessions:
 .. sourcecode:: ipython
 
     $ bin/isympy -q
-    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy)
+    IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
 
@@ -1690,7 +1702,7 @@ and in interactive sessions:
     Wall time: 0.25 s
 
     $ bin/isympy -q -C
-    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy, cache: off)
+    IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy, cache: off)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
 
@@ -1726,13 +1738,13 @@ rather than actual computing times):
 .. sourcecode:: ipython
 
     $ bin/isympy -q
-    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy)
+    IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy)
 
     In [1]: %timeit sin(2*pi);
     10000 loops, best of 3: 28.7 us per loop
 
     $ bin/isympy -q -C
-    IPython console for SymPy 0.7.0 (Python 2.6.6) (ground types: gmpy, cache: off)
+    IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy, cache: off)
 
     In [1]: %timeit sin(2*pi);
     100 loops, best of 3: 2.75 ms per loop
@@ -1976,10 +1988,9 @@ the default for all inputs.
 Tasks
 ~~~~~
 
-1. Due to regression in SymPy 0.7.0, :class:`Lambda` doesn't pretty print
-   anymore. Following implementation of :class:`PolyPrettyPrinter` and
-   ``_print_Poly``, create another printer for :class:`Lambda`, or
-   just extend the printer from this section.
+1. Following implementation of :class:`PolyPrettyPrinter`, add a printer
+   for :class:`Lambda` which would use *mapping* notation (arrow) instead
+   of lambda calculus-like notation.
 
    (:ref:`solution <solution_custom_printers_1>`)
 
@@ -1998,7 +2009,7 @@ example to allow printing SymPy's expression with other symbolic mathematics
 systems' syntax.
 
 Suppose we would like to translate SymPy's expressions to Mathematica syntax.
-As of version 0.7.0, SymPy doesn't implement such a printer, so we get do it
+As of version 0.7.1, SymPy doesn't implement such a printer, so we get do it
 right now. Adding a new printer basically boils down to adding a new class,
 let's say :class:`MathematicaPrinter`, which derives from :class:`Printer`
 and implements ``_print_*`` methods for all kinds of expressions we want to
@@ -2072,7 +2083,7 @@ C programming language and ``F95`` for Fortran, and file name::
 
     >>> print codegen(("chebyshevt_20", chebyshevt(20, x)), "F95", "file")[0][1]
     !******************************************************************************
-    !*                      Code generated with sympy 0.7.0                       *
+    !*                      Code generated with sympy 0.7.1                       *
     !*                                                                            *
     !*              See http://www.sympy.org/ for more information.               *
     !*                                                                            *
