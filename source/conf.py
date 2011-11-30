@@ -41,11 +41,15 @@ extensions = [
     'sympylive',
 ]
 
-mathjax_path = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full'
+MATHJAX_CDN = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"
 
-# URL to SymPy Live (default: http://live.sympy.org). Enable this and adjust
-# to your needs for debugging or if you host your own instance of SymPy Live.
-#sympylive_url = 'http://localhost:8080'
+# Change this if you have a local installation of MathJax.
+mathjax_path = os.environ.get("SYMPY_TUTORIAL_MATHJAX_PATH", MATHJAX_CDN)
+
+# URL to SymPy Live. Adjust this to your needs for debugging or when
+# hosting your own instance of SymPy Live (e.g. http://localhost:8080,
+# where localhost:8080 refers to an instance of dev_appserver.py).
+sympylive_url = os.environ.get("SYMPY_TUTORIAL_LIVE_URL", "http://live.sympy.org")
 
 plot_html_show_formats = True
 plot_include_source = True
