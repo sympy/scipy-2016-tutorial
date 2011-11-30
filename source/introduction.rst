@@ -25,21 +25,27 @@ which will download the latest version of the package from PyPI and
 install it.  If you want to get the source and install it manually,
 visit `this <http://code.google.com/p/sympy>`_ page and download the
 latest tarball from *Featured Downloads* section, or use the following
-direct link::
+direct link:
 
-    $ wget http://sympy.googlecode.com/files/sympy-0.7.1.tar.gz
-    $ tar -xz -C sympy --strip-components 1 -f sympy-0.7.1.tar.gz
+.. parsed-literal::
+
+    $ :input:`wget http://sympy.googlecode.com/files/sympy-0.7.1.tar.gz`
+    $ :input:`tar -xz -C sympy --strip-components 1 -f sympy-0.7.1.tar.gz`
 
 You will also find an installer for Windows there. An alternative way is
 to clone SymPy's `git <http://www.git-scm.org>`_ repository from
-`GitHub <http://github.com/sympy/sympy>`_::
+`GitHub <http://github.com/sympy/sympy>`_:
 
-    $ git clone git://github.com/sympy/sympy.git
+.. parsed-literal::
 
-To use it, issue::
+    $ :input:`git clone git://github.com/sympy/sympy.git`
 
-    $ cd sympy
-    $ python
+To use it, issue:
+
+.. parsed-literal::
+
+    $ :input:`cd sympy`
+    $ :input:`python`
     Python 2.7.2+ (default, Oct  4 2011, 20:06:09)
     [GCC 4.6.1] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
@@ -77,9 +83,11 @@ SymPy in Python/IPython
 -----------------------
 
 Sessions in standard Python's interpreter and IPython look very similar,
-just the banner and prompt look differently, for example::
+just the banner and prompt look differently, for example:
 
-    $ python
+.. parsed-literal::
+
+    $ :input:`python`
     Python 2.7.2+ (default, Oct  4 2011, 20:06:09)
     [GCC 4.6.1] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
@@ -104,9 +112,9 @@ used symbols into the global namespace, and initializes the pretty printer.
 
 Here is an example session with isympy:
 
-.. sourcecode:: ipython
+.. parsed-literal::
 
-    sympy$ bin/isympy
+    $ :input:`bin/isympy`
     IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy)
 
     These commands were executed:
@@ -126,7 +134,6 @@ Here is an example session with isympy:
     In [2]: %quit
     Do you really want to exit ([y]/n)? y
     Exiting ...
-    sympy $
 
 Command-line arguments
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -175,9 +182,11 @@ Running the test suite
 
 To verify that SymPy works properly on your computer, you can run SymPy's
 test suite. This is done either with ``bin/test`` command or :func:`test`
-in an interactive session. For example, to test :mod:`sympy.core` issue::
+in an interactive session. For example, to test :mod:`sympy.core` issue:
 
-    $ bin/test sympy/core
+.. parsed-literal::
+
+    $ :input:`bin/test sympy/core`
     ============================= test process starts ==============================
     executable:   /usr/bin/python  (2.7.2-final-0)
     architecture: 64-bit
@@ -1661,9 +1670,11 @@ Expression caching and its consequences
 ---------------------------------------
 
 To improve speed of computations, SymPy by default caches all intermediate
-subexpressions. The difference is easily visible when running tests::
+subexpressions. The difference is easily visible when running tests:
 
-    $ SYMPY_USE_CACHE=yes bin/test sympy/integrals/tests/test_risch.py
+.. parsed-literal::
+
+    $ :input:`SYMPY_USE_CACHE=yes bin/test sympy/integrals/tests/test_risch.py`
     ============================= test process starts ==============================
     executable:   /usr/bin/python2.6  (2.6.6-final-0)
     architecture: 64-bit
@@ -1673,7 +1684,7 @@ subexpressions. The difference is easily visible when running tests::
 
     ======= tests finished: 16 passed, 4 expected to fail, in 28.18 seconds ========
 
-    $ SYMPY_USE_CACHE=no bin/test sympy/integrals/tests/test_risch.py
+    $ :input:`SYMPY_USE_CACHE=no bin/test sympy/integrals/tests/test_risch.py`
     ============================= test process starts ==============================
     executable:   /usr/bin/python2.6  (2.6.6-final-0)
     architecture: 64-bit
@@ -1686,9 +1697,9 @@ subexpressions. The difference is easily visible when running tests::
 (note the time needed to run the tests at the end of the each test run)
 and in interactive sessions:
 
-.. sourcecode:: ipython
+.. parsed-literal::
 
-    $ bin/isympy -q
+    $ :input:`bin/isympy -q`
     IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
@@ -1701,7 +1712,7 @@ and in interactive sessions:
     CPU times: user 0.24 s, sys: 0.00 s, total: 0.24 s
     Wall time: 0.25 s
 
-    $ bin/isympy -q -C
+    $ :input:`bin/isympy -q -C`
     IPython console for SymPy 0.7.1 (Python 2.7.1-64-bit) (ground types: gmpy, cache: off)
 
     In [1]: f = (x-tan(x)) / tan(x)**2 + tan(x)
