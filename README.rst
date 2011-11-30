@@ -144,3 +144,26 @@ and PyCon.PL).
 *Aaron Meurer* is SymPy's core developer since 2009 and the current leader of
 the project. He was twice Google Summer of Code student for SymPy and currently
 is pursuing a masters in mathematics at New Mexico Tech.
+
+Local usage
+-----------
+
+This tutorial can be used with SymPy Live and MathJax without internet connection.
+To make this work, install IPython 0.11+ and Google AppEngine for Python. Then use
+IPython to install MathJax::
+
+    >>> from IPython.external import mathjax
+    >>> mathjax.install_mathjax()
+
+and run the following lines in your shell (or add to ``.bashrc``)::
+
+    export SYMPY_TUTORIAL_MATHJAX_PATH="file://<full-path-to-ipython>/IPython/frontend/html/notebook/static/mathjax/MathJax.js?config=TeX-AMS_HTML-full"
+    export SYMPY_TUTORIAL_LIVE_URL="http://localhost:8080"
+
+(replace ``<full-path-to-ipython>`` with appropriate absolute path. You can also
+download and install MathJax manually. Next start ``dev_appserver.py`` from Google
+AppEngine distribution in SymPy Live's repository::
+
+    $ dev_appserver.py <full-path-to-sympy-live>
+
+Now start ``./server`` in this repository and open a web browser at ``localhost:8000``.
