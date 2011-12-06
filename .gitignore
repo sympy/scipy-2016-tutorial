@@ -1,9 +1,8 @@
 *.sw[po]
+*.py[co]
 *~
 
 build/
-
-extensions/*.py[co]
 
 source/img/tikz/*.png
 source/img/tikz/*.pdf
