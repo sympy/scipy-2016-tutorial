@@ -63,6 +63,33 @@ those modules fall back automatically to pure Python implementation of
 arithmetic routines. Other optional dependencies are IPython, Matplotlib,
 NumPy, SciPy, Cython, Pyglet, LaTeX distribution and more.
 
+Translating SymPy to Python 3
+-----------------------------
+
+Support for Python 3.2+ was added to master branch of SymPy's repository
+and will be a part of 0.7.2 release. If you use SymPy from git, then you
+can switch to Python 3 now. However, SymPy's source is not compatible with
+Python 3 by default and you have to translate it:
+
+.. parsed-literal::
+
+    $ :input:`cd sympy`
+    $ :input:`python3.2 bin/use2to3`
+    $ :input:`cd py3k-sympy`
+    $ :input:`python3.2`
+    Python 3.2.2 (default, Sep  5 2011, 21:17:14)
+    [GCC 4.6.1] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import sympy
+    >>> sympy.__version__
+    '0.7.1-git'
+    >>>
+
+Make sure you run ``use2to3`` under Python 3.2, because Python 3.0 and 3.1
+will fail translating SymPy. Although you can't translate SymPy using Python
+3.1 and this version isn't officially supported, SymPy works very well in it,
+just if you run ``python3.1 bin/test``, you will get a few harmless failures
+
 SymPy in Python/IPython
 -----------------------
 
