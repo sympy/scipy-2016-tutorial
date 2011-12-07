@@ -3,6 +3,7 @@
 *~
 
 build/
+mathjax/
 
 source/img/tikz/*.png
 source/img/tikz/*.pdf

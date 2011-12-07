@@ -37,6 +37,7 @@ def runserver(port=8000):
 
     application = tornado.web.Application([
         (r"/$", tornado.web.RedirectHandler, {"url": "/index.html"}),
+        (r"/mathjax/(.*)", tornado.web.StaticFileHandler, {"path": "mathjax"}),
         (r"/(.*)", tornado.web.StaticFileHandler, {"path": "build/html"}),
     ])
 
