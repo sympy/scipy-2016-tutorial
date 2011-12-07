@@ -21,6 +21,7 @@ modify existing printers and implement new ones.
     :maxdepth: 1
 
     installing.rst
+    history.rst
     basics.rst
     gotchas.rst
     printers.rst
