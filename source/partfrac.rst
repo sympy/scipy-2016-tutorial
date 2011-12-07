@@ -215,8 +215,8 @@ Tasks
   * `\frac{3 x + 5}{(u x + v)^2}`
   * `\frac{(3 x + 5)^2}{(2 x + 1)^2}`
 
-   (:ref:`solution <solution_partfrac_1>`)
+  (:ref:`solution <solution_partfrac_1>`)
 
 2. Can you use :func:`Expr.coeff` in place of :func:`Poly.nth`?
 
-   (:ref:`solution <solution_partfrac_2>`)
+  (:ref:`solution <solution_partfrac_2>`)
