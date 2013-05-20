@@ -39,3 +39,5 @@
 - How to install and set things up (like printers and stuff). A lot of this
   can be borrowed from the 2011 tutorial. Some stuff, like working with
   IPython, will need to be updated.
+
+- Should we talk about plotting?
