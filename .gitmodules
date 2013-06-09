@@ -1,3 +1,4 @@
 [submodule "ipython_doctester"]
 	path = ipython_doctester
-	url = https://github.com/catherinedevlin/ipython_doctester.git
+	url = https://github.com/asmeurer/ipython_doctester.git
+	branch = fixes
