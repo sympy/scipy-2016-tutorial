@@ -1,4 +1,4 @@
-*Some notes for the tutorial. Feel free to edit it how ever you want.*
+*Some notes for the tutorial. Feel free to edit it however you want.*
 
 ## General notes
 
