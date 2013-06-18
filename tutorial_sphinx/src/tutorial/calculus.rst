@@ -41,22 +41,21 @@ derivatives.  For example, each of the following will compute
 
     >>> expr = exp(x*y*z)
     >>> diff(expr, x, y, y, z, z, z, z)
-     3  2 ⎛ 3  3  3       2  2  2                ⎞  x⋅y⋅z
-    x ⋅y ⋅⎝x ⋅y ⋅z  + 14⋅x ⋅y ⋅z  + 52⋅x⋅y⋅z + 48⎠⋅ℯ
+     6  5  3  x⋅y⋅z       5  4  2  x⋅y⋅z       4  3    x⋅y⋅z       3  2  x⋅y⋅z
+    x ⋅y ⋅z ⋅ℯ      + 14⋅x ⋅y ⋅z ⋅ℯ      + 52⋅x ⋅y ⋅z⋅ℯ      + 48⋅x ⋅y ⋅ℯ
     >>> diff(expr, x, y, 2, z, 4)
-     3  2 ⎛ 3  3  3       2  2  2                ⎞  x⋅y⋅z
-    x ⋅y ⋅⎝x ⋅y ⋅z  + 14⋅x ⋅y ⋅z  + 52⋅x⋅y⋅z + 48⎠⋅ℯ
+     6  5  3  x⋅y⋅z       5  4  2  x⋅y⋅z       4  3    x⋅y⋅z       3  2  x⋅y⋅z
+    x ⋅y ⋅z ⋅ℯ      + 14⋅x ⋅y ⋅z ⋅ℯ      + 52⋅x ⋅y ⋅z⋅ℯ      + 48⋅x ⋅y ⋅ℯ
     >>> diff(expr, x, y, y, z, 4)
-     3  2 ⎛ 3  3  3       2  2  2                ⎞  x⋅y⋅z
-    x ⋅y ⋅⎝x ⋅y ⋅z  + 14⋅x ⋅y ⋅z  + 52⋅x⋅y⋅z + 48⎠⋅ℯ
+     6  5  3  x⋅y⋅z       5  4  2  x⋅y⋅z       4  3    x⋅y⋅z       3  2  x⋅y⋅z
+    x ⋅y ⋅z ⋅ℯ      + 14⋅x ⋅y ⋅z ⋅ℯ      + 52⋅x ⋅y ⋅z⋅ℯ      + 48⋅x ⋅y ⋅ℯ
 
 ``diff`` can also be called as a method.  The two ways of calling ``diff`` are
 exactly the same, and are provided only for convenience.
 
     >>> expr.diff(x, y, y, z, 4)
-     3  2 ⎛ 3  3  3       2  2  2                ⎞  x⋅y⋅z
-    x ⋅y ⋅⎝x ⋅y ⋅z  + 14⋅x ⋅y ⋅z  + 52⋅x⋅y⋅z + 48⎠⋅ℯ
-
+     6  5  3  x⋅y⋅z       5  4  2  x⋅y⋅z       4  3    x⋅y⋅z       3  2  x⋅y⋅z
+    x ⋅y ⋅z ⋅ℯ      + 14⋅x ⋅y ⋅z ⋅ℯ      + 52⋅x ⋅y ⋅z⋅ℯ      + 48⋅x ⋅y ⋅ℯ
 
 To create an unevaluated derivative, use the ``Derivative`` class.  It has the
 same syntax as ``diff``.
@@ -64,16 +63,16 @@ same syntax as ``diff``.
     >>> deriv = Derivative(expr, x, y, y, z, 4)
     >>> deriv
          7
-        ∂     ⎛ x⋅y⋅z⎞
+        d     ⎛ x⋅y⋅z⎞
     ──────────⎝ℯ     ⎠
       4   2
-    ∂z  ∂y  ∂x
+    dz  dy  dx
 
 To evaluate an unevaluated derivative, use the ``doit`` method.
 
     >>> deriv.doit()
-     3  2 ⎛ 3  3  3       2  2  2                ⎞  x⋅y⋅z
-    x ⋅y ⋅⎝x ⋅y ⋅z  + 14⋅x ⋅y ⋅z  + 52⋅x⋅y⋅z + 48⎠⋅ℯ
+     6  5  3  x⋅y⋅z       5  4  2  x⋅y⋅z       4  3    x⋅y⋅z       3  2  x⋅y⋅z
+    x ⋅y ⋅z ⋅ℯ      + 14⋅x ⋅y ⋅z ⋅ℯ      + 52⋅x ⋅y ⋅z⋅ℯ      + 48⋅x ⋅y ⋅ℯ
 
 These unevaluated objects are useful for delaying the evaluation of the
 derivative, or for printing purposes.  They are also used when SymPy does not
@@ -128,13 +127,14 @@ do
 If ``integrate`` is unable to compute an integral, it returns an unevaluated
 ``Integral`` object.
 
-    >>> expr = integrate(x**x, x)
+    >>> expr = integrate(exp(exp(x)), x)
     >>> print expr
-    Integral(x**x, x)
+    Integral(exp(exp(x)), x)
     >>> expr
     ⌠
-    ⎮  x
-    ⎮ x  dx
+    ⎮  ⎛ x⎞
+    ⎮  ⎝ℯ ⎠
+    ⎮ ℯ     dx
     ⌡
 
 As with ``Derivative``, you can create an unevaluated integral using
@@ -169,11 +169,11 @@ definite integrals.  Here is a sampling of some of the power of ``integrate``.
     ⎮        (x - 1) ⋅(x + 1) ⋅⎝ℯ  + 1⎠
     ⌡
     >>> integ.doit()
-                     x
-       ⎛ x    ⎞     ℯ
-    log⎝ℯ  + 1⎠ + ──────
-                   2
-                  x  - 1
+     2    ⎛ x    ⎞      x        ⎛ x    ⎞
+    x ⋅log⎝ℯ  + 1⎠     ℯ      log⎝ℯ  + 1⎠
+    ────────────── + ────── - ───────────
+         2            2           2
+        x  - 1       x  - 1      x  - 1
 
     >>> integ = Integral(sin(x**2), x)
     >>> integ

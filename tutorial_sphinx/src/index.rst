@@ -2,14 +2,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to SymPy's documentation!
-=================================
+SymPy Tutorial for SciPy 2013
+=============================
 
 `SymPy <http://sympy.org>`_ is a Python library for symbolic mathematics.
 If you are new to SymPy, start with the Tutorial.
 
-This is the central page for all of SymPy's documentation.
-
+This is the tutorial that Aaron Meurer and Ondřej Čertík will be giving at
+SciPy 2013.  This is just a stripped down version of our `docs
+<http://docs.sympy.org>`_, with the new tutorial that Aaron Meurer has
+written, adapted for SymPy 0.7.2.
 
 Contents:
 

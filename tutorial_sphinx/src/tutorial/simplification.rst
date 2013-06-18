@@ -250,20 +250,6 @@ To simplify expressions using trigonometric identities, use ``trigsimp``.
 
     >>> trigsimp(sin(x)**2 + cos(x)**2)
     1
-    >>> trigsimp(sin(x)**4 - 2*cos(x)**2*sin(x)**2 + cos(x)**4)
-    cos(4⋅x)   1
-    ──────── + ─
-       2       2
-    >>> trigsimp(sin(x)*tan(x)/sec(x))
-       2
-    sin (x)
-
-``trigsimp`` also works with hyperbolic trig functions.
-
-    >>> trigsimp(cosh(x)**2 + sinh(x)**2)
-    cosh(2⋅x)
-    >>> trigsimp(sinh(x)/tanh(x))
-    cosh(x)
 
 Much like ``simplify``, ``trigsimp`` applies various trigonometric identities to
 the input expression, and then uses a heuristic to return the "best" one.
@@ -276,18 +262,9 @@ identities, use ``expand_trig``.
 
     >>> expand_trig(sin(x + y))
     sin(x)⋅cos(y) + sin(y)⋅cos(x)
-    >>> expand_trig(tan(2*x))
-       2⋅tan(x)
-    ─────────────
+    >>> expand_trig(cos(2*x))
          2
-    - tan (x) + 1
-
-Because ``expand_trig`` tends to make trigonometric expressions larger, and
-``trigsimp`` tends to make them smaller, these identities can be applied in
-reverse using ``trigsimp``
-
-    >>> trigsimp(sin(x)*cos(y) + sin(y)*cos(x))
-    sin(x + y)
+    2⋅cos (x) - 1
 
 .. TODO: It would be much better to teach individual trig rewriting functions
    here, but they don't exist yet.  See
@@ -497,6 +474,7 @@ is real.
 
     >>> x, y = symbols('x y', positive=True)
     >>> n = symbols('n', real=True)
+    >>> z, t = symbols('z t')
 
 As before, ``z`` and ``t`` will be Symbols with no additional assumptions.
 
@@ -548,8 +526,6 @@ To apply identities 1 and 2 from right to left, use ``logcombine``.
     >>> logcombine(n*log(x))
        ⎛ n⎞
     log⎝x ⎠
-    >>> logcombine(n*log(z))
-    n⋅log(z)
 
 ``logcombine`` also has a ``force`` option that can be used to ignore
 assumptions.

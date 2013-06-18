@@ -204,14 +204,6 @@ general---but for most common expressions, it works quite well.
     >>> simplify(a - c)
     4*x
 
-There is also a method called ``equals`` that tests if two expressions are
-equal by evaluating them numerically at random points.
-
-    >>> a = cos(x)**2 - sin(x)**2
-    >>> b = cos(2*x)
-    >>> a.equals(b)
-    True
-
 Two Final Notes: ``^`` and ``/``
 ================================
 
