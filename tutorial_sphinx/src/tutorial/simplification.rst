@@ -565,7 +565,7 @@ SymPy implements dozens of special functions, ranging from functions in
 combinatorics to mathematical physics.
 
 An extensive list of the special functions included with SymPy and their
-documentation is at the :ref:`Functions Module <functions-contents>` page.
+documentation is at the functions module page in the SymPy documentation.
 
 For the purposes of this tutorial, let's introduce a few special functions in
 SymPy.

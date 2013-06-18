@@ -229,7 +229,7 @@ Lastly, it is recommended that you not use :obj:`I`, :obj:`E`, :obj:`S`,
 are used for the imaginary unit (:math:`i`), the base of the natural
 logarithm (:math:`e`), the :func:`sympify` function (see :ref:`Symbolic
 Expressions<symbolic-expressions>` below), numeric evaluation (:func:`N`
-is equivalent to :ref:`evalf()<evalf-label>` ), the class registry (for
+is equivalent to ``evalf()`` ), the class registry (for
 things like :func:`C.cos`, to prevent cyclic imports in some code),
 the `big O <http://en.wikipedia.org/wiki/Big_O_notation>`_ order symbol
 (as in :math:`O(n\log{n})`), and the assumptions object that holds a list of
@@ -394,7 +394,7 @@ The values can be given as strings, integers, floats, or Rationals.
     100.000000000000
     >>> Float('100', 5)
     100.00
-    
+
     - to have the precision match the number of digits, the null string
       can be used for the precision
 
@@ -423,7 +423,7 @@ to evaluate them to 20 digits, a difference will become apparent:
     0.25000000000000000000
     >>> r.n(20)
     0.14285278320312500000
-    
+
     It is important to realize that although a Float is being displayed in
     decimal at aritrary precision, it is actually stored in binary. Once the
     Float is created, its binary information is set at the given precision.

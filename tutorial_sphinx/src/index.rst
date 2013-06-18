@@ -19,11 +19,6 @@ Contents:
    install.rst
    tutorial/index.rst
    gotchas.rst
-   guide.rst
-   modules/index.rst
-   python-comparisons.rst
-   wiki.rst
-   outreach.rst
    aboutus.rst
 
 If something cannot be easily accessed from this page, it's a bug (`please
