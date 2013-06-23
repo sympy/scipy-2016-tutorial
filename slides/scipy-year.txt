@@ -1,0 +1,97 @@
+   612	Pauli Virtanen
+   277	Ralf Gommers
+    89	Warren Weckesser
+    79	endolith
+    64	alex
+    56	Tim Leslie
+    52	Denis Laxalde
+    41	Blake Griffith
+    31	Jake Vanderplas
+    28	Daniel Smith
+    26	Jacob Stevenson
+    26	Eric Moore
+    24	Patrick Varilly
+    13	pbrod
+    13	François Boulogne
+    12	Zhenya
+    12	Julian Taylor
+    12	Anthony Scopatz
+    11	Matthew Brett
+    10	jtaylor
+    10	Nicky van Foreest
+     9	Niklas K
+     8	Daniel B. Smith
+     7	Fabian Pedregosa
+     7	Lars Buitinck
+     6	Travis E. Oliphant
+     6	Sturla Molden
+     6	cgohlke
+     5	Tim Cera
+     5	David Cournapeau
+     5	Alex Reinhart
+     5	Thouis (Ray) Jones
+     4	Leo Singer
+     4	Illia Polosukhin
+     4	Skipper Seabold
+     4	Ciro Duran Santillli
+     4	Josef Perktold
+     4	Max Bolingbroke
+     3	sturlamolden
+     3	SytseK
+     3	Nathan Crock
+     3	Joseph Jon Booker
+     3	Gilles Rochefort
+     3	Stefan van der Walt
+     3	Charles Harris
+     3	Robert David Grant
+     2	Fazlul Shahriar
+     2	Andreas Hilboll
+     2	Anton Akhmerov
+     2	Bradley M. Froehle
+     2	Gert-Ludwig Ingold
+     2	John Travers
+     2	Jorge Cañardo Alastuey
+     2	Keith Clawson
+     2	Scott Sinclair
+     2	Sebastian Berg
+     2	Takuya OSHIMA
+     2	argriffing
+     2	dellsystem
+     2	hm
+     2	trueprice
+     1	K.-Michael Aye
+     1	Robert Kern
+     1	Bob Helmbold
+     1	Alexander Eberspächer
+     1	Johannes Schönberger
+     1	Jerome Kieffer
+     1	Stephen McQuay
+     1	Steven Byrnes
+     1	Jan Schlueter
+     1	Jacob Vanderplas
+     1	thorstenkranz
+     1	Hugo
+     1	Gustav Larsson
+     1	Fabrice Silva
+     1	Tom Aldcroft
+     1	Dražen Lučanin
+     1	Daniel Velkov
+     1	Yaroslav Halchenko
+     1	Zach Ploskey
+     1	Christopher Lee
+     1	aarchiba
+     1	Christoph Gohlke
+     1	tonysyu
+     1	Christian Brodbeck
+     1	wa03
+     1	Christian
+     1	unknown
+     1	Branden Rolston
+     1	mszep
+     1	MinRK
+     1	Matty G
+     1	Matt Newville
+     1	Louis Thibault
+     1	Lorenzo Luengo
+     1	Lawrence Chan
+     1	Jonathan Helmus

@@ -1,0 +1,162 @@
+  3108	Wes McKinney
+   680	jreback
+   639	y-p
+   627	Chang She
+   327	Adam Klein
+   120	Phillip Cloud
+   109	Vytautas Jancauskas
+    75	Wouter Overmeire
+    65	Skipper Seabold
+    56	Andy Hayden
+    46	Thomas Kluyver
+    40	Dieter Vandenbussche
+    30	Jeffrey Tratner
+    27	Jeff Reback
+    25	Stephen Lin
+    19	Abraham Flaxman
+    16	Yaroslav Halchenko
+    15	Kieran O'Mahony
+    14	Gábor Lipták
+    14	locojaydev
+    13	Spencer Lyon
+    12	Luca Beltrame
+    11	Keith Hughitt
+    10	Martin Blais
+     9	Tobias Brandt
+     7	PKEuS
+     7	nipunreddevil
+     7	Takafumi Arakaki
+     7	Christopher Whelan
+     6	Steve
+     6	timmie
+     6	Nicholaus E. Halecky
+     6	K.-Michael Aye
+     6	Damien Garaud
+     5	dieterv77
+     5	tshauck
+     5	Vincent Arel-Bundock
+     5	Garrett Drapala
+     5	Marc Abramowitz
+     5	Mark Wiebe
+     5	Thierry Moisan
+     5	Adam Obeng
+     4	TomAugspurger
+     4	Gregg Lind
+     4	Shane Conway
+     4	Jacques Kvam
+     4	Dan Allan
+     4	Jev Kuznetsov
+     4	gliptak
+     4	Dan Birken
+     4	lexual
+     4	Dan Miller
+     4	Alvaro Tejero-Cantero
+     4	waitingkuo
+     4	Brenda Moon
+     4	Lars Buitinck
+     4	Dražen Lučanin
+     4	Loïc Estève
+     4	Paul Ivanov
+     3	Patrick O'Brien
+     3	Chris Billington
+     3	Karmel Allison
+     3	joshuaar
+     3	Nick Pentreath
+     3	Josh
+     3	Josh Klein
+     3	Adam Greenhall
+     3	Joon Ro
+     3	Olivier Grisel
+     3	Richard Höchenberger
+     3	dengemann
+     3	Kevin Stone
+     2	Chapman Siu
+     2	Todd DeLuca
+     2	Jay Parlar
+     2	Mike Kelly
+     2	Nathan Pinger
+     2	RuiDC
+     2	stonebig
+     2	Roy Hyunjin Han
+     2	Brad Buran
+     2	Jonathan deWerd
+     2	tim smith
+     2	Jonathan Chambers
+     2	Kamil Kisiel
+     2	Paddy Mullen
+     2	John-Colvin
+     2	elpres
+     2	Jeff Mellen
+     2	Will Furnass
+     2	Vytautas Jančauskas
+     2	Robert Gieseke
+     2	Peter Prettenhofer
+     2	Travis N. Vaught
+     2	Eric Chlebek
+     1	Øystein S. Haaland
+     1	Aman Thakral
+     1	Andreas H.
+     1	Anton I. Sipos
+     1	Bayle Shanks
+     1	Benjamin Gross
+     1	Brian Granger
+     1	Chris Mulligan
+     1	Chris Withers
+     1	Christian Geier
+     1	Dan Davison
+     1	Daniel Shapiro
+     1	David Zaslavsky
+     1	Donald Curtis
+     1	Doug Coleman
+     1	Dražen Lučanin
+     1	Fabrizio Pollastri
+     1	Fernando Perez
+     1	Graham Taylor
+     1	Illia Polosukhin
+     1	James Casbon
+     1	Jay Bourque
+     1	Jeff Hammerbacher
+     1	Jeremy Wagner
+     1	Johnny
+     1	Joshua Leahy
+     1	Juraj Niznan
+     1	Justin Berka
+     1	Justin C Johnson
+     1	Kelsey Jordahl
+     1	Ken Van Haren
+     1	Kyle Meyer
+     1	Laurent Gautier
+     1	Lorenzo Bolla
+     1	Luke Lee
+     1	Mark O'Leary
+     1	MinRK
+     1	Peng Yu
+     1	Ralph Bean
+     1	Senthil Palanisami
+     1	Stefan van der Walt
+     1	Taavi Burns
+     1	Thomas Wiecki
+     1	Thouis (Ray) Jones
+     1	Tim Akinbo
+     1	Tim McNamara
+     1	alex arsenovic
+     1	anomrake
+     1	claudiobertoldi
+     1	conmai
+     1	davidjameshumphreys
+     1	ejnens
+     1	fabriziop
+     1	herrfz
+     1	jniznan
+     1	lenolib
+     1	lgautier
+     1	lodagro
+     1	stephenwlin
+     1	svaksha
+     1	thauck
+     1	theandygross
+     1	thuske
+     1	unknown
+     1	vytas
+     1	zach powers
+     1	A. Flaxman
