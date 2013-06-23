@@ -63,62 +63,6 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{History}
-  \begin{block}{History}
-    \begin{itemize}
-    \item Ondřej Čertík started the project in 2006.
-    \item Development took off in 2007 when SymPy first participated in Google
-      Summer of Code. We have participated in every Google Summer of Code since.
-    \item In 2011, Aaron Meurer (who also joined from Google Summer of Code) took
-      over as lead developer.
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \begin{block}{Current Status}
-    \begin{itemize}
-    \item Over 250 contributors.
-    \item Current code base has over 400,000 lines of code and documentation.
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Git Commits Plots}
-  \begin{block}{Last Year}
-    \includegraphics[width=4in]{commits1.pdf}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Git Commit Plots}
-  \begin{block}{Last Year}
-    \begin{itemize}
-    \item The dotted line is 50 contributors
-    \item Rough measurement of each project's ``bus factor''
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Git Commits Plots}
-  \begin{block}{All Time}
-    \includegraphics[width=4in]{commits-all.pdf}
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \begin{block}{All Time}
-    \begin{itemize}
-    \item SymPy has more total contributors than any other scientific project
-      (other projects are actually exaggerated, because they don't use
-      \texttt{.mailmap})
-    \item SymPy has a very welcome and friendly community, which is open, and
-      actively encourages contributions.
-    \item The SymPy code base is very approachable to new contributors.
-    \item To be fair, Google Code-In accounts for a lot of this\ldots
-    \end{itemize}
-  \end{block}
-\end{frame}
-
 \begin{frame}{Features}
   \begin{multicols}{2}
     \tiny
@@ -175,14 +119,14 @@
       \item Prufer and Gray Codes
       \end{itemize}
 
-      \end{itemize}
-      \end{multicols}
-    \end{frame}
+    \end{itemize}
+  \end{multicols}
+\end{frame}
 
 \begin{frame}{Features}
-\begin{multicols}{2}
-\begin{itemize}
-\tiny
+  \begin{multicols}{2}
+    \begin{itemize}
+      \tiny
     \item \textbf{Discrete math}
       \begin{itemize}
         \tiny
@@ -256,16 +200,91 @@
   \end{multicols}
 \end{frame}
 
+\begin{frame}{History}
+  \begin{block}{History}
+    \begin{itemize}
+    \item Ondřej Čertík started the project in 2006.
+    \item Development took off in 2007 when SymPy first participated in Google
+      Summer of Code. We have participated in every Google Summer of Code since.
+    \item In 2011, Aaron Meurer (who also joined from Google Summer of Code) took
+      over as lead developer.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
 \begin{frame}{Present}
   \begin{block}{Current Status}
-    We are now crossing a point of "sympy a toy" to "sympy a tool".
-  \end{block}
-  \pause
-  \bigskip
-  \begin{block}{When applied to \textbf{real} problems}
     \begin{itemize}
-    \item Usually it can get the job done
-    \item But sometimes you might need to "help" it a little
+    \item Over 250 contributors.
+    \item Current code base has over 400,000 lines of code and documentation.
+    \item We have crossed the point of ``sympy a toy'' to ``sympy a tool''
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Future}
+  \begin{block}{GSoC}
+    These are our current GSoC projects. Expect to see these features by the end
+    of the summer.
+    \begin{itemize}
+    \item \normalsize Risch algorithm for symbolic integration: \small Chetna Gupta
+    \item \normalsize Faster Algorithms for Polynomials over Algebraic Number Fields: \small Katja Sophie Hotz
+    \item \normalsize Improved ODE Solver in SymPy: \small Manoj Kumar
+    \item \normalsize Lie Algebras: \small Mary Clark
+    \item \normalsize Vector calculus module: \small Prasoon Shukla
+    \item \normalsize Addition of electromagnetism features to sympy.physics: \small Sachin Joglekar
+    \item \normalsize Diophantine Equation Module for SymPy: \small Thilina Rathnayake
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Future}
+\begin{block}{Other Plans}
+\begin{itemize}
+\item New assumptions
+\item Make things faster
+\item Implement more algorithms, so we can compute more things (and also make
+  them faster)
+\item Make it easier for people to define custom behavior of their own objects
+  in Add and Mul
+\item Encourage people to use SymPy for many applications
+\item https://github.com/sympy/sympy/wiki/gsoc-2013-ideas for full list of
+  things we want done
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Git Commits Plots}
+  \begin{block}{Last Year}
+    \includegraphics[width=4in]{commits1.pdf}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Git Commit Plots}
+  \begin{block}{Last Year}
+    \begin{itemize}
+    \item The dotted line is 50 contributors
+    \item Rough measurement of each project's ``bus factor''
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Git Commits Plots}
+  \begin{block}{All Time}
+    \includegraphics[width=4in]{commits-all.pdf}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Git Commit Plots}
+  \begin{block}{All Time}
+    \begin{itemize}
+    \item SymPy has more total contributors than any other scientific project
+      (other projects are actually exaggerated, because they don't use
+      \texttt{.mailmap})
+    \item SymPy has a very welcome and friendly community, which is open, and
+      actively encourages contributions.
+    \item The SymPy code base is very approachable to new contributors.
+    \item To be fair, Google Code-In accounts for a lot of this\ldots
     \end{itemize}
   \end{block}
 \end{frame}
@@ -538,5 +557,27 @@
     Johann Cohen-Tanugi\\
     James Pearson\\
   \end{multicols}
+\end{frame}
+
+\begin{frame}{Here at SciPy}
+  \begin{block}{Talks}
+    \begin{itemize}
+    \item Matthew Rocklin, \textit{Matrix Expressions and BLAS/LAPACK}. \\ \footnotesize Thursday 10:15
+      AM - 10:35 AM General - Rm 204
+    \item \normalsize Jason Moore, \textit{Dynamics with SymPy Mechanics}. \\ \footnotesize 02:10 PM - 02:30
+      PM General - Rm 204
+    \item \normalsize David Li, \textit{SymPy Gamma and SymPy Live: Python and Mathematics
+        Online}. \\ \footnotesize 03:50 PM -
+      04:10 PM General - Rm 203 (High School student!)
+    \end{itemize}
+  \end{block}
+  \begin{block}{Sprints}
+    Come sprint with us!
+    \begin{itemize}
+    \item Releasing SymPy 0.7.2
+    \item Lot's of tasks that are easy for new contributors
+    \item Friday and Saturday
+    \end{itemize}
+  \end{block}
 \end{frame}
 \end{document}
