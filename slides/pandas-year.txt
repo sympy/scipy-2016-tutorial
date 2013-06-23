@@ -1,0 +1,112 @@
+   761	Wes McKinney
+   680	jreback
+   639	y-p
+   361	Chang She
+   120	Phillip Cloud
+    89	Vytautas Jancauskas
+    56	Andy Hayden
+    37	Wouter Overmeire
+    32	Skipper Seabold
+    30	Jeffrey Tratner
+    27	Jeff Reback
+    25	Stephen Lin
+    14	locojaydev
+    14	Gábor Lipták
+    13	Spencer Lyon
+    13	Abraham Flaxman
+    11	Keith Hughitt
+     9	Tobias Brandt
+     8	Dieter Vandenbussche
+     7	PKEuS
+     7	nipunreddevil
+     7	Christopher Whelan
+     6	Nicholaus E. Halecky
+     6	Damien Garaud
+     6	Martin Blais
+     5	Vincent Arel-Bundock
+     5	tshauck
+     5	Garrett Drapala
+     5	dieterv77
+     5	Adam Obeng
+     5	Thierry Moisan
+     4	TomAugspurger
+     4	Dražen Lučanin
+     4	gliptak
+     4	Alvaro Tejero-Cantero
+     4	lexual
+     4	Dan Allan
+     4	waitingkuo
+     4	Dan Miller
+     4	Lars Buitinck
+     4	Loïc Estève
+     4	Brenda Moon
+     4	Paul Ivanov
+     3	Dan Birken
+     3	dengemann
+     3	timmie
+     3	Karmel Allison
+     3	Kevin Stone
+     3	Adam Greenhall
+     3	Richard Höchenberger
+     3	Patrick O'Brien
+     2	K.-Michael Aye
+     2	Mike Kelly
+     2	Vytautas Jančauskas
+     2	Chapman Siu
+     2	tim smith
+     2	Jonathan deWerd
+     2	Todd DeLuca
+     2	Peter Prettenhofer
+     2	stonebig
+     2	Jay Parlar
+     2	Jonathan Chambers
+     2	John-Colvin
+     2	Kieran O'Mahony
+     2	Will Furnass
+     2	Robert Gieseke
+     2	Jeff Mellen
+     2	Brad Buran
+     1	Øystein S. Haaland
+     1	Anton I. Sipos
+     1	Chris Mulligan
+     1	Chris Withers
+     1	Christian Geier
+     1	Dan Davison
+     1	Daniel Shapiro
+     1	Donald Curtis
+     1	Doug Coleman
+     1	Dražen Lučanin
+     1	Illia Polosukhin
+     1	James Casbon
+     1	Jay Bourque
+     1	Jeremy Wagner
+     1	Johnny
+     1	Joshua Leahy
+     1	Juraj Niznan
+     1	Justin C Johnson
+     1	Ken Van Haren
+     1	Kyle Meyer
+     1	Laurent Gautier
+     1	Luke Lee
+     1	Mark O'Leary
+     1	MinRK
+     1	Taavi Burns
+     1	Thomas Kluyver
+     1	Thouis (Ray) Jones
+     1	Tim Akinbo
+     1	Yaroslav Halchenko
+     1	alex arsenovic
+     1	anomrake
+     1	conmai
+     1	davidjameshumphreys
+     1	ejnens
+     1	elpres
+     1	herrfz
+     1	jniznan
+     1	lenolib
+     1	stephenwlin
+     1	svaksha
+     1	thauck
+     1	vytas
+     1	zach powers
+     1	A. Flaxman
