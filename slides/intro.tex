@@ -85,192 +85,180 @@
 \end{frame}
 
 \begin{frame}{Git Commits Plots}
-\begin{block}{Last Year}
-\includegraphics[width=4in]{commits1.pdf}
-\end{block}
+  \begin{block}{Last Year}
+    \includegraphics[width=4in]{commits1.pdf}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Git Commit Plots}
-\begin{block}{Last Year}
-\begin{itemize}
-\item The dotted line is 50 contributors
-\item Rough measurement of each project's ``bus factor''
-\end{itemize}
-\end{block}
+  \begin{block}{Last Year}
+    \begin{itemize}
+    \item The dotted line is 50 contributors
+    \item Rough measurement of each project's ``bus factor''
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Git Commits Plots}
-\begin{block}{All Time}
-\includegraphics[width=4in]{commits-all.pdf}
-\end{block}
+  \begin{block}{All Time}
+    \includegraphics[width=4in]{commits-all.pdf}
+  \end{block}
 \end{frame}
 
 \begin{frame}
-\begin{block}{All Time}
+  \begin{block}{All Time}
+    \begin{itemize}
+    \item SymPy has more total contributors than any other scientific project
+      (other projects are actually exaggerated, because they don't use
+      \texttt{.mailmap})
+    \item SymPy has a very welcome and friendly community, which is open, and
+      actively encourages contributions.
+    \item The SymPy code base is very approachable to new contributors.
+    \item To be fair, Google Code-In accounts for a lot of this\ldots
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Features}
+  \begin{multicols}{2}
+    \tiny
+    \begin{itemize}
+    \item \textbf{Core Capabilities}
+      \begin{itemize}
+        \tiny
+      \item Basic arithmetic: Support for operators such as +, -, *, /, ** (power)
+      \item Simplification
+      \item Expansion
+      \item Functions: trigonometric, hyperbolic, exponential, roots, logarithms,
+        absolute value, spherical harmonics, factorials and gamma functions, zeta
+        functions, polynomials, special functions, \ldots
+      \item Substitution
+      \item Numbers: arbitrary precision integers, rationals, and floats
+      \item Noncommutative symbols
+      \item Pattern matching
+      \end{itemize}
+    \item \textbf{Polynomials}
+      \begin{itemize}
+        \tiny
+      \item Basic arithmetic: division, gcd, \ldots
+      \item Factorization
+      \item Square-free decomposition
+      \item Gröbner bases
+      \item Partial fraction decomposition
+      \item Resultants
+      \end{itemize}
+    \item \textbf{Calculus}
+      \begin{itemize}
+        \tiny
+      \item Limits: $\lim_{x\to 0}{x\log(x)} = 0$
+      \item Differentiation
+      \item Integration: It uses extended Risch-Norman heuristic
+      \item Taylor (Laurent) series
+      \end{itemize}
+    \item \textbf{Solving equations}
+      \begin{itemize}
+        \tiny
+      \item Polynomial equations
+      \item Algebraic equations
+      \item Differential equations
+      \item Difference equations
+      \item Systems of equations
+      \end{itemize}
+    \item \textbf{Combinatorics}
+      \begin{itemize}
+        \tiny
+      \item Permutations
+      \item Combinations
+      \item Partitions
+      \item Subsets
+      \item Permutation Groups: Polyhedral, Rubik, Symmetric, \ldots
+      \item Prufer and Gray Codes
+      \end{itemize}
+
+      \end{itemize}
+      \end{multicols}
+    \end{frame}
+
+\begin{frame}{Features}
+\begin{multicols}{2}
 \begin{itemize}
-\item SymPy has more total contributors than any other scientific project
-  (other projects are actually exaggerated, because they don't use
-  \texttt{.mailmap})
-\item SymPy has a very welcome and friendly community, which is open, and
-  actively encourages contributions.
-\item The SymPy code base is very approachable to new contributors.
-\item To be fair, Google Code-In accounts for a lot of this\ldots
-\end{itemize}
-\end{block}
-\end{frame}
+\tiny
+    \item \textbf{Discrete math}
+      \begin{itemize}
+        \tiny
+      \item Binomial coefficients
+      \item Summations
+      \item Products
+      \item Number theory: generating prime numbers, primality testing, integer
+        factorization, \ldots
+      \item Logic expressions
+      \end{itemize}
 
-\begin{frame}{Features}
-  \begin{block}{Core capabilities}
-    \begin{itemize}
-    \item Basic arithmetic: Support for operators such as +, -, *, /, ** (power)
-    \item Simplification
-    \item Expansion
-    \item Functions: trigonometric, hyperbolic, exponential, roots, logarithms,
-      absolute value, spherical harmonics, factorials and gamma functions, zeta
-      functions, polynomials, special functions, \ldots
-    \item Substitution
-    \item Numbers: arbitrary precision integers, rationals, and floats
-    \item Noncommutative symbols
-    \item Pattern matching
+    \item \textbf{Matrices}
+      \begin{itemize}
+        \tiny
+      \item Basic arithmetic
+      \item Eigenvalues/eigenvectors
+      \item Determinants
+      \item Inversion
+      \item Solving
+      \item Abstract expressions
+      \end{itemize}
+
+
+    \item \textbf{Geometric Algebra}
+
+
+    \item \textbf{Geometry}
+      \begin{itemize}
+        \tiny
+      \item points, lines, rays, segments, ellipses, circles, polygons, \ldots
+      \item Intersection
+      \item Tangency
+      \item Similarity
+      \end{itemize}
+
+    \item \textbf{Plotting}
+      \begin{itemize}
+        \tiny
+      \item Coordinate modes
+      \item Plotting Geometric Entities
+      \item 2D and 3D
+      \item Interactive interface
+      \item Colors
+      \end{itemize}
+
+    \item \textbf{Physics}
+      \begin{itemize}
+        \tiny
+      \item Units
+      \item Mechanics
+      \item Quantum
+      \item Gaussian Optics
+      \item Pauli Algebra
+      \end{itemize}
+
+    \item \textbf{Statistics}
+      \begin{itemize}
+        \tiny
+      \item Normal distributions
+      \item Uniform distributions
+      \item Probability
+      \end{itemize}
+
+    \item \textbf{Printing}
+      \begin{itemize}
+        \tiny
+      \item Pretty printing: ASCII/Unicode pretty printing, LaTeX
+      \item Code generation: C, Fortran, Python
+      \end{itemize}
     \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Polynomials}
-    \begin{itemize}
-    \item Basic arithmetic: division, gcd, \ldots
-    \item Factorization
-    \item Square-free decomposition
-    \item Gröbner bases
-    \item Partial fraction decomposition
-    \item Resultants
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Calculus}
-    \begin{itemize}
-    \item Limits: $$\lim_{x\to 0}{x\log(x)} \rightarrow 0$$
-    \item Differentiation
-    \item Integration: It uses extended Risch-Norman heuristic
-    \item Taylor (Laurent) series
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Solving equations}
-    \begin{itemize}
-    \item Polynomial equations
-    \item Algebraic equations
-    \item Differential equations
-    \item Difference equations
-    \item Systems of equations
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Combinatorics}
-    \begin{itemize}
-    \item Permutations
-    \item Combinations
-    \item Partitions
-    \item Subsets
-    \item Permutation Groups: Polyhedral, Rubik, Symmetric, \ldots
-    \item Prufer and Gray Codes
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Discrete math}
-    \begin{itemize}
-    \item Binomial coefficients
-    \item Summations
-    \item Products
-    \item Number theory: generating prime numbers, primality testing, integer
-      factorization, \ldots
-    \item Logic expressions
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Matrices}
-    \begin{itemize}
-    \item Basic arithmetic
-    \item Eigenvalues/eigenvectors
-    \item Determinants
-    \item Inversion
-    \item Solving
-    \item Abstract expressions
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Geometric Algebra}
-  \end{block}
-
-  \begin{block}{Geometry}
-    \begin{itemize}
-    \item points, lines, rays, segments, ellipses, circles, polygons, \ldots
-    \item Intersection
-    \item Tangency
-    \item Similarity
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Plotting}
-    \begin{itemize}
-    \item Coordinate modes
-    \item Plotting Geometric Entities
-    \item 2D and 3D
-    \item Interactive interface
-    \item Colors
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Physics}
-    \begin{itemize}
-    \item Units
-    \item Mechanics
-    \item Quantum
-    \item Gaussian Optics
-    \item Pauli Algebra
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Features}
-  \begin{block}{Statistics}
-    \begin{itemize}
-    \item Normal distributions
-    \item Uniform distributions
-    \item Probability
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \begin{block}{Printing}
-    \begin{itemize}
-    \item Pretty printing: ASCII/Unicode pretty printing, LaTeX
-    \item Code generation: C, Fortran, Python
-    \end{itemize}
-  \end{block}
+  \end{multicols}
 \end{frame}
 
 \begin{frame}{Present}
   \begin{block}{Current Status}
-      We are now crossing a point of "sympy a toy" to "sympy a tool".
+    We are now crossing a point of "sympy a toy" to "sympy a tool".
   \end{block}
   \pause
   \bigskip
@@ -283,272 +271,272 @@
 \end{frame}
 
 \begin{frame}{Authors}
-\begin{multicols}{5}
-\tiny
-Chris Smith\\
-Aaron Meurer\\
-Mateusz Paprocki\\
-Ondřej Čertík\\
-Matthew Rocklin\\
-Julien Rioux\\
-Ronan Lamy\\
-Raoul Bourquin\\
-Kirill Smelkov\\
-Øyvind Jensen\\
-Tom Bachmann\\
-Sergiu Ivanov\\
-Mario Pernici\\
-Saptarshi Mandal\\
-Stefan Krastanov\\
-Brian E. Granger\\
-Vinzent Steinberg\\
-Vladimir Perić\\
-Raymond Wong\\
-Sergey B Kirpichev\\
-David Li\\
-Fredrik Johansson\\
-Sean Vig\\
-Fabian Pedregosa\\
-Bharath M R\\
-Gilbert Gede\\
-Addison Cugini\\
-Thomas Hisch\\
-Guru Devanla\\
-Priit Laes\\
-Prasoon Shukla\\
-Alexey U. Gudchenko\\
-Matt Habel\\
-Tomo Lazovich\\
-Matt Curry\\
-Timothy Reluga\\
-Jason Gedge\\
-Aleksandar Makelov\\
-Sachin Joglekar\\
-Brian Jorgensen\\
-Kendhia\\
-Andy R. Terrel\\
-Ramana Venkata\\
-Grzegorz Świrski\\
-Sebastian Krämer\\
-Pearu Peterson\\
-Manoj Kumar\\
-Toon Verstraelen\\
-Siddhanathan Shanmugam\\
-Joan Creus\\
-Jorn Baayen\\
-Christian Muise\\
-Jeremias Yehdegho\\
-Joachim Durchholz\\
-Kevin Hunter\\
-Riccardo Gori\\
-Matthew Hoff\\
-Steve Anton\\
-hm\\
-Sanket Agarwal\\
-Robert Schwarz\\
-David Ju\\
-Luke Peterson\\
-Angadh Nanjangud\\
-Bilal Akhtar\\
-Stepan Roucka\\
-Miha Marolt\\
-Renato Coutinho\\
-Saurabh Jha\\
-Niklas Thörne\\
-Alexander Hirzel\\
-Nathan Alison\\
-jerryma1121\\
-Brian Stephanik\\
-Sam Sleight\\
-Sachin Irukula\\
-Robert Kern\\
-Patrick Lacasse\\
-Angus Griffith\\
-Swapnil Agarwal\\
-Gary Kerr\\
-Sherjil Ozair\\
-Natalia Nawara\\
-Nicolas Pourcelot\\
-Huijun Mai\\
-Jim Zhang\\
-Ljubiša Moćić\\
-Prafullkumar P. Tale\\
-Marek Šuppa\\
-Freddie Witherden\\
-Roberto Nobrega\\
-Jason Moore\\
-Felix Kaiser\\
-Sean Ge\\
-Alan Bromborsky\\
-Chetna Gupta\\
-Friedrich Hagedorn\\
-Saroj Adhikari\\
-CJ Carey\\
-Jaroslaw Tworek\\
-Alexey Subach\\
-Yuri Karadzhov\\
-Rishabh Dixit\\
-Christian Bühler\\
-Ryan Krauss\\
-Min Ragan-Kelley\\
-Demian Wassermann\\
-Christopher Dembia\\
-Sam Magura\\
-Ananya\\
-Mark Dewing\\
-Raphael Michel\\
-Andreas Kloeckner\\
-Tarun Gaba\\
-Christophe Saint-Jean\\
-Tobias Lenz\\
-Tomasz Buchert\\
-Davy Mao\\
-Ankit Agrawal\\
-Nichita Utiu\\
-Piotr Korgul\\
-Mary Clark\\
-Harold Erbin\\
-Matthew Brett\\
-Chris Wu\\
-Chancellor Arkantos\\
-Katja Sophie Hotz\\
-Alexandr Popov\\
-Abderrahim Kitouni\\
-Stefano Maggiolo\\
-Varun Joshi\\
-Thilina Rathnayake\\
-\end{multicols}
+  \begin{multicols}{5}
+    \tiny
+    Chris Smith\\
+    Aaron Meurer\\
+    Mateusz Paprocki\\
+    Ondřej Čertík\\
+    Matthew Rocklin\\
+    Julien Rioux\\
+    Ronan Lamy\\
+    Raoul Bourquin\\
+    Kirill Smelkov\\
+    Øyvind Jensen\\
+    Tom Bachmann\\
+    Sergiu Ivanov\\
+    Mario Pernici\\
+    Saptarshi Mandal\\
+    Stefan Krastanov\\
+    Brian E. Granger\\
+    Vinzent Steinberg\\
+    Vladimir Perić\\
+    Raymond Wong\\
+    Sergey B Kirpichev\\
+    David Li\\
+    Fredrik Johansson\\
+    Sean Vig\\
+    Fabian Pedregosa\\
+    Bharath M R\\
+    Gilbert Gede\\
+    Addison Cugini\\
+    Thomas Hisch\\
+    Guru Devanla\\
+    Priit Laes\\
+    Prasoon Shukla\\
+    Alexey U. Gudchenko\\
+    Matt Habel\\
+    Tomo Lazovich\\
+    Matt Curry\\
+    Timothy Reluga\\
+    Jason Gedge\\
+    Aleksandar Makelov\\
+    Sachin Joglekar\\
+    Brian Jorgensen\\
+    Kendhia\\
+    Andy R. Terrel\\
+    Ramana Venkata\\
+    Grzegorz Świrski\\
+    Sebastian Krämer\\
+    Pearu Peterson\\
+    Manoj Kumar\\
+    Toon Verstraelen\\
+    Siddhanathan Shanmugam\\
+    Joan Creus\\
+    Jorn Baayen\\
+    Christian Muise\\
+    Jeremias Yehdegho\\
+    Joachim Durchholz\\
+    Kevin Hunter\\
+    Riccardo Gori\\
+    Matthew Hoff\\
+    Steve Anton\\
+    hm\\
+    Sanket Agarwal\\
+    Robert Schwarz\\
+    David Ju\\
+    Luke Peterson\\
+    Angadh Nanjangud\\
+    Bilal Akhtar\\
+    Stepan Roucka\\
+    Miha Marolt\\
+    Renato Coutinho\\
+    Saurabh Jha\\
+    Niklas Thörne\\
+    Alexander Hirzel\\
+    Nathan Alison\\
+    jerryma1121\\
+    Brian Stephanik\\
+    Sam Sleight\\
+    Sachin Irukula\\
+    Robert Kern\\
+    Patrick Lacasse\\
+    Angus Griffith\\
+    Swapnil Agarwal\\
+    Gary Kerr\\
+    Sherjil Ozair\\
+    Natalia Nawara\\
+    Nicolas Pourcelot\\
+    Huijun Mai\\
+    Jim Zhang\\
+    Ljubiša Moćić\\
+    Prafullkumar P. Tale\\
+    Marek Šuppa\\
+    Freddie Witherden\\
+    Roberto Nobrega\\
+    Jason Moore\\
+    Felix Kaiser\\
+    Sean Ge\\
+    Alan Bromborsky\\
+    Chetna Gupta\\
+    Friedrich Hagedorn\\
+    Saroj Adhikari\\
+    CJ Carey\\
+    Jaroslaw Tworek\\
+    Alexey Subach\\
+    Yuri Karadzhov\\
+    Rishabh Dixit\\
+    Christian Bühler\\
+    Ryan Krauss\\
+    Min Ragan-Kelley\\
+    Demian Wassermann\\
+    Christopher Dembia\\
+    Sam Magura\\
+    Ananya\\
+    Mark Dewing\\
+    Raphael Michel\\
+    Andreas Kloeckner\\
+    Tarun Gaba\\
+    Christophe Saint-Jean\\
+    Tobias Lenz\\
+    Tomasz Buchert\\
+    Davy Mao\\
+    Ankit Agrawal\\
+    Nichita Utiu\\
+    Piotr Korgul\\
+    Mary Clark\\
+    Harold Erbin\\
+    Matthew Brett\\
+    Chris Wu\\
+    Chancellor Arkantos\\
+    Katja Sophie Hotz\\
+    Alexandr Popov\\
+    Abderrahim Kitouni\\
+    Stefano Maggiolo\\
+    Varun Joshi\\
+    Thilina Rathnayake\\
+  \end{multicols}
 \end{frame}
 
 \begin{frame}{Authors}
-\begin{multicols}{5}
-\tiny
-Nimish Telang\\
-Tiffany Zhu\\
-Khagesh Patel\\
-Rom le Clair\\
-Imran Ahmed Manzoor\\
-Jochen Voss\\
-Stefen Yin\\
-David Roberts\\
-Sebastian Kreft\\
-Óscar Nájera\\
-Tristan Hume\\
-Florian Mickler\\
-Pan Peng\\
-Akshay Srinivasan\\
-Akshit Agarwal\\
-Amit Jamadagni\\
-Andrew Straw\\
-Barry Wardell\\
-Benjamin McDonald\\
-Bill Flynn\\
-Case Van Horsen\\
-Cristóvão Sousa\\
-Emma Hogan\\
-Geoffry Song\\
-George Waksman\\
-Jens H. Nielsen\\
-Julio Idichekop Filho\\
-Luca Weihs\\
-Luis Garcia\\
-Manoj Babu K.\\
-Martin Povišer\\
-Nikolay Lazarov\\
-Oliver Lee\\
-Raffaele De Feo\\
-Shravas K Rao\\
-Ted Horst\\
-Oscar Benjamin\\
-Michael Mayorov\\
-David Marek\\
-Goutham Lakshminarayan\\
-Ben Goodrich\\
-Jezreel Ng\\
-Tomáš Bambas\\
-Ashwini Oruganti\\
-Arpit Goyal\\
-Stephen Loo\\
-Jurjen N.E. Bos\\
-Colleen Lee\\
-James Aspnes\\
-Sai Nikhil\\
-Jack McCaffery\\
-Fernando Perez\\
-Oleksandr Gituliar\\
-Thomas Dixon\\
-Bradley Froehle\\
-Nikhil Sarda\\
-tsmars15\\
-Thomas Wiecki\\
-Pavel Fedotov\\
-Boris Timokhin\\
-Henrik Johansson\\
-James Abbatiello\\
-Sebastian Krause\\
-Hubert Tsang\\
-Gregory Ksionda\\
-Seshagiri Prabhu\\
-Shai 'Deshe' Wyborski\\
-Gert-Ludwig Ingold\\
-Acebulf\\
-Shruti Mangipudi\\
-Siddhant Jain\\
-Srinivas Vasudevan\\
-Elrond der Elbenfuerst\\
-Eh Tan\\
-David Lawrence\\
-Stepan Simsa\\
-Comer Duncan\\
-Takafumi Arakaki\\
-Tarang\\
-Christian Schubert\\
-Łukasz Pankowski\\
-Carsten Knoll\\
-Thomas Sidoti\\
-Tim Lahey\\
-Björn Dahlgren\\
-Bernhard R. Link\\
-Benjamin Fishbein\\
-Bastian Weber\\
-Tyler Pirtle\\
-Andrew Docherty\\
-Vasily Povalyaev\\
-Vinay Kumar\\
-Or Dvory\\
-Vladimir Lagunov\\
-Andre de Fortier Smit\\
-Anatolii Koval\\
-Ali Raza Syed\\
-Alexandr Gudulin\\
-marshall2389\\
-vishal\\
-Pauli Virtanen\\
-Andrej Tokarčík\\
-Prateek Papriwal\\
-Puneeth Chaganti\\
-Alexander Eberspächer\\
-Randy Heydon\\
-Nicholas J.S. Kinar\\
-Max Hutchinson\\
-Matthias Toews\\
-Matthew Tadd\\
-Matt Rajca\\
-Rizgar Mella\\
-Robert\\
-Robert Cimrman\\
-Marcin Kostrzewa\\
-Madeleine Ball\\
-Roberto Colistete, Jr.\\
-Konrad Meyer\\
-Kibeom Kim\\
-Kevin Goodsell\\
-Kazuo Thow\\
-Kaifeng Zhu\\
-Joseph Dougherty\\
-Jorge E. Cardona\\
-Johann Cohen-Tanugi\\
-James Pearson\\
-\end{multicols}
+  \begin{multicols}{5}
+    \tiny
+    Nimish Telang\\
+    Tiffany Zhu\\
+    Khagesh Patel\\
+    Rom le Clair\\
+    Imran Ahmed Manzoor\\
+    Jochen Voss\\
+    Stefen Yin\\
+    David Roberts\\
+    Sebastian Kreft\\
+    Óscar Nájera\\
+    Tristan Hume\\
+    Florian Mickler\\
+    Pan Peng\\
+    Akshay Srinivasan\\
+    Akshit Agarwal\\
+    Amit Jamadagni\\
+    Andrew Straw\\
+    Barry Wardell\\
+    Benjamin McDonald\\
+    Bill Flynn\\
+    Case Van Horsen\\
+    Cristóvão Sousa\\
+    Emma Hogan\\
+    Geoffry Song\\
+    George Waksman\\
+    Jens H. Nielsen\\
+    Julio Idichekop Filho\\
+    Luca Weihs\\
+    Luis Garcia\\
+    Manoj Babu K.\\
+    Martin Povišer\\
+    Nikolay Lazarov\\
+    Oliver Lee\\
+    Raffaele De Feo\\
+    Shravas K Rao\\
+    Ted Horst\\
+    Oscar Benjamin\\
+    Michael Mayorov\\
+    David Marek\\
+    Goutham Lakshminarayan\\
+    Ben Goodrich\\
+    Jezreel Ng\\
+    Tomáš Bambas\\
+    Ashwini Oruganti\\
+    Arpit Goyal\\
+    Stephen Loo\\
+    Jurjen N.E. Bos\\
+    Colleen Lee\\
+    James Aspnes\\
+    Sai Nikhil\\
+    Jack McCaffery\\
+    Fernando Perez\\
+    Oleksandr Gituliar\\
+    Thomas Dixon\\
+    Bradley Froehle\\
+    Nikhil Sarda\\
+    tsmars15\\
+    Thomas Wiecki\\
+    Pavel Fedotov\\
+    Boris Timokhin\\
+    Henrik Johansson\\
+    James Abbatiello\\
+    Sebastian Krause\\
+    Hubert Tsang\\
+    Gregory Ksionda\\
+    Seshagiri Prabhu\\
+    Shai 'Deshe' Wyborski\\
+    Gert-Ludwig Ingold\\
+    Acebulf\\
+    Shruti Mangipudi\\
+    Siddhant Jain\\
+    Srinivas Vasudevan\\
+    Elrond der Elbenfuerst\\
+    Eh Tan\\
+    David Lawrence\\
+    Stepan Simsa\\
+    Comer Duncan\\
+    Takafumi Arakaki\\
+    Tarang\\
+    Christian Schubert\\
+    Łukasz Pankowski\\
+    Carsten Knoll\\
+    Thomas Sidoti\\
+    Tim Lahey\\
+    Björn Dahlgren\\
+    Bernhard R. Link\\
+    Benjamin Fishbein\\
+    Bastian Weber\\
+    Tyler Pirtle\\
+    Andrew Docherty\\
+    Vasily Povalyaev\\
+    Vinay Kumar\\
+    Or Dvory\\
+    Vladimir Lagunov\\
+    Andre de Fortier Smit\\
+    Anatolii Koval\\
+    Ali Raza Syed\\
+    Alexandr Gudulin\\
+    marshall2389\\
+    vishal\\
+    Pauli Virtanen\\
+    Andrej Tokarčík\\
+    Prateek Papriwal\\
+    Puneeth Chaganti\\
+    Alexander Eberspächer\\
+    Randy Heydon\\
+    Nicholas J.S. Kinar\\
+    Max Hutchinson\\
+    Matthias Toews\\
+    Matthew Tadd\\
+    Matt Rajca\\
+    Rizgar Mella\\
+    Robert\\
+    Robert Cimrman\\
+    Marcin Kostrzewa\\
+    Madeleine Ball\\
+    Roberto Colistete, Jr.\\
+    Konrad Meyer\\
+    Kibeom Kim\\
+    Kevin Goodsell\\
+    Kazuo Thow\\
+    Kaifeng Zhu\\
+    Joseph Dougherty\\
+    Jorge E. Cardona\\
+    Johann Cohen-Tanugi\\
+    James Pearson\\
+  \end{multicols}
 \end{frame}
 \end{document}
