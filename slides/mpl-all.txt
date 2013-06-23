@@ -1,0 +1,177 @@
+  2741	Michael Droettboom
+  2145	John Hunter
+  1150	Eric Firing
+   442	Darren Dale
+   417	Jae-Joon Lee
+   272	Andrew Straw
+   263	Steve Chaplin
+   262	Phil Elson
+   252	Damon McDougall
+   230	Jouni K. Seppänen
+   217	Ben Root
+   191	Ryan May
+   149	Charles Moad
+   125	Nelle Varoquaux
+   112	Tony S Yu
+    72	Christoph Gohlke
+    60	Jeff Whitaker
+    57	Thomas A Caswell
+    56	Matt Giuca
+    56	Paul Ivanov
+    53	Manuel Metz
+    48	Norbert Nemec
+    46	Daniel Hyams
+    45	James Evans
+    45	pwuertz
+    42	Todd Miller
+    42	pkienzle
+    36	endolith
+    33	Michiel de Hoon
+    33	pelson
+    31	Ian Thomas
+    29	Paul Barret
+    25	Martin Spacek
+    23	Jens H. Nielsen
+    23	Jochen Voss
+    22	Reinier Heeres
+    21	Edin Salkovic
+    19	Todd Jennings
+    18	Nic Eggert
+    16	David Kaplan
+    16	Fernando Perez
+    16	Travis Oliphant
+    15	Peter Würtz
+    15	Sameer D'Costa
+    14	Gerald Storer
+    13	Jake Vanderplas
+    13	Kevin Davies
+    13	Maximilian Albert
+    13	Wes Campaigne
+    12	Cimarron Mittelsteadt
+    12	Grégory Lielens
+    12	Matthew Emmett
+    12	Piti Ongmongkolkul
+    10	Jens Hedegaard Nielsen
+    10	Stefan van der Walt
+     9	Craig M
+     8	Brian Mattern
+     8	Geoffroy Billotey
+     8	Michael Welter
+     8	Mike Kaufman
+     8	Till Stensitzki
+     7	Neil
+     7	Thomas Robitaille
+     7	fgb
+     6	Amit Aronovitch
+     6	Amy
+     6	Andrew Dawson
+     6	Graham Poulter
+     6	Jan-Philip Gehrcke
+     6	Joe Kington
+     6	Robert Johansson
+     5	Anton Akhmerov
+     5	David Huard
+     5	James R. Evans
+     5	Ken McIvor
+     5	bblay
+     4	Cameron Bates
+     4	Hubert Holin
+     4	Julien Schueller
+     4	Leo Singer
+     4	Marc Abramowitz
+     4	Matt Newville
+     4	Skipper Seabold
+     4	Takafumi Arakaki
+     4	Thomas Kluyver
+     4	Tobias Megies
+     4	Víctor Terrón
+     4	vbr
+     3	Ahmet Bakan
+     3	Bradley M. Froehle
+     3	Chris Beaumont
+     3	Christoph Dann
+     3	David Trémouilles
+     3	Hans Meine
+     3	Jeffrey Bingham
+     3	Maximilian Trescher
+     3	MinRK
+     3	Pauli Virtanen
+     3	Simon Cross
+     3	Tobias Hoppe
+     3	butterw
+     3	dhyams
+     2	Aaron Boushley
+     2	Adam Ginsburg
+     2	Alejandro Dubrovsky
+     2	Arnaud Gardelein
+     2	Ben Gamari
+     2	Brett Graham
+     2	Evan Davey
+     2	Francesco Montesano
+     2	Gellule Xg
+     2	Jack Kelly
+     2	Jeff Bingham
+     2	Jeremy O'Donoghue
+     2	Julian Taylor
+     2	Lodato Luciano
+     2	Pim Schellart
+     2	Russell Owen
+     2	Ryan Dale
+     2	Sandro Tosi
+     2	Sergey Koposov
+     2	Stefano Rivera
+     2	Tomas Kazmar
+     2	aseagram
+     2	drevicko
+     2	gitj
+     1	Adrian Price-Whelan
+     1	Alex C. Szatmary
+     1	Andreas Hilboll
+     1	Antony Lee
+     1	Binglin Chang
+     1	Bussonnier Matthias
+     1	C. Gohlke
+     1	Carl Michal
+     1	Corey Farwell
+     1	Craig Tenney
+     1	Ezra Peisach
+     1	Guillaume Gay
+     1	Ignas Anikevicius (gns_ank)
+     1	Jack (aka Daniel) Kelly
+     1	Jarrod Millman
+     1	Jason Grout
+     1	Jeremy Thurgood
+     1	Jim Radford
+     1	Jonathan Waltman
+     1	Julien Woillez
+     1	Lance Hepler
+     1	Martin Teichmann
+     1	Martin Ueding
+     1	Matthias BUSSONNIER
+     1	Min RK
+     1	Miriam Sierig
+     1	Nick Semenkovich
+     1	Nicolas Pinto
+     1	Nikolay Vyahhi
+     1	Pascal Bugnion
+     1	Paul Hobson
+     1	Perry Greenfield
+     1	Pierre Haessig
+     1	Richard Hattersley
+     1	Richard Trieu
+     1	Ryan Blomberg
+     1	Sebastian Pinnau
+     1	Takeshi Kanmae
+     1	Tor Colvin
+     1	Wouter Overmeire
+     1	Yann Tambouret
+     1	Zach Pincus
+     1	bev-a-tron
+     1	burrbull
+     1	goir
+     1	jschueller
+     1	krischer
+     1	mcelrath
+     1	montefra
+     1	torfbolt
+     1	ugurthemaster
