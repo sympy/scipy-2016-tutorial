@@ -10,6 +10,7 @@ The slides for this tutorial are `here <http://certik.github.io/scipy-2013-tutor
 
 The source for this tutorial is on `GitHub <https://github.com/certik/scipy-2013-tutorial>`_.
 
+The content for this tutorial is `here <certik.github.io/scipy-2013-tutorial/scipy_sympy.zip>`_.
 Contents:
 
 .. toctree::
