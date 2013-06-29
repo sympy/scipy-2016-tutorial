@@ -10,8 +10,9 @@ The slides for this tutorial are `here <http://certik.github.io/scipy-2013-tutor
 
 The source for this tutorial is on `GitHub <https://github.com/certik/scipy-2013-tutorial>`_.
 
-The content for this tutorial is `here <http://certik.github.io/scipy-2013-tutorial/SciPy_SymPy.zip>`_.
-Contents:
+The materials for this tutorial are `here
+<http://certik.github.io/scipy-2013-tutorial/SciPy_SymPy.zip>`_, including
+exercises (exercises require the IPython notebook).
 
 The video of this tutorial is on YouTube.  Parts `1
 <https://www.youtube.com/watch?v=dAgShwIx72c>`_, `2
