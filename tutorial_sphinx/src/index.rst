@@ -13,6 +13,14 @@ The source for this tutorial is on `GitHub <https://github.com/certik/scipy-2013
 The content for this tutorial is `here <http://certik.github.io/scipy-2013-tutorial/SciPy_SymPy.zip>`_.
 Contents:
 
+The video of this tutorial is on YouTube.  Parts `1
+<https://www.youtube.com/watch?v=dAgShwIx72c>`_, `2
+<https://www.youtube.com/watch?v=trhmGmyTNuo>`_, `3
+<https://www.youtube.com/watch?v=JDztSdQqh0o>`_, `4
+<https://www.youtube.com/watch?v=q9DUdZ3flfk>`_, `5
+<https://www.youtube.com/watch?v=PC1GPUteZs0>`_, and `6
+<https://www.youtube.com/watch?v=wPD7Y0sCO4I>`_.
+
 .. toctree::
    :maxdepth: 2
 
