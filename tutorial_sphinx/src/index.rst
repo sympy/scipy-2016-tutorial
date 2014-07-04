@@ -1,26 +1,21 @@
-SymPy Tutorial for SciPy 2013
+SymPy Tutorial for SciPy 2014
 =============================
 
-This is the tutorial that Aaron Meurer and Ondřej Čertík will be giving at
-SciPy 2013 for `SymPy <http://sympy.org>`_.  This is just a stripped down
-version of our `docs <http://docs.sympy.org>`_, with the new tutorial that
-Aaron Meurer has written, adapted for SymPy 0.7.2.
+This is the tutorial that Aaron Meurer, Matthew Rocklin, and Jason Moore will be giving at
+SciPy 2014 for `SymPy <http://sympy.org>`_.  This is just a stripped down
+version of our `docs <http://docs.sympy.org>`_. It requires SymPy 0.7.5, and
+should work in Python 2.6, 2.7, 3.2., 3.3, or 3.4.
 
-The slides for this tutorial are `here <http://certik.github.io/scipy-2013-tutorial/intro.pdf>`_.
+The slides for this tutorial are `here <http://asmeurer.github.io/scipy-2014-tutorial/intro.pdf>`_.
 
-The source for this tutorial is on `GitHub <https://github.com/certik/scipy-2013-tutorial>`_.
+The source for this tutorial is on `GitHub <https://github.com/asmeurer/scipy-2014-tutorial>`_.
 
 The materials for this tutorial are `here
-<http://certik.github.io/scipy-2013-tutorial/SciPy_SymPy.zip>`_, including
+<http://asmeurer.github.io/scipy-2014-tutorial/SciPy_SymPy.zip>`_, including
 exercises (exercises require the IPython notebook).
 
-The video of this tutorial is on YouTube.  Parts `1
-<https://www.youtube.com/watch?v=dAgShwIx72c>`_, `2
-<https://www.youtube.com/watch?v=trhmGmyTNuo>`_, `3
-<https://www.youtube.com/watch?v=JDztSdQqh0o>`_, `4
-<https://www.youtube.com/watch?v=q9DUdZ3flfk>`_, `5
-<https://www.youtube.com/watch?v=PC1GPUteZs0>`_, and `6
-<https://www.youtube.com/watch?v=wPD7Y0sCO4I>`_.
+See also `Last Year's tutorial
+<https://certik.github.io/scipy-2013-tutorial/index.html>`_.
 
 .. toctree::
    :maxdepth: 2
