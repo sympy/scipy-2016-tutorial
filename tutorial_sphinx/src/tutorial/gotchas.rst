@@ -36,7 +36,7 @@ Oops! What happened here?  We tried to use the variable ``x``, but it tells us
 that ``x`` is not defined.  In Python, variables have no meaning until they
 are defined.  SymPy is no different.  Unlike many symbolic manipulation
 systems you may have used, in SymPy, variables are not defined automatically.
-Do define variables, we must use ``symbols``.
+To define variables, we must use ``symbols``.
 
     >>> x = symbols('x')
     >>> x + 1
@@ -87,7 +87,7 @@ Python variables.  Consider the following::
   x = symbols('x')
   expr = x + 1
   x = 2
-  print expr
+  print(expr)
 
 What do you think the output of this code will be?  If you thought ``3``,
 you're wrong.  Let's see what really happens
@@ -95,7 +95,7 @@ you're wrong.  Let's see what really happens
     >>> x = symbols('x')
     >>> expr = x + 1
     >>> x = 2
-    >>> print expr
+    >>> print(expr)
     x + 1
 
 Changing ``x`` to ``2`` had no effect on ``expr``.  This is because ``x = 2``
@@ -158,9 +158,9 @@ us see what happens when we use ``==``.
     False
 
 Instead of treating ``x + 1 == 4`` symbolically, we just got ``False``.  In
-SymPy, ``==`` represents exact symbolic equality testing.  This means that ``a
-== b`` means that we are *asking* if `a = b`.  We always get a ``bool`` as the
-result of ``==``.  There is a separate object, called ``Eq``, which can be
+SymPy, ``==`` represents exact structural equality testing.  This means that
+``a == b`` means that we are *asking* if `a = b`.  We always get a ``bool`` as
+the result of ``==``.  There is a separate object, called ``Eq``, which can be
 used to create symbolic equalities
 
     >>> Eq(x + 1, 4)
@@ -176,11 +176,11 @@ We got ``False`` again. However, `(x + 1)^2` *does* equal `x^2 + 2x + 1`. What
 is going on here?  Did we find a bug in SymPy, or is it just not powerful
 enough to recognize this basic algebraic fact?
 
-Recall from above that ``==`` represents *exact* symbolic equality testing.
-"Exact" here means that two symbolic expressions will compare equal with
-``==`` only if they are exactly equal symbolically.  Here, `(x + 1)^2` and
-`x^2 + 2x + 1` are not the same symbolically. One is the power of an addition
-of two terms, and the other is the addition of three terms.
+Recall from above that ``==`` represents *exact* structural equality testing.
+"Exact" here means that two expressions will compare equal with ``==`` only if
+they are exactly equal structurally.  Here, `(x + 1)^2` and `x^2 + 2x + 1` are
+not the same symbolically. One is the power of an addition of two terms, and
+the other is the addition of three terms.
 
 It turns out that when using SymPy as a library, having ``==`` test for exact
 symbolic equality is far more useful than having it represent symbolic
@@ -203,6 +203,14 @@ general---but for most common expressions, it works quite well.
     >>> c = x**2 - 2*x + 1
     >>> simplify(a - c)
     4*x
+
+There is also a method called ``equals`` that tests if two expressions are
+equal by evaluating them numerically at random points.
+
+    >>> a = cos(x)**2 - sin(x)**2
+    >>> b = cos(2*x)
+    >>> a.equals(b)
+    True
 
 Two Final Notes: ``^`` and ``/``
 ================================

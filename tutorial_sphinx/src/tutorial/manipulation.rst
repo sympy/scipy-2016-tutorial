@@ -119,7 +119,7 @@ Thus, we could have created the same object by writing ``Mul(x, y)``.
 Now we get to our final expression, ``x**2 + x*y``.  This is the addition of
 our last two objects, ``Pow(x, 2)``, and ``Mul(x, y)``.  The SymPy class for
 addition is ``Add``, so, as you might expect, to create this object, we use
-``Add(Pow(x, 2), Mul(x, y)``.
+``Add(Pow(x, 2), Mul(x, y))``.
 
     >>> Add(Pow(x, 2), Mul(x, y))
     x**2 + x*y
@@ -130,8 +130,7 @@ broad.  Here is a more complicated example
     >>> expr = sin(x*y)/2 - x**2 + 1/y
     >>> srepr(expr)
     "Add(Mul(Integer(-1), Pow(Symbol('x'), Integer(2))), Mul(Rational(1, 2),
-    Function('sin')(Mul(Symbol('x'), Symbol('y')))), Pow(Symbol('y'),
-    Integer(-1)))"
+    sin(Mul(Symbol('x'), Symbol('y')))), Pow(Symbol('y'), Integer(-1)))"
 
 Here is a diagram
 
@@ -433,7 +432,7 @@ The base case will be empty ``args``.  Let's write a simple function that goes
 through an expression and prints all the ``args`` at each level.
 
     >>> def pre(expr):
-    ...     print expr
+    ...     print(expr)
     ...     for arg in expr.args:
     ...         pre(arg)
 
@@ -460,7 +459,7 @@ Such traversals are so common in SymPy that the generator functions
 traversals easy.  We could have also written our algorithm as
 
     >>> for arg in preorder_traversal(expr):
-    ...     print arg
+    ...     print(arg)
     x*y + 1
     1
     x*y
@@ -484,8 +483,3 @@ traversals easy.  We could have also written our algorithm as
   have ``-x`` or ``1/x``.  It is also done for speed efficiency because
   singletonized objects can be compared by ``is``.  The unique objects for
   each singletonized class can be accessed from the ``S`` object.
-
-      >>> S.Zero
-      0
-      >>> S.Zero is Integer(0)
-      True
