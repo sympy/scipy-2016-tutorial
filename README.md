@@ -10,3 +10,10 @@ presentation materials for us.
 If you want to build the tutorial presentation, use `make html` in the
 tutorial_sphinx directory. It is basically the same as the SymPy tutorial at
 http://docs.sympy.org/tutorial/tutorial/.
+
+
+**NOTE: This tutorial is out of date with the latest version of SymPy. I
+  recommend reading the
+  [official tutorial](http://docs.sympy.org/latest/tutorial/index.html), which
+  is based on this. The exercise notebooks in this repo should still prove to
+  be useful companions to the official tutorial, however.**
