@@ -1,0 +1,84 @@
+  1197	Chris Smith
+   624	Matthew Rocklin
+   410	Aaron Meurer
+   408	Julien Rioux
+   196	Raoul Bourquin
+   170	Sergiu Ivanov
+   121	Sergey B Kirpichev
+   116	Mario Pernici
+   114	Mateusz Paprocki
+   104	Bharath M R
+    97	Thomas Hisch
+    89	Ondřej Čertík
+    87	David Li
+    80	Prasoon Shukla
+    73	Stefan Krastanov
+    71	Ronan Lamy
+    68	Guru Devanla
+    61	Tom Bachmann
+    59	Timothy Reluga
+    51	Sachin Joglekar
+    45	Ramana Venkata
+    45	Aleksandar Makelov
+    42	Manoj Kumar
+    39	Saptarshi Mandal
+    35	Matthew Hoff
+    33	hm
+    28	Sean Vig
+    21	Angadh Nanjangud
+    19	Saurabh Jha
+    19	Niklas Thörne
+    19	Alexander Hirzel
+    17	Brian Stephanik
+    16	Angus Griffith
+    16	Patrick Lacasse
+    13	Huijun Mai
+    12	Marek Šuppa
+    12	Sachin Irukula
+     9	Sean Ge
+     9	Chetna Gupta
+     8	CJ Carey
+     8	Gilbert Gede
+     7	Prafullkumar P. Tale
+     7	Rishabh Dixit
+     6	Brian E. Granger
+     6	Demian Wassermann
+     6	Christopher Dembia
+     6	Ananya
+     5	Ankit Agrawal
+     5	Christophe Saint-Jean
+     5	Mary Clark
+     5	Tarun Gaba
+     5	Katja Sophie Hotz
+     4	Stefen Yin
+     4	Thilina Rathnayake
+     4	Khagesh Patel
+     4	Varun Joshi
+     3	Amit Jamadagni
+     3	Luke Peterson
+     3	Oliver Lee
+     3	Case Van Horsen
+     3	Shravas K Rao
+     3	Akshit Agarwal
+     2	Vladimir Perić
+     2	Jens H. Nielsen
+     2	Cristóvão Sousa
+     2	Stephen Loo
+     2	Colleen Lee
+     1	Sherjil Ozair
+     1	Matthew Tadd
+     1	Christian Bühler
+     1	Takafumi Arakaki
+     1	Tarang
+     1	Madeleine Ball
+     1	Alexander Eberspächer
+     1	Acebulf
+     1	Tyler Pirtle
+     1	Vasily Povalyaev
+     1	Benjamin Fishbein
+     1	Randy Heydon
+     1	Björn Dahlgren
+     1	Pavel Fedotov
+     1	Oscar Benjamin
+     1	Max Hutchinson
+     1	Seshagiri Prabhu

@@ -1,0 +1,132 @@
+   668	Andreas Mueller
+   289	Lars Buitinck
+   260	Gilles Louppe
+   233	Gael Varoquaux
+   211	Peter Prettenhofer
+   159	Mathieu Blondel
+   155	Arnaud Joly
+   151	Olivier Grisel
+   132	Jaques Grobler
+   112	Vlad Niculae
+   109	Wei Li
+   108	Noel Dawe
+    99	Alexandre Gramfort
+    66	Joel Nothman
+    36	Nelle Varoquaux
+    35	Rob Zinkov
+    33	eustache
+    29	Fabian Pedregosa
+    25	Robert Layton
+    24	Virgile Fritsch
+    19	Aymeric Masurelle
+    18	Andrew Winterman
+    17	Tadej Janež
+    16	Christian Osendorfer
+    15	Brian Cheung
+    14	Daniel Nouri
+    14	Doug Coleman
+    14	Yannick Schwartz
+    13	Robert Marchman
+    13	syhw
+    12	Satrajit Ghosh
+    11	Jake VanderPlas
+    11	John Benediktsson
+    11	Mikhail Korobov
+    10	Corey Lynch
+    10	Immanuel Bayer
+    10	Jim Holmström
+    10	Kyle Beauchamp
+     9	Kernc
+     9	Steven De Gryze
+     9	mr.Shu
+     8	Conrad Lee
+     8	James Bergstra
+     8	andy
+     8	jnothman
+     7	Hrishikesh Huilgolkar
+     7	Marko Burjek
+     6	Brian Cajes
+     6	Martin Luessi
+     6	Michael Eickenberg
+     6	Tiago Nunes
+     5	Anze
+     5	Nicolas Pinto
+     5	Raul Garreta
+     5	Shiqiao Du
+     4	ApproximateIdentity
+     4	Christian Jauvin
+     4	Federico Vaggi
+     4	Jacques Kvam
+     4	Kemal Eren
+     4	Richard T. Guy
+     3	A. Flaxman
+     3	Alexandre Abraham
+     3	Brian Holt
+     3	Dougal Sutherland
+     3	Florian Hoenig
+     3	Nicolas Trésegnie
+     3	Robert McGibbon
+     3	Roman Sinayev
+     3	Scott Dickerson
+     3	Szabo Roland
+     3	Yaroslav Halchenko
+     2	Diego Molla
+     2	Francois Savard
+     2	Imran Haque
+     2	Mark Veronda
+     2	Matti Lyra
+     2	Peter Welinder
+     2	Sergey Karayev
+     2	Sergio Medina
+     2	Xinfan Meng
+     2	jamestwebber
+     1	Abhijeet Kolhe
+     1	Alejandro Weinstein
+     1	Alex Companioni
+     1	Alexander Fabisch
+     1	Alexandre Passos
+     1	Bastiaan van den Berg
+     1	Benjamin Peterson
+     1	Bussonnier Matthias
+     1	Charles-Pierre Astolfi
+     1	Christoph Deil
+     1	Daniel Velkov
+     1	David Cournapeau
+     1	Denton Cockburn
+     1	Eugene Nizhibitsky
+     1	Felix Brockherde
+     1	JakeMick
+     1	James McDermott
+     1	Jochen Wersdörfer
+     1	Johannes Schönberger
+     1	Justin Pati
+     1	Ken Geis
+     1	Kenneth C. Arnold
+     1	Kevin Hughes
+     1	Ludwig Schwardt
+     1	Luis Pedro Coelho
+     1	Matthias Ekman
+     1	Miroslav Batchkarov
+     1	Miroslav Shubernetskiy
+     1	Naoki Orii
+     1	Norbert Crombach
+     1	Pavel
+     1	Rafael Cunha de Almeida
+     1	Rolando Espinoza La fuente
+     1	Seamus Abshere
+     1	Sebastian Berg
+     1	Shaun Jackman
+     1	Stefano Lattarini
+     1	Steve Koch
+     1	Subhodeep Moitra
+     1	Thomas Jarosch
+     1	Tim Sheerman-Chase
+     1	X006
+     1	bob
+     1	buguen
+     1	dengemann
+     1	draix
+     1	emanuele
+     1	hrishikeshio
+     1	nzer0
+     1	unknown

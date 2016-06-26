@@ -1,0 +1,232 @@
+  2200	Benjamin Ragan-Kelley
+  1673	Fernando Perez
+  1306	Brian E. Granger
+   926	Thomas Kluyver
+   802	Ville M. Vainio
+   648	Matthias BUSSONNIER
+   287	Evan Patterson
+   206	Bradley M. Froehle
+   180	Gael Varoquaux
+   132	Takafumi Arakaki
+   112	Walter Doerwald
+    92	Paul Ivanov
+    70	Laurent Dufréchou
+    54	Jörgen Stenarson
+    52	Barry Wark
+    50	Robert Kern
+    47	Stefan van der Walt
+    45	Julian Taylor
+    35	Greg Caporaso
+    29	Matthias Bussonnier
+    28	Jonathan Taylor
+    25	Jorgen Stenarson
+    25	Thomas Spura
+    22	JÃ¶rgen Stenarson
+    20	Jan Schulz
+    20	Nicolas Rougier
+    17	Jason Grout
+    17	Jonathan March
+    16	Christian Boos
+    15	Erik Tollerud
+    15	Omar Andrés Zapata Mesa
+    14	Robert McGibbon
+    13	Michael Droettboom
+    13	Piti Ongmongkolkul
+    13	Puneeth Chaganti
+    13	Satrajit Ghosh
+    12	Aaron Meurer
+    12	David Warde-Farley
+    11	Jens Hedegaard Nielsen
+    11	W. Trevor King
+    10	Aron Ahmadia
+    10	Cameron Bates
+    10	Timo Paulssen
+    10	darren.dale
+    10	jdh2358
+     9	Administrator
+     9	Brandon Parsons
+     9	Pauli Virtanen
+     9	Robert Marchman
+     9	Scott Tsai
+     9	Skipper Seabold
+     9	jstenar
+     8	Andrew Straw
+     8	Martin Spacek
+     8	Ryan May
+     7	Danny Staple
+     7	Darren Dale
+     7	Thomi Richards
+     7	mcelrath
+     7	mr.Shu
+     7	vds
+     6	Daniel Velkov
+     6	Dav Clark
+     6	Diane Trout
+     6	Dominik Dabrowski
+     6	Jens H. Nielsen
+     6	Mark Voorhies
+     6	Siyu Zhang
+     6	Tom Fetherston
+     5	David Hirschfeld
+     5	David Wyde
+     5	Eugene Van den Bulke
+     5	Ian Murray
+     5	Joon Ro
+     5	Mikhail Korobov
+     5	Pete Aykroyd
+     5	Tim Couper
+     5	dan.milstein
+     4	Ahmet Bakan
+     4	Ben Edwards
+     4	Carlos Cordoba
+     4	Christoph Gohlke
+     4	Frank Murphy
+     4	Jez Ng
+     4	Juergen Hasch
+     4	Mani chandra
+     4	Olivier Verdier
+     4	Prabhu Ramachandran
+     4	chapmanb
+     4	drevicko
+     4	v923z
+     3	Andrew Vandever
+     3	Antony Lee
+     3	Cavendish McKay
+     3	Ernie French
+     3	Felix Werner
+     3	Kyle Kelley
+     3	Marc Abramowitz
+     3	Mark Wiebe
+     3	Omar Andres Zapata Mesa
+     3	Pietro Berkes
+     3	Roy Hyunjin Han
+     3	Steven Johnson
+     3	Szabolcs Horvát
+     3	Thomas Hisch
+     3	Valentin Haenel
+     3	Yaroslav Halchenko
+     3	dkua
+     3	fawce
+     3	muzgash
+     3	s8weber
+     2	Alcides
+     2	Alex Kramer
+     2	Benjie Chen
+     2	Chris Beaumont
+     2	Chris Laumann
+     2	Gerardo
+     2	Guy Haskin Fernald
+     2	Hans Meine
+     2	Jens H Nielsen
+     2	Joseph Lansdowne
+     2	Justin Riley
+     2	Kent Inverarity
+     2	Luis Pedro Coelho
+     2	Matt Cottingham
+     2	Matthew Brett
+     2	Maxim Grechkin
+     2	Michael Shuffett
+     2	Mike Hansen
+     2	Owen Healy
+     2	Pawel Jasinski
+     2	Ross Jones
+     2	Toby Gilham
+     2	debjan
+     2	macgyver
+     2	tzanko
+     2	vankayala sowjanya
+     2	y-p
+     1	Aaron Culich
+     1	Adam Davis
+     1	Aenugu Sai Kiran Reddy
+     1	Alberto Valverde
+     1	Anders Hovmöller
+     1	Andrew Giessel
+     1	Andrew Spiers
+     1	André Matos
+     1	Anton Akhmerov
+     1	Antonio Cuni
+     1	Beetoju Anuradha
+     1	Benedikt Sauer
+     1	Benjamin Jones
+     1	Benjamin Thyreau
+     1	Bernard Paulus
+     1	Bernardo B. Marques
+     1	Boris de Laage
+     1	Brad Reisfeld
+     1	Bradley Froehle
+     1	Cody Precord
+     1	Corran Webster
+     1	DamianHeard
+     1	Dan Kilman
+     1	Dan McDougall
+     1	David
+     1	David Zderic
+     1	Donald Curtis
+     1	Dražen Lučanin
+     1	Eric Firing
+     1	Erik M. Bray
+     1	Gabriel
+     1	Grahame Bowland
+     1	Hannes Schulz
+     1	Harry Moreno
+     1	Jack Feser
+     1	Jeff Knisley
+     1	Jerry Fowler
+     1	Johann Cohen-Tanugi
+     1	John Zwinck
+     1	Jussi Sainio
+     1	Kefu Chai
+     1	Kiorky
+     1	Konrad Hinsen
+     1	Lars Solberg
+     1	Lessandro Mariano
+     1	Mark E. Smith
+     1	Mark Sienkiewicz at STScI
+     1	MercuryRising
+     1	Michał Górny
+     1	Nathan Goldbaum
+     1	Nathan Rice
+     1	Nick Tarleton
+     1	Ohad Ravid
+     1	Olivier Grisel
+     1	Pablo Winant
+     1	Pankaj Pandey
+     1	Paul
+     1	Piotr Zolnierczuk
+     1	Ramana
+     1	Rob Young
+     1	Rui Pereira
+     1	Rustam Safin
+     1	Samuel Ainsworth
+     1	Sathesh Chandra
+     1	Sean Vig
+     1	Sebastian Busch
+     1	Skylar Saveland
+     1	Stephan Peijnik
+     1	Steven Bethard
+     1	Steven Silvester
+     1	Takeshi Kanmae
+     1	Ted Wright
+     1	Thomas Robitaille
+     1	Thomas Weißschuh
+     1	Timothy O'Donnell
+     1	Tom MacWright
+     1	Tony S Yu
+     1	Vishal Vatsa
+     1	Vishnu S G
+     1	Yoav Ram
+     1	Zoltán Vörös
+     1	anatoly techtonik
+     1	andy wilson
+     1	chebee7i
+     1	codebraker
+     1	codespaced
+     1	klonuo
+     1	muzuiget
+     1	tcmulcahy
+     1	teegaar
+     1	ugurthemaster
+     1	urielshaolin
+     1	vds2212
+     1	wilsaj

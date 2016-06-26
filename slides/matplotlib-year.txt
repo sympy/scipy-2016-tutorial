@@ -1,0 +1,107 @@
+   676	Michael Droettboom
+   246	Damon McDougall
+   204	Phil Elson
+   147	Eric Firing
+   125	Nelle Varoquaux
+    61	Tony S Yu
+    57	Ben Root
+    57	Thomas A Caswell
+    56	Matt Giuca
+    47	Christoph Gohlke
+    45	pwuertz
+    34	Paul Ivanov
+    31	Daniel Hyams
+    29	pelson
+    25	Jae-Joon Lee
+    22	Ian Thomas
+    21	Ryan May
+    19	Todd Jennings
+    18	Jens H. Nielsen
+    18	Martin Spacek
+    18	Nic Eggert
+    15	Peter Würtz
+    13	Jake Vanderplas
+    13	Maximilian Albert
+    13	Wes Campaigne
+    12	Cimarron Mittelsteadt
+     9	Matthew Emmett
+     8	Brian Mattern
+     8	Geoffroy Billotey
+     8	Kevin Davies
+     8	Michael Welter
+     8	Michiel de Hoon
+     8	Till Stensitzki
+     6	Amit Aronovitch
+     6	Amy
+     6	Jan-Philip Gehrcke
+     5	Anton Akhmerov
+     5	Joe Kington
+     5	Jouni K. Seppänen
+     5	Thomas Robitaille
+     5	bblay
+     5	endolith
+     4	Andrew Dawson
+     4	Cameron Bates
+     4	Jens Hedegaard Nielsen
+     4	Julien Schueller
+     4	Leo Singer
+     4	Takafumi Arakaki
+     4	Tobias Megies
+     4	Víctor Terrón
+     4	vbr
+     3	Ahmet Bakan
+     3	Chris Beaumont
+     3	David Trémouilles
+     3	Jeffrey Bingham
+     3	MinRK
+     3	Piti Ongmongkolkul
+     3	Thomas Kluyver
+     3	dhyams
+     2	Adam Ginsburg
+     2	Alejandro Dubrovsky
+     2	Ben Gamari
+     2	Bradley M. Froehle
+     2	Francesco Montesano
+     2	Gellule Xg
+     2	Jack Kelly
+     2	James R. Evans
+     2	Jeff Bingham
+     2	John Hunter
+     2	Lodato Luciano
+     2	Pauli Virtanen
+     2	Ryan Dale
+     2	Sandro Tosi
+     2	Sergey Koposov
+     2	Tomas Kazmar
+     2	aseagram
+     2	drevicko
+     2	gitj
+     1	Adrian Price-Whelan
+     1	Andreas Hilboll
+     1	Antony Lee
+     1	Binglin Chang
+     1	Carl Michal
+     1	Guillaume Gay
+     1	Jack (aka Daniel) Kelly
+     1	Jonathan Waltman
+     1	Julien Woillez
+     1	Martin Teichmann
+     1	Martin Ueding
+     1	Min RK
+     1	Nick Semenkovich
+     1	Pascal Bugnion
+     1	Paul Hobson
+     1	Pierre Haessig
+     1	Russell Owen
+     1	Ryan Blomberg
+     1	Sebastian Pinnau
+     1	Takeshi Kanmae
+     1	Wouter Overmeire
+     1	bev-a-tron
+     1	burrbull
+     1	jschueller
+     1	krischer
+     1	mcelrath
+     1	montefra
+     1	torfbolt
+     1	ugurthemaster

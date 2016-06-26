@@ -1,0 +1,125 @@
+   762	Benjamin Ragan-Kelley
+   370	Matthias BUSSONNIER
+   245	Brian E. Granger
+   223	Thomas Kluyver
+   154	Bradley M. Froehle
+   107	Fernando Perez
+   106	Takafumi Arakaki
+    35	Greg Caporaso
+    29	Matthias Bussonnier
+    22	JÃ¶rgen Stenarson
+    20	Jan Schulz
+    19	Paul Ivanov
+    17	Evan Patterson
+    16	Julian Taylor
+    14	Jörgen Stenarson
+    14	Robert McGibbon
+    13	Jason Grout
+    10	Cameron Bates
+    10	Piti Ongmongkolkul
+    10	W. Trevor King
+     9	Robert Marchman
+     8	Aaron Meurer
+     8	Aron Ahmadia
+     8	Ryan May
+     7	Danny Staple
+     7	David Warde-Farley
+     7	mr.Shu
+     6	Diane Trout
+     6	Dominik Dabrowski
+     6	Siyu Zhang
+     5	David Wyde
+     5	Eugene Van den Bulke
+     5	Jonathan March
+     5	Joon Ro
+     5	Mikhail Korobov
+     4	Ahmet Bakan
+     4	David Hirschfeld
+     4	Erik Tollerud
+     4	Frank Murphy
+     4	Juergen Hasch
+     4	Robert Kern
+     4	Thomas Spura
+     4	chapmanb
+     4	drevicko
+     4	v923z
+     3	Andrew Vandever
+     3	Antony Lee
+     3	Cavendish McKay
+     3	Christoph Gohlke
+     3	Jens H. Nielsen
+     3	Kyle Kelley
+     3	Pietro Berkes
+     3	dkua
+     3	jstenar
+     2	Benjie Chen
+     2	Carlos Cordoba
+     2	Chris Beaumont
+     2	Chris Laumann
+     2	Guy Haskin Fernald
+     2	Jez Ng
+     2	Joseph Lansdowne
+     2	Martin Spacek
+     2	Maxim Grechkin
+     2	Michael Droettboom
+     2	Michael Shuffett
+     2	Owen Healy
+     2	Pawel Jasinski
+     2	Puneeth Chaganti
+     2	debjan
+     2	mcelrath
+     2	s8weber
+     2	y-p
+     1	Adam Davis
+     1	Alberto Valverde
+     1	Alex Kramer
+     1	Anders Hovmöller
+     1	Andrew Spiers
+     1	Anton Akhmerov
+     1	Benedikt Sauer
+     1	Benjamin Jones
+     1	Boris de Laage
+     1	Corran Webster
+     1	DamianHeard
+     1	Dan Kilman
+     1	Dan McDougall
+     1	Donald Curtis
+     1	Dražen Lučanin
+     1	Erik M. Bray
+     1	Hans Meine
+     1	Harry Moreno
+     1	Jack Feser
+     1	Jeff Knisley
+     1	Jerry Fowler
+     1	John Zwinck
+     1	Jussi Sainio
+     1	Konrad Hinsen
+     1	Lars Solberg
+     1	Lessandro Mariano
+     1	Mark Sienkiewicz at STScI
+     1	MercuryRising
+     1	Michał Górny
+     1	Nathan Goldbaum
+     1	Ohad Ravid
+     1	Olivier Grisel
+     1	Olivier Verdier
+     1	Rob Young
+     1	Rui Pereira
+     1	Rustam Safin
+     1	Samuel Ainsworth
+     1	Sean Vig
+     1	Skylar Saveland
+     1	Steven Silvester
+     1	Takeshi Kanmae
+     1	Thomas Robitaille
+     1	Thomas Weißschuh
+     1	Timothy O'Donnell
+     1	Yoav Ram
+     1	Zoltán Vörös
+     1	codebraker
+     1	codespaced
+     1	klonuo
+     1	tcmulcahy
+     1	teegaar
+     1	ugurthemaster
+     1	urielshaolin
