@@ -6,11 +6,11 @@ except ImportError:
     print("sympy is required")
 else:
 
-    if sympy.__version__ < '0.7.5':
-        print("SymPy version 0.7.5 or newer is required. You have", sympy.__version__)
+    if sympy.__version__ < '1.0':
+        print("SymPy version 1.0 or newer is required. You have", sympy.__version__)
 
-    if sympy.__version__ != '0.7.5':
-        print("The stable SymPy version 0.7.5 is recommended. You have", sympy.__version__)
+    if sympy.__version__ != '1.0':
+        print("The stable SymPy version 1.0 is recommended. You have", sympy.__version__)
 
 try:
     import matplotlib
@@ -22,7 +22,7 @@ try:
 except ImportError:
     print("IPython notebook is required.")
 else:
-    if IPython.__version__ < '2.1.0':
+    if IPython.__version__ < '4.1.2':
         print("The latest version of IPython is recommended. You have", IPython.__version__)
 
 print("""A fortran and/or C compiler is required for the code generation portion
