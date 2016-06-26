@@ -1,0 +1,258 @@
+  2715	Chris Smith
+  1465	Aaron Meurer
+  1304	Mateusz Paprocki
+  1208	Ondřej Čertík
+   908	Matthew Rocklin
+   460	Julien Rioux
+   455	Ronan Lamy
+   380	Raoul Bourquin
+   374	Kirill Smelkov
+   351	Øyvind Jensen
+   312	Tom Bachmann
+   260	Sergiu Ivanov
+   207	Mario Pernici
+   190	Saptarshi Mandal
+   169	Stefan Krastanov
+   156	Brian E. Granger
+   138	Vinzent Steinberg
+   133	Vladimir Perić
+   127	Raymond Wong
+   121	Sergey B Kirpichev
+   119	David Li
+   119	Fredrik Johansson
+   115	Sean Vig
+   114	Fabian Pedregosa
+   111	Bharath M R
+   109	Gilbert Gede
+   103	Addison Cugini
+    97	Thomas Hisch
+    95	Guru Devanla
+    81	Priit Laes
+    80	Prasoon Shukla
+    79	Alexey U. Gudchenko
+    77	Matt Habel
+    69	Tomo Lazovich
+    67	Matt Curry
+    59	Timothy Reluga
+    55	Jason Gedge
+    53	Aleksandar Makelov
+    51	Sachin Joglekar
+    50	Brian Jorgensen
+    49	Kendhia
+    46	Andy R. Terrel
+    45	Ramana Venkata
+    44	Grzegorz Świrski
+    43	Sebastian Krämer
+    43	Pearu Peterson
+    42	Manoj Kumar
+    40	Toon Verstraelen
+    40	Siddhanathan Shanmugam
+    40	Joan Creus
+    37	Jorn Baayen
+    37	Christian Muise
+    36	Jeremias Yehdegho
+    35	Joachim Durchholz
+    35	Kevin Hunter
+    35	Riccardo Gori
+    35	Matthew Hoff
+    33	Steve Anton
+    33	hm
+    32	Sanket Agarwal
+    29	Robert Schwarz
+    28	David Ju
+    27	Luke Peterson
+    27	Angadh Nanjangud
+    24	Bilal Akhtar
+    24	Stepan Roucka
+    23	Miha Marolt
+    22	Renato Coutinho
+    19	Saurabh Jha
+    19	Niklas Thörne
+    19	Alexander Hirzel
+    19	Nathan Alison
+    18	jerryma1121
+    17	Brian Stephanik
+    17	Sam Sleight
+    17	Sachin Irukula
+    17	Robert Kern
+    16	Patrick Lacasse
+    16	Angus Griffith
+    16	Swapnil Agarwal
+    15	Gary Kerr
+    14	Sherjil Ozair
+    14	Natalia Nawara
+    14	Nicolas Pourcelot
+    13	Huijun Mai
+    13	Jim Zhang
+    13	Ljubiša Moćić
+    13	Prafullkumar P. Tale
+    12	Marek Šuppa
+    11	Freddie Witherden
+    11	Roberto Nobrega
+    10	Jason Moore
+    10	Felix Kaiser
+     9	Sean Ge
+     9	Alan Bromborsky
+     9	Chetna Gupta
+     9	Friedrich Hagedorn
+     9	Saroj Adhikari
+     8	CJ Carey
+     8	Jaroslaw Tworek
+     8	Alexey Subach
+     8	Yuri Karadzhov
+     7	Rishabh Dixit
+     7	Christian Bühler
+     7	Ryan Krauss
+     6	Min Ragan-Kelley
+     6	Demian Wassermann
+     6	Christopher Dembia
+     6	Sam Magura
+     6	Ananya
+     6	Mark Dewing
+     6	Raphael Michel
+     6	Andreas Kloeckner
+     5	Tarun Gaba
+     5	Christophe Saint-Jean
+     5	Tobias Lenz
+     5	Tomasz Buchert
+     5	Davy Mao
+     5	Ankit Agrawal
+     5	Nichita Utiu
+     5	Piotr Korgul
+     5	Mary Clark
+     5	Harold Erbin
+     5	Matthew Brett
+     5	Chris Wu
+     5	Chancellor Arkantos
+     5	Katja Sophie Hotz
+     4	Alexandr Popov
+     4	Abderrahim Kitouni
+     4	Stefano Maggiolo
+     4	Varun Joshi
+     4	Thilina Rathnayake
+     4	Nimish Telang
+     4	Tiffany Zhu
+     4	Khagesh Patel
+     4	Rom le Clair
+     4	Imran Ahmed Manzoor
+     4	Jochen Voss
+     4	Stefen Yin
+     4	David Roberts
+     4	Sebastian Kreft
+     4	Óscar Nájera
+     4	Tristan Hume
+     4	Florian Mickler
+     3	Pan Peng
+     3	Akshay Srinivasan
+     3	Akshit Agarwal
+     3	Amit Jamadagni
+     3	Andrew Straw
+     3	Barry Wardell
+     3	Benjamin McDonald
+     3	Bill Flynn
+     3	Case Van Horsen
+     3	Cristóvão Sousa
+     3	Emma Hogan
+     3	Geoffry Song
+     3	George Waksman
+     3	Jens H. Nielsen
+     3	Julio Idichekop Filho
+     3	Luca Weihs
+     3	Luis Garcia
+     3	Manoj Babu K.
+     3	Martin Povišer
+     3	Nikolay Lazarov
+     3	Oliver Lee
+     3	Raffaele De Feo
+     3	Shravas K Rao
+     3	Ted Horst
+     2	Oscar Benjamin
+     2	Michael Mayorov
+     2	David Marek
+     2	Goutham Lakshminarayan
+     2	Ben Goodrich
+     2	Jezreel Ng
+     2	Tomáš Bambas
+     2	Ashwini Oruganti
+     2	Arpit Goyal
+     2	Stephen Loo
+     2	Jurjen N.E. Bos
+     2	Colleen Lee
+     2	James Aspnes
+     2	Sai Nikhil
+     2	Jack McCaffery
+     2	Fernando Perez
+     2	Oleksandr Gituliar
+     2	Thomas Dixon
+     2	Bradley Froehle
+     2	Nikhil Sarda
+     2	tsmars15
+     2	Thomas Wiecki
+     2	Pavel Fedotov
+     2	Boris Timokhin
+     2	Henrik Johansson
+     1	James Abbatiello
+     1	Sebastian Krause
+     1	Hubert Tsang
+     1	Gregory Ksionda
+     1	Seshagiri Prabhu
+     1	Shai 'Deshe' Wyborski
+     1	Gert-Ludwig Ingold
+     1	Acebulf
+     1	Shruti Mangipudi
+     1	Siddhant Jain
+     1	Srinivas Vasudevan
+     1	Elrond der Elbenfuerst
+     1	Eh Tan
+     1	David Lawrence
+     1	Stepan Simsa
+     1	Comer Duncan
+     1	Takafumi Arakaki
+     1	Tarang
+     1	Christian Schubert
+     1	Łukasz Pankowski
+     1	Carsten Knoll
+     1	Thomas Sidoti
+     1	Tim Lahey
+     1	Björn Dahlgren
+     1	Bernhard R. Link
+     1	Benjamin Fishbein
+     1	Bastian Weber
+     1	Tyler Pirtle
+     1	Andrew Docherty
+     1	Vasily Povalyaev
+     1	Vinay Kumar
+     1	Or Dvory
+     1	Vladimir Lagunov
+     1	Andre de Fortier Smit
+     1	Anatolii Koval
+     1	Ali Raza Syed
+     1	Alexandr Gudulin
+     1	marshall2389
+     1	vishal
+     1	Pauli Virtanen
+     1	Andrej Tokarčík
+     1	Prateek Papriwal
+     1	Puneeth Chaganti
+     1	Alexander Eberspächer
+     1	Randy Heydon
+     1	Nicholas J.S. Kinar
+     1	Max Hutchinson
+     1	Matthias Toews
+     1	Matthew Tadd
+     1	Matt Rajca
+     1	Rizgar Mella
+     1	Robert
+     1	Robert Cimrman
+     1	Marcin Kostrzewa
+     1	Madeleine Ball
+     1	Roberto Colistete, Jr.
+     1	Konrad Meyer
+     1	Kibeom Kim
+     1	Kevin Goodsell
+     1	Kazuo Thow
+     1	Kaifeng Zhu
+     1	Joseph Dougherty
+     1	Jorge E. Cardona
+     1	Johann Cohen-Tanugi
+     1	James Pearson

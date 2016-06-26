@@ -1,0 +1,90 @@
+   278	Charles Harris
+   110	Sebastian Berg
+   109	Nathaniel J. Smith
+    69	ovillellas
+    61	Ralf Gommers
+    58	Jay Bourque
+    52	Ondřej Čertík
+    50	Pauli Virtanen
+    46	Julian Taylor
+    46	Travis E. Oliphant
+    30	m-d-w
+    26	Han Genuit
+    24	David Cournapeau
+    20	Christoph Gohlke
+    20	endolith
+    19	David Warde-Farley
+    18	John Salvatier
+    15	Frederic
+    15	seberg
+    14	Mark Wiebe
+    11	Warren Weckesser
+    10	87
+    10	Eric Fode
+    10	Thomas Robitaille
+     8	Matthew Brett
+     7	Stefan van der Walt
+     7	Yaroslav Halchenko
+     6	jayvius
+     5	Bradley M. Froehle
+     5	Eric Moore
+     4	Ben Walsh
+     3	Alex Ford
+     3	Eric Firing
+     3	Fazlul Shahriar
+     3	GaelVaroquaux
+     3	Guillaume Gay
+     3	Skipper Seabold
+     3	Steve
+     3	argriffing
+     3	peterjc
+     2	Adam Ginsburg
+     2	Aron Ahmadia
+     2	Bartosz Telenczuk
+     2	Dan Miller
+     2	Edward Catmur
+     2	Gabriel
+     2	Josh Warner (Mac)
+     2	Michael Droettboom
+     2	Nicolas Scheffer
+     2	Paul Ivanov
+     2	Robert Kern
+     2	Ronan Lamy
+     2	Sandro Tosi
+     2	Thouis (Ray) Jones
+     2	jamestwebber
+     1	Adam Griffiths
+     1	Andreas Hilboll
+     1	Andrew Horton
+     1	Arink Verma
+     1	Carwyn Pelley
+     1	Chris
+     1	Christian Brueffer
+     1	Dan Hipschman
+     1	Denis Laxalde
+     1	John Benediktsson
+     1	Jonathan Waltman
+     1	Joon Ro
+     1	Jos de Kloe
+     1	Juan Luis Cano Rodríguez
+     1	Julien Phalip
+     1	Kumar Appaiah
+     1	Leon Weber
+     1	Loftie Ellis
+     1	Luis Pedro Coelho
+     1	Marcin Juszkiewicz
+     1	Martin Baeuml
+     1	Martin Teichmann
+     1	Matt Davis
+     1	Maximilian Albert
+     1	Robert Costa
+     1	Sveinung Gundersen
+     1	Takafumi Arakaki
+     1	Valentin Haenel
+     1	Vladimir Rutsky
+     1	ahmadia
+     1	bebert218
+     1	daveydave400
+     1	jmozmoz
+     1	martingoodson
+     1	mwtoews

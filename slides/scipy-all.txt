@@ -1,0 +1,181 @@
+  1182	Pauli Virtanen
+   961	Travis Oliphant
+   816	David Cournapeau
+   514	Ralf Gommers
+   504	Pearu Peterson
+   375	wnbell
+   321	mattknox_ca
+   293	Stefan van der Walt
+   227	Jarrod Millman
+   227	Matthew Brett
+   194	rgommers
+   190	Denis Laxalde
+   189	warren.weckesser
+   180	Eric Jones
+   168	Warren Weckesser
+   160	Robert Kern
+   155	pierregm
+   152	edschofield
+   150	Tim Leslie
+   136	cookedm
+   130	josef
+   126	damian.eads
+   108	Jake Vanderplas
+    97	tom.waite
+    82	endolith
+    71	fullung
+    64	alex
+    54	Robert Cimrman
+    50	chris.burns
+    46	jonathan.taylor
+    45	Ilan Schnell
+    43	Charles Harris
+    41	aarchiba
+    41	Blake Griffith
+    37	prabhu
+    34	Tim Hochberg
+    31	Martin Teichmann
+    31	Fabian Pedregosa
+    30	Alan McIntyre
+    28	Daniel Smith
+    26	dmitrey.kroshko
+    26	Eric Moore
+    26	Jacob Stevenson
+    25	Patrick Varilly
+    20	Fernando Perez
+    19	fred.mailhot
+    18	david.warde-farley
+    17	jtravs
+    17	Lars Buitinck
+    17	Anthony Scopatz
+    17	Travis Vaught
+    16	Nicky van Foreest
+    16	Travis E. Oliphant
+    14	Skipper Seabold
+    14	chanley
+    14	Jacob Silterra
+    13	pbrod
+    13	hagberg
+    13	François Boulogne
+    12	Scott Sinclair
+    12	Julian Taylor
+    12	Zhenya
+    12	Thomas Robitaille
+    11	Chris Jordan-Squire
+    11	brian.hawthorne
+    10	jtaylor
+    10	Josef Perktold
+     9	tzito
+     9	Niklas K
+     9	David Warde-Farley
+     8	Daniel B. Smith
+     8	cgohlke
+     8	Robert Gantner
+     8	dhuard
+     8	Thouis (Ray) Jones
+     7	Matt Terry
+     7	Bjørn Forsman
+     6	ArmstrongJ
+     6	Jacob Vanderplas
+     6	Joonas Paalasmaa
+     6	Andreas H
+     6	Collin RM Stocks
+     6	Sturla Molden
+     5	Andrey Smirnov
+     5	ondrej
+     5	uwe.schmitt
+     5	Alex Reinhart
+     5	jmiller
+     5	dmorrill
+     5	Tim Cera
+     4	nmarais
+     4	Ciro Duran Santillli
+     4	Illia Polosukhin
+     4	Jonathan Helmus
+     4	Leo Singer
+     4	Max Bolingbroke
+     4	Yaroslav Halchenko
+     4	abaecker
+     4	joe
+     4	skip
+     3	Tony S Yu
+     3	Fazlul Shahriar
+     3	Andreas Hilboll
+     3	josef-pktd
+     3	sturlamolden
+     3	ckuster
+     3	jswhit
+     3	Christoph Weidemann
+     3	Nathan Crock
+     3	ariel.rokem
+     3	Christoph Gohlke
+     3	Gilles Rochefort
+     3	Robert David Grant
+     3	Joseph Jon Booker
+     3	SytseK
+     3	Jeff Armstrong
+     2	Gert-Ludwig Ingold
+     2	Sebastian Berg
+     2	hm
+     2	Gavin Price
+     2	argriffing
+     2	Jorge Cañardo Alastuey
+     2	John Travers
+     2	Takuya OSHIMA
+     2	Paul Ivanov
+     2	Matty G
+     2	Bradley M. Froehle
+     2	dellsystem
+     2	Anton Akhmerov
+     2	Mark Wiebe
+     2	Andrew Schein
+     2	Keith Clawson
+     2	fcady
+     2	trueprice
+     1	Chad Baker
+     1	Daniel Velkov
+     1	Christopher Lee
+     1	Alexis Tabary
+     1	rob.falck
+     1	roberto
+     1	Christian
+     1	swalton
+     1	thorstenkranz
+     1	tonysyu
+     1	unknown
+     1	Bob Helmbold
+     1	Sebastian Werk
+     1	Sebastian Gassner
+     1	Stephen McQuay
+     1	Steven Byrnes
+     1	MinRK
+     1	Matt Newville
+     1	Tom Aldcroft
+     1	Luis Pedro Coelho
+     1	Louis Thibault
+     1	Lorenzo Luengo
+     1	Lawrence Chan
+     1	Wes McKinney
+     1	Christian Brodbeck
+     1	Zach Ploskey
+     1	K.-Michael Aye
+     1	wa03
+     1	Jonathan Hunt
+     1	Johannes Schönberger
+     1	Johann Cohen-Tanugi
+     1	Jim Radford
+     1	Jerome Kieffer
+     1	Branden Rolston
+     1	Jan Schlueter
+     1	Hugo
+     1	Gustav Larsson
+     1	honnorat
+     1	Alexander Eberspächer
+     1	Gael varoquaux
+     1	Fabrice Silva
+     1	FI$H 2000
+     1	lmwang
+     1	martin
+     1	mszep
+     1	Brandon Beacher
+     1	Dražen Lučanin

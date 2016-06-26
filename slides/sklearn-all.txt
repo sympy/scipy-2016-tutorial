@@ -1,0 +1,195 @@
+  1562	Fabian Pedregosa
+  1382	Olivier Grisel
+  1306	Andreas Mueller
+  1245	Gael Varoquaux
+   742	Lars Buitinck
+   707	Peter Prettenhofer
+   689	Vlad Niculae
+   662	Alexandre Gramfort
+   646	Mathieu Blondel
+   554	Gilles Louppe
+   231	Jaques Grobler
+   219	Robert Layton
+   217	Jake VanderPlas
+   198	Brian Holt
+   155	Arnaud Joly
+   152	Noel Dawe
+   112	Nelle Varoquaux
+   109	Wei Li
+    87	Alexandre Passos
+    83	Bertrand Thirion
+    79	Virgile Fritsch
+    72	Immanuel Bayer
+    70	Vincent Michel
+    68	Clay Woolam
+    66	Joel Nothman
+    63	Ron Weiss
+    58	Satrajit Ghosh
+    45	Edouard DUCHESNAY
+    39	Conrad Lee
+    39	Yaroslav Halchenko
+    38	Paolo Losi
+    36	Rob Zinkov
+    36	Shiqiao Du
+    35	Vincent Dubourg
+    35	clay woolam
+    34	Nicolas Pinto
+    33	eustache
+    32	Jean Kossaifi
+    30	Alexis Mignon
+    27	James Bergstra
+    25	Matthieu Perrot
+    25	Yannick Schwartz
+    22	Pietro Berkes
+    21	David Warde-Farley
+    19	Aymeric Masurelle
+    18	Andrew Winterman
+    17	Christian Osendorfer
+    17	David Marek
+    17	Subhodeep Moitra
+    17	Tadej Janež
+    15	Brian Cheung
+    14	Dan Yamins
+    14	Daniel Nouri
+    14	Doug Coleman
+    13	Robert Marchman
+    13	syhw
+    12	Kernc
+    11	John Benediktsson
+    11	Mikhail Korobov
+    11	Robert
+    10	Corey Lynch
+    10	Jim Holmström
+    10	Kyle Beauchamp
+     9	Amit Aides
+     9	Daniel Duckworth
+     9	Steven De Gryze
+     9	fcostin
+     9	mr.Shu
+     8	Michael Eickenberg
+     8	Vincent Schut
+     8	andy
+     8	jnothman
+     7	Alexandre Abraham
+     7	Emmanuelle Gouillart
+     7	Hrishikesh Huilgolkar
+     7	Marko Burjek
+     7	Nick Wilson
+     7	Olivier Hervieu
+     6	Brian Cajes
+     6	Martin Luessi
+     6	Salvatore Masecchia
+     6	Tiago Nunes
+     5	Adrien Gaidon
+     5	Anze
+     5	Raul Garreta
+     5	Tim Sheerman-Chase
+     5	Xinfan Meng
+     4	ApproximateIdentity
+     4	Christian Jauvin
+     4	Federico Vaggi
+     4	Jacques Kvam
+     4	Jan Hendrik Metzen
+     4	Kemal Eren
+     4	Kenneth C. Arnold
+     4	Richard T. Guy
+     4	Thouis (Ray) Jones
+     4	unknown
+     3	A. Flaxman
+     3	Alexis Metaireau
+     3	Anne-Laure Fouque
+     3	Bryan Silverthorn
+     3	Dougal Sutherland
+     3	Florian Hoenig
+     3	Jan Schl�ter
+     3	Joonas Sillanpää
+     3	Nicolas Trésegnie
+     3	Robert McGibbon
+     3	Roman Sinayev
+     3	Scott Dickerson
+     3	Szabo Roland
+     2	Bala Subrahmanyam Varanasi
+     2	Charles McCarthy
+     2	Diego Molla
+     2	DraXus
+     2	Francois Savard
+     2	Hannes Schulz
+     2	Imran Haque
+     2	Julien Miotte
+     2	Keith Goodman
+     2	Mark Veronda
+     2	Matti Lyra
+     2	Meng Xinfan
+     2	Minwoo Jake Lee
+     2	Peter Welinder
+     2	Ronan Amicel
+     2	Roy Hyunjin Han
+     2	Scott White
+     2	Sergey Karayev
+     2	Sergio Medina
+     2	X006
+     2	Yann Malet
+     2	jamestwebber
+     1	Abhijeet Kolhe
+     1	Alejandro Weinstein
+     1	Alex Companioni
+     1	Alexander Fabisch
+     1	Ariel Rokem
+     1	Bastiaan van den Berg
+     1	Benjamin Peterson
+     1	Bogdan Trach
+     1	Brandyn A. White
+     1	Brandyn White
+     1	Bussonnier Matthias
+     1	Carlos Scheidegger
+     1	Charles-Pierre Astolfi
+     1	Chris Filo Gorgolewski
+     1	Christoph Deil
+     1	Claire Revillet
+     1	Dan O'Huiginn
+     1	Daniel Velkov
+     1	David Cournapeau
+     1	Denton Cockburn
+     1	Eugene Nizhibitsky
+     1	Felix Brockherde
+     1	Feth Arezki
+     1	Félix-Antoine Fortin
+     1	JakeMick
+     1	James McDermott
+     1	Jochen Wersdörfer
+     1	Johannes Schönberger
+     1	Juan Manuel Caicedo Carvajal
+     1	Justin Pati
+     1	Kamel Ibn Hassen Derouiche
+     1	Ken Geis
+     1	Kevin Hughes
+     1	Lucas Wiman
+     1	Ludwig Schwardt
+     1	Luis Pedro Coelho
+     1	Matthias Ekman
+     1	Matthieu Brucher
+     1	Miroslav Batchkarov
+     1	Miroslav Shubernetskiy
+     1	Naoki Orii
+     1	Norbert Crombach
+     1	Pavel
+     1	Rafael Cunha de Almeida
+     1	Rolando Espinoza La fuente
+     1	Seamus Abshere
+     1	Sebastian Berg
+     1	Shaun Jackman
+     1	Stefano Lattarini
+     1	Steve Koch
+     1	Thomas Jarosch
+     1	Tiziano Zito
+     1	Udi Weinsberg
+     1	Your Name
+     1	bob
+     1	buguen
+     1	dengemann
+     1	draix
+     1	emanuele
+     1	hrishikeshio
+     1	jansoe
+     1	leonpalafox
+     1	nzer0

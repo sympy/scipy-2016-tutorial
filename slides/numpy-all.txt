@@ -1,0 +1,173 @@
+  1989	Travis Oliphant
+  1516	David Cournapeau
+  1205	Charles Harris
+  1061	Pearu Peterson
+   746	Mark Wiebe
+   605	Pauli Virtanen
+   421	Stefan van der Walt
+   284	Ralf Gommers
+   249	cookedm
+   248	Eric Jones
+   199	pierregm
+   177	Robert Kern
+   140	Nathaniel J. Smith
+   127	Jarrod Millman
+   110	Sebastian Berg
+    81	Alan McIntyre
+    74	sasha
+    72	Travis E. Oliphant
+    69	ovillellas
+    64	wfspotz@sandia.gov
+    58	Jay Bourque
+    52	Ondřej Čertík
+    50	Matthew Brett
+    46	Julian Taylor
+    39	Han Genuit
+    38	edschofield
+    31	dhuard
+    30	David Warde-Farley
+    30	m-d-w
+    29	Tim Leslie
+    25	chanley
+    25	mdroe
+    24	Christoph Gohlke
+    21	endolith
+    20	Fernando Perez
+    20	jmiller
+    18	John Salvatier
+    17	Frederic
+    16	Tim Hochberg
+    15	Aaron River
+    15	Thouis (Ray) Jones
+    15	seberg
+    14	chris.burns
+    13	Warren Weckesser
+    13	prabhu
+    11	87
+    11	Chris Jordan-Squire
+    11	Robert Cimrman
+    10	Christopher L. Farrow
+    10	Eric Fode
+    10	Michael Droettboom
+    10	Skipper Seabold
+    10	Thomas Robitaille
+    10	skip
+     9	Ben Walsh
+     8	Yaroslav Halchenko
+     7	Darren Dale
+     7	Denis Laxalde
+     7	Travis Vaught
+     7	aarchiba
+     6	hangenuit@gmail.com
+     6	jayvius
+     6	patmiller
+     5	Bradley M. Froehle
+     5	Derek Homeier
+     5	Eric Moore
+     5	Joe Kington
+     4	Alok Singhal
+     4	Bryan Van de Ven
+     4	Eric Firing
+     4	Geoffrey Irving
+     4	Justin Peel
+     4	Nicolas Pinto
+     4	Paul Anton Letnes
+     4	Paul Ivanov
+     4	dmorrill
+     3	Alex Ford
+     3	Aron Ahmadia
+     3	Ben Root
+     3	Fabian Pedregosa
+     3	Fazlul Shahriar
+     3	GaelVaroquaux
+     3	Guillaume Gay
+     3	Lars Buitinck
+     3	Scott Sinclair
+     3	Steve
+     3	Steve R. Hastings
+     3	Valentin Haenel
+     3	argriffing
+     3	peterjc
+     3	tim cera
+     2	Adam Ginsburg
+     2	Bartosz Telenczuk
+     2	Chris Barker
+     2	Dan Miller
+     2	Edward Catmur
+     2	Gabriel
+     2	Jason Grout
+     2	Josh Warner (Mac)
+     2	Luis Pedro Coelho
+     2	Marc Abramowitz
+     2	Nicolas Scheffer
+     2	Robert Kende
+     2	Ronan Lamy
+     2	Sandro Tosi
+     2	abaecker
+     2	ahmadia
+     2	jamestwebber
+     2	joe
+     2	nobody
+     2	swalton
+     2	weathergod
+     1	Adam Griffiths
+     1	Andreas Hilboll
+     1	Andrew Horton
+     1	Arfrever Frehtes Taifersar Arahesis
+     1	Arink Verma
+     1	Brent Pedersen
+     1	Carlos Valiente
+     1	Carwyn Pelley
+     1	Chris
+     1	Christian Brueffer
+     1	Christoph Weidemann
+     1	Dag Sverre Seljebotn
+     1	Dan Hipschman
+     1	David Huard
+     1	Derek Homeir
+     1	Derek Homier
+     1	Eli Stevens
+     1	Francesc Alted
+     1	Henry Gomersall
+     1	Hrvoje Niksic
+     1	Ilan Schnell
+     1	Jake Vanderplas
+     1	John Benediktsson
+     1	Jonathan Waltman
+     1	Joon Ro
+     1	Joonas Paalasmaa
+     1	Jos de Kloe
+     1	Juan Luis Cano Rodríguez
+     1	Julien Phalip
+     1	Keith Goodman
+     1	Kumar Appaiah
+     1	Leon Weber
+     1	Loftie Ellis
+     1	Marcin Juszkiewicz
+     1	Martin Baeuml
+     1	Martin Spacek
+     1	Martin Teichmann
+     1	Matt Davis
+     1	Maximilian Albert
+     1	Michael McNeil Forbes
+     1	Neil Muller
+     1	Per A. Brodtkorb
+     1	Raymond Roberts
+     1	Robert Costa
+     1	Rui Pereira
+     1	Simon Blyth
+     1	Sveinung Gundersen
+     1	Takafumi Arakaki
+     1	Tim Cera
+     1	Timo Kluck
+     1	Tony S Yu
+     1	Vladimir Rutsky
+     1	bebert218
+     1	daveydave400
+     1	jmozmoz
+     1	jswhit
+     1	madhusudancs
+     1	martin
+     1	martingoodson
+     1	mwtoews
+     1	zed
