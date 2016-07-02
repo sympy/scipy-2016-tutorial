@@ -1,84 +1,143 @@
-  1197	Chris Smith
-   624	Matthew Rocklin
-   410	Aaron Meurer
-   408	Julien Rioux
-   196	Raoul Bourquin
-   170	Sergiu Ivanov
-   121	Sergey B Kirpichev
-   116	Mario Pernici
-   114	Mateusz Paprocki
-   104	Bharath M R
-    97	Thomas Hisch
-    89	Ondřej Čertík
-    87	David Li
-    80	Prasoon Shukla
-    73	Stefan Krastanov
-    71	Ronan Lamy
-    68	Guru Devanla
-    61	Tom Bachmann
-    59	Timothy Reluga
-    51	Sachin Joglekar
-    45	Ramana Venkata
-    45	Aleksandar Makelov
-    42	Manoj Kumar
-    39	Saptarshi Mandal
-    35	Matthew Hoff
-    33	hm
-    28	Sean Vig
-    21	Angadh Nanjangud
-    19	Saurabh Jha
-    19	Niklas Thörne
-    19	Alexander Hirzel
-    17	Brian Stephanik
-    16	Angus Griffith
-    16	Patrick Lacasse
-    13	Huijun Mai
-    12	Marek Šuppa
-    12	Sachin Irukula
-     9	Sean Ge
-     9	Chetna Gupta
-     8	CJ Carey
-     8	Gilbert Gede
-     7	Prafullkumar P. Tale
-     7	Rishabh Dixit
-     6	Brian E. Granger
-     6	Demian Wassermann
-     6	Christopher Dembia
-     6	Ananya
-     5	Ankit Agrawal
-     5	Christophe Saint-Jean
-     5	Mary Clark
-     5	Tarun Gaba
-     5	Katja Sophie Hotz
-     4	Stefen Yin
-     4	Thilina Rathnayake
-     4	Khagesh Patel
-     4	Varun Joshi
-     3	Amit Jamadagni
-     3	Luke Peterson
-     3	Oliver Lee
-     3	Case Van Horsen
-     3	Shravas K Rao
-     3	Akshit Agarwal
-     2	Vladimir Perić
-     2	Jens H. Nielsen
-     2	Cristóvão Sousa
-     2	Stephen Loo
-     2	Colleen Lee
-     1	Sherjil Ozair
-     1	Matthew Tadd
-     1	Christian Bühler
-     1	Takafumi Arakaki
-     1	Tarang
-     1	Madeleine Ball
-     1	Alexander Eberspächer
-     1	Acebulf
-     1	Tyler Pirtle
-     1	Vasily Povalyaev
-     1	Benjamin Fishbein
-     1	Randy Heydon
-     1	Björn Dahlgren
-     1	Pavel Fedotov
+   385	Aaron Meurer
+   350	Chris Smith
+   204	Gaurav Dhingra
+   194	AMiT Kumar
+   151	Sartaj Singh
+   141	Shubham Tibra
+    92	Kalevi Suominen
+    86	Francesco Bonazzi
+    78	Shivam Vats
+    78	Jason Moore
+    69	Harsh Gupta
+    57	Sampad Kumar Saha
+    53	Sudhanshu Mishra
+    52	Ondřej Čertík
+    39	Björn Dahlgren
+    37	Juha Remes
+    36	Thomas Baruchel
+    35	Tanu Hari Dixit
+    33	Meghana Madhyastha
+    31	Dustin Gadal
+    29	Jatin Yadav
+    28	Keval Shah
+    27	Arafat Dad Khan
+    26	Thomas Hisch
+    25	Kshitij Saraogi
+    25	Mark Dewing
+    24	Alkiviadis G. Akritas
+    23	Chai Wah Wu
+    23	Dzhelil Rufat
+    21	Alex Lindsay
+    20	Ralf Stephan
+    20	arihant parsoya
+    19	YiDing Jiang
+    19	Aravind Reddy
+    18	James Brandon Milam
+    17	Ashutosh Saboo
+    16	Pablo Zubieta
+    15	Anthony Scopatz
+    14	Rishabh Daal
+    14	Anish Shah
+    13	Colin B. Macdonald
+    12	Harshil Goel
+    12	Jim Crist
+    11	kshitij10496
+    11	Chaitanya Sai Alaparthi
+    11	Mario Pernici
+    11	Akshay Siramdas
+    11	Timothy Reluga
+    11	Akash Trehan
+    10	Richard Otis
+    10	Shekhar Prasad Rajak
+     9	Sahil Shekhawat
+     9	Curious72
+     9	Jason Siefken
+     8	Nitin Chaudhary
+     8	Moo VI
+     7	Abhishek Verma
+     7	Devyani Kota
+     7	David T
+     7	Alex Argunov
+     6	Eva Charlotte Mayer
+     6	Sean Vig
+     6	Kumar Krishna Agrawal
+     5	Bhautik Mavani
+     5	Isuru Fernando
+     5	Kyle McDaniel
+     5	Ruslan Pisarev
+     5	Matthew Thomas
+     4	Archit Verma
+     4	Alexander Bentkamp
+     4	Tom Gijselinck
+     4	Akshay Nagar
+     4	Boris Atamanovskiy
+     4	Sanya Khurana
+     4	Chak-Pong Chung
+     4	ChristinaZografou
+     4	Jai Luthra
+     4	Aman Deep
+     4	Michał Radwański
+     4	Haruki Moriguchi
+     4	Oliver Lee
+     3	Matthew Parnell
+     3	Jiaxing Liang
+     3	Phillip Berndt
+     3	Sachin Joglekar
+     3	Tschijnmo TSCHAU
+     3	Vasiliy Dommes
+     3	Abhinav Agarwal
+     3	operte
+     2	FiachAntaw
+     2	Matthew Davis
+     2	Krit Karan
+     2	Peleg Michaeli
+     2	bluebrook
+     2	Dimitra Konomi
+     2	Rehas Sachdeva
+     2	Vladimir Poluhsin
+     2	Phil Ruffwind
+     2	Yu Kobayashi
+     2	Min Ragan-Kelley
+     2	Anton Akhmerov
+     2	Michael Mueller
+     2	Justin Blythe
+     2	Michael S. Hansen
+     2	Abhishek Garg
+     1	Shashank Kumar
+     1	Haimo Zhang
+     1	Shivam Tyagi
+     1	Aqnouch Mohammed
+     1	Sourav Singh
+     1	Srajan Garg
+     1	Subham Tibra
+     1	Sumith1896
+     1	Jack Kemp
+     1	Thomas Hickman
+     1	Juan Felipe Osorio
+     1	Timothy Cyrus
+     1	Josh Burkart
+     1	Joachim Durchholz
+     1	Jerry Li
+     1	Vinay
+     1	Jacob Garber
+     1	siddharthist
+     1	Nathan Musoke
+     1	Nicolás Guarín-Zapata
+     1	Nishant Nikhil
+     1	Normal Human
+     1	G. D. McBain
+     1	Michael Zingale
      1	Oscar Benjamin
-     1	Max Hutchinson
-     1	Seshagiri Prabhu
+     1	Pastafarianist
+     1	Yury G. Kudryashov
+     1	Prabhjot Singh
+     1	Prashant Tyagi
+     1	Rich LaSota
+     1	GolimarOurHero
+     1	Jens Jørgen Mortensen
+     1	Sam Tygier
+     1	Matthew Brett
+     1	Sandeep Veethu
+     1	Guillaume Jacquenot
+     1	Guo Xingjian
+     1	Langston Barrett
