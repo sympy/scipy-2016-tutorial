@@ -1,0 +1,218 @@
+/* Global
+* ============================================================================ */
+/* Layout
+* ------------------------------------- */
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.intro, .social-links, .authors {
+    text-align: center;
+}
+
+/* Typography
+* ------------------------------------- */
+body {
+    font-family: "Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Droid Sans', sans-serif;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+/* UI/Forms
+* ------------------------------------- */
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    color: #376fa0;
+}
+a:hover, a:active {
+   // border-bottom: 1px solid;
+}
+
+/* Homepage
+* ============================================================================ */
+.page-home .intro {
+    margin-top: 2.25em;
+    margin-top: 12.625vh;
+    font-size: 1.5em;
+    font-family: 'PT Sans', 'Droid Sans', sans-serif;
+}
+
+.page-home .social-links ul {
+  text-align: left;
+  display: inline;
+  margin: 0;
+  list-style: none;
+  padding-left: 0px;
+  font-size: 1.1em;
+  font-family: 'PT Sans', 'Droid Sans', sans-serif;
+}
+.page-home .social-links li a {
+  padding: 5px 10px;
+  background: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+.page-home .social-links li:hover a {
+  color: #fff;
+  border: None;
+  background: #376fa0;
+}
+.page-home .social-links ul li {
+  display: inline-block;
+  margin-right: -4px;
+  margin-bottom: 0;
+  position: relative;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.page-home .social-links ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+  z-index: 1;
+}
+.page-home .social-links ul li ul li a{
+  background: #376fa0;
+  display: block;
+  width: 150px;
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+}
+.page-home .social-links ul li ul li:hover a { background: #407eb5; }
+.page-home .social-links ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Authors 
+* ===================================================== */
+
+.page-home .authors ul {
+  text-align: left;
+  display: inline;
+  margin: 0;
+  list-style: none;
+  padding-left: 0px;
+  font-size: 1.2em
+}
+.page-home .authors li a {
+  padding: 5px 10px;
+  background: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+.page-home .authors li:hover a {
+  color: #fff;
+  border: None;
+  background: #2AD513;
+}
+.page-home .authors ul li {
+  display: inline-block;
+  margin-right: -4px;
+  margin-bottom: 0;
+  position: relative;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.page-home .authors ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+  z-index: 1;
+}
+.page-home .authors ul li ul li a{
+  background: #2AD513;
+  display: block;
+  width: 150px;
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+}
+.page-home .authors ul li ul li:hover a { background: #2AD513; }
+.page-home .authors ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.page-home .authors a {
+  color: #3EA606;
+  font-family: 'PT Sans', 'Bree Serif', sans-serif;
+  font-size: 1em
+}
+
+/* ===================================================== */
+
+
+.page-home .section--next_event {
+  margin-top: 3.5em;
+  text-align: center;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+.page-home .section--next_event .caption {
+  display: inline-block;
+  background-color: #11fac2;
+  background-color: ##eee;
+  padding: 10px;
+}
+.page-home .section--next_event a {
+  display: inline-block;
+  padding: 10px;
+  background-color: #fdf7d6;
+  border-bottom: none;
+}
+.page-home .section--next_event a:hover {
+  border-bottom: none;
+  background-color: #e4dfc0;
+  /*background-color: #eee;*/
+  color: #111;
+}

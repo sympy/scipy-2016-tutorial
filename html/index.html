@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SymPy Tutorial for PyCon 2015 &mdash; PyCon 2015 SymPy Tutorial  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://live.sympy.org/static/live-core.css" type="text/css" />
+    <link rel="stylesheet" href="http://live.sympy.org/static/live-autocomplete.css" type="text/css" />
+    <link rel="stylesheet" href="http://live.sympy.org/static/live-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://live.sympy.org/static/utilities.js"></script>
+    <script type="text/javascript" src="http://live.sympy.org/static/external/classy.js"></script>
+    <script type="text/javascript" src="http://live.sympy.org/static/live-core.js"></script>
+    <script type="text/javascript" src="http://live.sympy.org/static/live-autocomplete.js"></script>
+    <script type="text/javascript" src="http://live.sympy.org/static/live-sphinx.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/SymPy-Favicon.ico"/>
+    <link rel="top" title="PyCon 2015 SymPy Tutorial  documentation" href="#" />
+    <link rel="next" title="Installation" href="install.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">PyCon 2015 SymPy Tutorial  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sympy-tutorial-for-pycon-2015">
+<h1>SymPy Tutorial for PyCon 2015<a class="headerlink" href="#sympy-tutorial-for-pycon-2015" title="Permalink to this headline">¶</a></h1>
+<p>This is the tutorial will be presented at PyCon India 2015 by SymPy India
+for <a class="reference external" href="http://sympy.org">SymPy</a>.  This is just a stripped down
+version of our <a class="reference external" href="http://docs.sympy.org">docs</a>. It requires SymPy 0.7.6, and
+should work in Python 2.6, 2.7, 3.2., 3.3, or 3.4.  If you are attending this
+tutorial, please install Anaconda.</p>
+<p>The slides for this tutorial are <a class="reference external" href="http://iamit.in/sympy-pycon/pycon2015.pdf">here</a>.</p>
+<p>The source for this tutorial is on <a class="reference external" href="https://github.com/aktech/sympy-pycon">GitHub</a>.</p>
+<p>The exercises for this tutorial are <a class="reference external" href="http://asmeurer.github.io/scipy-2014-tutorial/tutorial_exercises.zip">here</a>, including
+exercises (exercises require the IPython notebook).</p>
+<p>See also <a class="reference external" href="http://asmeurer.github.io/scipy-2014-tutorial/html/index.html">Last Year&#8217;s SciPy tutorial</a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#source">Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#git">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#anaconda">Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#other-methods">Other Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#run-sympy">Run SymPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">SymPy Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/gotchas.html">Gotchas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/basic_operations.html">Basic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/printing.html">Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/simplification.html">Simplification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/calculus.html">Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/solvers.html">Solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/manipulation.html">Advanced Expression Manipulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Gotchas and Pitfalls</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gotchas.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gotchas.html#equals-signs">Equals Signs (=)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gotchas.html#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gotchas.html#symbolic-expressions">Symbolic Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gotchas.html#special-symbols">Special Symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gotchas.html#getting-help-from-within-sympy">Getting help from within SymPy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aboutus.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aboutus.html#sympy-development-team">SymPy Development Team</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aboutus.html#financial-and-infrastructure-support">Financial and Infrastructure Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aboutus.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/sympylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >next</a> |</li>
+        <li><a href="#">PyCon 2015 SymPy Tutorial  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015 SymPy Development Team.
+      Last updated on Jul 15, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b2.
+    </div>
+  </body>
+</html>
