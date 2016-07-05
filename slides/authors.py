@@ -4,16 +4,16 @@ Run the script in the main sympy repo.
 Copy authors.tex in the tutorial repo.
 """
 
-import subprocess
-
 
 def generate_authors_list():
-    with open('authors.txt', 'w') as f:
-        subprocess.call('git shortlog -ns > authors.txt', shell=True, stdout=f)
     authors = []
-    with open('authors.txt') as f:
+    with open('AUTHORS') as f:
         for line in f:
-            authors.append(line.split('\t')[1].strip() + '\\\\' + '\n')
+            if line.strip().endswith('>'):
+                aut = line.split('<')[0].strip() + '\\\\' + '\n'
+                if aut.startswith('*'):
+                    aut = aut[1:]
+                authors.append(aut)
     return authors
 
 

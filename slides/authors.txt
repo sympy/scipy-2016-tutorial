@@ -1,7 +1,0 @@
-   117	Aaron Meurer
-    75	Mateusz Paprocki
-    42	Ondřej Čertík
-    10	Matthew Rocklin
-     6	AMiT Kumar
-     4	Harsh Gupta
-     3	Sartaj Singh
