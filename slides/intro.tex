@@ -270,16 +270,17 @@
 \begin{itemize}
 \item New assumptions
 \item Make things faster
+\item SymEngine (\url{https://github.com/symengine})
 \item Implement more algorithms, so we can compute more things (and also make
   them faster)
-\item Make it easier for people to define custom behavior of their own objects
-  in Add and Mul
+\item Replacing \texttt{solve} with \texttt{solveset}
 \item Encourage people to use SymPy for many applications
-\item https://github.com/sympy/sympy/wiki/gsoc-2016-ideas for full list of
+\item \url{https://github.com/sympy/sympy/wiki/gsoc-2016-ideas} for full list of
   things we want done
 \end{itemize}
 \end{block}
 \end{frame}
+
 
 %% I was too lazy to redo these for now
 
@@ -317,368 +318,83 @@
 %%   \end{block}
 %% \end{frame}
 
-\begin{frame}{Authors}
-  \begin{multicols}{5}
-    \tiny
-        Chris Smith\\
-        Aaron Meurer\\
-        Mateusz Paprocki\\
-        Ondřej Čertík\\
-        Matthew Rocklin\\
-        Julien Rioux\\
-        Sergey B Kirpichev\\
-        Raoul Bourquin\\
-        Ronan Lamy\\
-        Kirill Smelkov\\
-        Øyvind Jensen\\
-        Tom Bachmann\\
-        Mario Pernici\\
-        Sergiu Ivanov\\
-        Saptarshi Mandal\\
-        Thilina Rathnayake\\
-        Stefan Krastanov\\
-        Sean Vig\\
-        David Li\\
-        Rick Muller\\
-        Brian E. Granger\\
-        Vinzent Steinberg\\
-        Gilbert Gede\\
-        Vladimir Perić\\
-        Raymond Wong\\
-        Sachin Joglekar\\
-        Fredrik Johansson\\
-        Fabian Pedregosa\\
-        Bharath M R\\
-        Timothy Reluga\\
-        Addison Cugini\\
-        Thomas Hisch\\
-        Jason Moore\\
-        Manoj Kumar\\
-        Guru Devanla\\
-        Alexey U. Gudchenko\\
-        hm\\
-        Priit Laes\\
-        Prasoon Shukla\\
-        Matt Habel\\
-        Francesco Bonazzi\\
-        Alan Bromborsky\\
-        Kundan Kumar\\
-        Sudhanshu Mishra\\
-        Tomo Lazovich\\
-        Matt Curry\\
-        Mary Clark\\
-        Pablo Puente\\
-        Jason Gedge\\
-        Christopher Dembia\\
-        Katja Sophie Hotz\\
-        Aleksandar Makelov\\
-        Ramana Venkata\\
-        Brian Jorgensen\\
-        Robert Johansson\\
-        Kendhia\\
-        Björn Dahlgren\\
-        Joachim Durchholz\\
-        Andy R. Terrel\\
-        Grzegorz Świrski\\
-        Sebastian Krämer\\
-        Pearu Peterson\\
-        Anurag Sharma\\
-        Toon Verstraelen\\
-        Joan Creus\\
-        Siddhanathan Shanmugam\\
-        Cristóvão Sousa\\
-        Jorn Baayen\\
-        Christian Muise\\
-        Jeremias Yehdegho\\
-        Matthew Hoff\\
-        Kevin Hunter\\
-        Riccardo Gori\\
-        Alexander Hirzel\\
-        Steve Anton\\
-        Sanket Agarwal\\
-        rathmann\\
-        Robert Schwarz\\
-        David Ju\\
-        Angadh Nanjangud\\
-        Luke Peterson\\
-        Sahil Shekhawat\\
-        Stephen Loo\\
-        Harsh Gupta\\
-        Yuriy Demidov\\
-        Oliver Lee\\
-        Comer Duncan\\
-        Renato Coutinho\\
-        Stepan Roucka\\
-        Bilal Akhtar\\
-        Miha Marolt\\
-        Chetna Gupta\\
-        Shipra Banga\\
-        Randy Heydon\\
-        Saurabh Jha\\
-        Nathan Alison\\
-        Niklas Thörne\\
-        jerryma1121\\
-        Sachin Irukula\\
-        Sam Sleight\\
-  \end{multicols}
+
+\begin{frame}{Projects Using SymPy}
+\begin{itemize}
+\item
+  \href{http://www.sagemath.org/}{\textbf{Sage}}: A CAS, visioned to be
+  a viable free open source alternative to Magma, Maple, Mathematica and
+  MATLAB\@. Sage includes many open source mathematical libraries, including
+  SymPy.
+\item
+  \href{https://cloud.sagemath.com}{\textbf{SageMathCloud}}:
+  SageMathCloud is a web-based cloud computing and course management
+  platform for computational mathematics.
+\item
+  \href{http://mathpix.com/}{\textbf{Mathpix}}: An iOS App, that detects
+  handwritten math as input, and uses SymPy Gamma to evaluate the math input
+  and generate the relevant steps to solve the problem.
+\item
+  \href{http://www.pydy.org/}{\textbf{PyDy}}: Multibody Dynamics with
+  Python.
+\item
+  \href{http://openrave.org/docs/0.8.2/openravepy/ikfast/}{\textbf{IKFast}}:
+  IKFast is a robot kinematics compiler provided by
+  \href{http://openrave.org/}{OpenRAVE}. It analytically solves robot inverse
+  kinematics equations and generates optimized C++ files. It uses SymPy for
+  its internal symbolic mathematics.
+\end{itemize}
+  \end{frame}
+
+\begin{frame}{Projects Using SymPy}
+\begin{itemize}
+\item
+  \href{http://octave.sourceforge.net/symbolic/}{\textbf{Octave Symbolic}}:
+  The Octave-Forge Symbolic package adds symbolic calculation features
+  to GNU Octave. These include common CAS tools such
+  as algebraic operations, calculus, equation solving, Fourier and
+  Laplace transforms, variable precision arithmetic, and other features.
+\item
+  \href{https://github.com/brombo/galgebra}{\textbf{galgebra}}:
+  Geometric algebra (previously \texttt{sympy.galgebra}).
+\item
+  \href{https://github.com/jverzani/SymPy.jl}{\textbf{SymPy.jl}}:
+  Provides a Julia interface to SymPy using PyCall.
+\item
+  \href{https://mathics.github.io/}{\textbf{Mathics}}: Mathics is a
+  free, general-purpose online CAS featuring Mathematica compatible
+  syntax and functions. It is backed by highly extensible Python code,
+  relying on SymPy for most mathematical tasks.
+\item
+  \href{http://sfepy.org/}{\textbf{SfePy}}: Simple finite elements in
+  Python.
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Authors (continued)}
-  \begin{multicols}{5}
-    \tiny
-
-        Amit Saha\\
-        Alkiviadis G. Akritas\\
-        Akshay\\
-        Brian Stephanik\\
-        Robert Kern\\
-        Angus Griffith\\
-        Avichal Dayal\\
-        Jim Crist\\
-        Patrick Lacasse\\
-        Swapnil Agarwal\\
-        Gary Kerr\\
-        Nicolas Pourcelot\\
-        Natalia Nawara\\
-        Mike Boyle\\
-        Sherjil Ozair\\
-        Huijun Mai\\
-        Ljubiša Moćić\\
-        Prafullkumar P. Tale\\
-        Jim Zhang\\
-        Ankit Agrawal\\
-        Marek Šuppa\\
-        Mark Shoulson\\
-        Soumya Dipta Biswas\\
-        Freddie Witherden\\
-        Roberto Nobrega\\
-        Felix Kaiser\\
-        David Joyner\\
-        Saroj Adhikari\\
-        Sean Ge\\
-        Zamrath Nizam\\
-        Friedrich Hagedorn\\
-        Jaroslaw Tworek\\
-        Lennart Fricke\\
-        Eric Nelson\\
-        CJ Carey\\
-        Aditya Shah\\
-        Yuri Karadzhov\\
-        Alexey Subach\\
-        Rishabh Dixit\\
-        Ryan Krauss\\
-        Rajat Aggarwal\\
-        Christian Bühler\\
-        Min Ragan-Kelley\\
-        Ananya H\\
-        Mark Dewing\\
-        Raphael Michel\\
-        Demian Wassermann\\
-        Dammina Sahabandu\\
-        Andreas Kloeckner\\
-        Sam Magura\\
-        carstimon\\
-        Tim Swast\\
-        Roland Puntaier\\
-        Chancellor Arkantos\\
-        Chris Wu\\
-        Christophe Saint-Jean\\
-        Davy Mao\\
-        Tomasz Buchert\\
-        Tobias Lenz\\
-        Harold Erbin\\
-        richierichrawr\\
-        Tarun Gaba\\
-        Khagesh Patel\\
-        Manish Gill\\
-        Matthew Brett\\
-        Nichita Utiu\\
-        Piotr Korgul\\
-        Stas Kelvich\\
-        Varun Joshi\\
-        shashank-agg\\
-        Nimish Telang\\
-        Stefano Maggiolo\\
-        Óscar Nájera\\
-        Chris Conley\\
-        Sebastian Kreft\\
-        Jochen Voss\\
-        Stefen Yin\\
-        Florian Mickler\\
-        Tiffany Zhu\\
-        Zeel Shah\\
-        Tristan Hume\\
-        Ben Lucato\\
-        Stefan van der Walt\\
-        Pramod Ch\\
-        Abderrahim Kitouni\\
-        Alexandr Popov\\
-        Rom le Clair\\
-        David Roberts\\
-        Imran Ahmed Manzoor\\
-        Benjamin McDonald\\
-        Barry Wardell\\
-        Andrew Straw\\
-        Luis Garcia\\
-        Manoj Babu K.\\
-        Luca Weihs\\
-        Amit Jamadagni\\
-        Shravas K Rao\\
-        Martin Povišer\\
-        Julio Idichekop Filho\\
-        Ted Horst\\
-  \end{multicols}
+\begin{frame}{Projects Using SymPy}
+\begin{itemize}
+\item
+  \href{http://quameon.sourceforge.net/}{\textbf{Quameon}}: Quantum
+  Monte Carlo in Python.
+\item
+  \href{http://lcapy.elec.canterbury.ac.nz/}{\textbf{Lcapy}}:
+  Experimental Python package for teaching linear circuit analysis.
+\item
+  \href{http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1072\&context=physsp/}{\textbf{Quantum
+  Programming in Python}}: Quantum 1D Simple Harmonic Oscillator and
+  Quantum Mapping Gate.
+\item
+  \href{http://mech.fsv.cvut.cz/~stransky/software/latexexpr/doc/}{\textbf{LaTeX
+  Expression project}}: Easy \LaTeX{} typesetting of algebraic expressions
+  in symbolic form with automatic substitution and result computation.
+\item
+  \href{https://www.researchgate.net/publication/260585491_Symbolic_Statistics_with_SymPy/}{\textbf{Symbolic
+  statistical modeling}}: Adding statistical operations to complex
+  physical models.
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Authors (continued)}
-  \begin{multicols}{5}
-    \tiny
-
-        Jens H. Nielsen\\
-        Raffaele De Feo\\
-        Heiner Kirchhoffer\\
-        George Waksman\\
-        Geoffry Song\\
-        Emma Hogan\\
-        Edward\\
-        Tuomas Airaksinen\\
-        Akshit Agarwal\\
-        Nikolay Lazarov\\
-        Akshay Srinivasan\\
-        Venkatesh Halli\\
-        Case Van Horsen\\
-        Buck Shlegeris\\
-        Pan Peng\\
-        Bill Flynn\\
-        Thomas Dixon\\
-        Arpit Goyal\\
-        Ashwini Oruganti\\
-        Ben Goodrich\\
-        Boris Timokhin\\
-        Bradley Froehle\\
-        Colleen Lee\\
-        David Marek\\
-        Dmitry Batkovich\\
-        Fernando Perez\\
-        Goutham Lakshminarayan\\
-        Henrik Johansson\\
-        Henry Gebhardt\\
-        Jack McCaffery\\
-        James Aspnes\\
-        James Fiedler\\
-        Jezreel Ng\\
-        Juan Luis Cano Rodríguez\\
-        Jurjen N.E. Bos\\
-        Kalevi Suominen\\
-        Kunal Arora\\
-        Maciej Baranski\\
-        Michael Mayorov\\
-        Nikhil Sarda\\
-        Oleksandr Gituliar\\
-        Oscar Benjamin\\
-        Patrick Poitras\\
-        Pavel Fedotov\\
-        Pradyumna\\
-        QuaBoo\\
-        Rajath S\\
-        Sai Nikhil\\
-        Sushant Hiray\\
-        Thomas Wiecki\\
-        Tomáš Bambas\\
-        tsmars15\\
-        Rizgar Mella\\
-        Sambuddha Basu\\
-        Puneeth Chaganti\\
-        Prateek Papriwal\\
-        Pierre Haessig\\
-        Pauli Virtanen\\
-        Paul Strickland\\
-        Paul Scott\\
-        Sebastian Krause\\
-        Or Dvory\\
-        Nicholas J.S. Kinar\\
-        Max Hutchinson\\
-        Matthias Toews\\
-        Seshagiri Prabhu\\
-        Shai 'Deshe' Wyborski\\
-        Matthew Tadd\\
-        Matt Rajca\\
-        Markus Müller\\
-        Shruti Mangipudi\\
-        Shukla\\
-        Marcin Kostrzewa\\
-        Siddhant Jain\\
-        Madeleine Ball\\
-        Srinivas Vasudevan\\
-        Lars Buitinck\\
-        Konrad Meyer\\
-        Kibeom Kim\\
-        Kevin Goodsell\\
-        Kazuo Thow\\
-        Kaushik Varanasi\\
-        Stepan Simsa\\
-        Kaifeng Zhu\\
-        Joseph Dougherty\\
-        Jorge E. Cardona\\
-        vishal\\
-        Jonathan Miller\\
-        Takafumi Arakaki\\
-        Tarang Patel\\
-        John Connor\\
-        Johann Cohen-Tanugi\\
-        Jeremy\\
-        James Pearson\\
-        James Goppert\\
-        Thomas Sidoti\\
-        Alexander Eberspächer\\
-        James Abbatiello\\
-        Tim Lahey\\
-        Hubert Tsang\\
-  \end{multicols}
-\end{frame}
-
-\begin{frame}{Authors (continued)}
-  \begin{multicols}{5}
-    \tiny
-
-        Gregory Ksionda\\
-        Gert-Ludwig Ingold\\
-        Fawaz Alazemi\\
-        Faisal Anees\\
-        Erik Welch\\
-        Abhinav Chanda\\
-        Elrond der Elbenfuerst\\
-        Eh Tan\\
-        Dhruvesh Vijay Parikh\\
-        Tyler Pirtle\\
-        David Lawrence\\
-        Vasily Povalyaev\\
-        Christian Schubert\\
-        Vinay Kumar\\
-        Vinit Ravishankar\\
-        Carsten Knoll\\
-        Vlad Seghete\\
-        Vladimir Lagunov\\
-        Bernhard R. Link\\
-        Benjamin Gudehus\\
-        Benjamin Fishbein\\
-        Bastian Weber\\
-        Andrew Docherty\\
-        Andrej Tokarčík\\
-        Andre de Fortier Smit\\
-        Anatolii Koval\\
-        marshall2389\\
-        Ambar Mehrotra\\
-        Ali Raza Syed\\
-        sevaader\\
-        Alexandr Gudulin\\
-        Roberto Colistete, Jr.\\
-        Robert Cimrman\\
-        Robert\\
-        Łukasz Pankowski\\
-        Ralph Bean\\
-  \end{multicols}
-\end{frame}
+\input{authors.tex}
 
 \begin{frame}{Here at SciPy}
   \begin{block}{Talks}
@@ -687,7 +403,7 @@
       (Tutorial). \\ \footnotesize Monday 1:30 PM - 5:30 PM - Room 103
     \item \normalsize Aaron Meurer, Anthony Scopatz \textit{SymPy Code Generation}. \\ \footnotesize Thursday 11:30
       PM - 12:00 PM - Room 204
-    \item \normalsize Ondřej Čertík, Isuru Fernando, Thilina Rathnayake, Abhinav Agarwal \textit{SymEngine: A Fast Symbolic Manipulation Library}. \\ \footnotesize Thursday 3:30
+    \item \normalsize Ondřej Čertík, Isuru Fernando, Thilina Rathnayake, Abhinav Agarwal \textit{SymEngine: A Fast Symbolic Manipulation Library}. \\ \footnotesize Friday 3:30
       - 4:00 - Room 204
     \end{itemize}
   \end{block}
